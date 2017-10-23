@@ -41,23 +41,24 @@ var chart = d3.horizon()
     .height(height)
     .bands(1)
     .mode("mirror")
-    .interpolate("basis");
+    .interpolate("cardinal-open");
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-d3.json("unemployment.json", function(error, data) {
+d3.json("data.json", function(error, data) {
   if (error) throw error;
-
   // Offset so that positive is above-average and negative is below-average.
-  var mean = data.rate.reduce(function(p, v) { return p + v; }, 0) / data.rate.length;
+ // var mean = data.rate.reduce(function(p, v) { return p + v; }, 0) / data.rate.length;
 
-  // Transpose column values to rows.
-  data = data.rate.map(function(rate, i) {
-    return [Date.UTC(data.year[i], data.month[i] - 1), rate - mean];
+  // Transpose column values to rows. NOT WORKING
+  data = data.value.map(function(value, i) {
+    return [data.year[i], value];
   });
 
+
+console.log(data);
   // Render the chart.
   svg.data([data]).call(chart);
 

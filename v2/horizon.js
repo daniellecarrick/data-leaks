@@ -124,7 +124,7 @@
     horizon.bands = function(x) {
       if (!arguments.length) return bands;
       bands = +x;
-      color.domain([-bands, 0, 0, bands]);
+      color.domain([ -bands, 0, 0, bands]);
       return horizon;
     };
 
