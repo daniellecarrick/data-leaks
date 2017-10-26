@@ -11,7 +11,9 @@
 
     var color = d3.scale.linear()
         .domain([0, 1])
-        .range(["#DAE8F3", "#B4D2E6", "#8FBBDA", "#6AA4CD", "#448EC1", "#1F77B4"]);
+        .range(["#DAE8F3", "#1F77B4"]);
+        //.range(["#DAE8F3", "#B4D2E6", "#8FBBDA", "#6AA4CD", "#448EC1", "#1F77B4"]);
+
 
     // For each small multiple…
     function horizon(g) {
@@ -121,10 +123,18 @@
       return horizon;
     };
 
-    horizon.bands = function(x) {
+   /* horizon.bands = function(x) {
       if (!arguments.length) return bands;
       bands = +x;
       color.domain([ -bands, 0, 0, bands]);
+      return horizon;
+    };
+*/
+  // when there are no negatives, this function works better with the colors
+    horizon.bands = function(x) {
+      if (!arguments.length) return bands;
+      bands = +x;
+      color.domain([0, bands]);
       return horizon;
     };
 

@@ -24,9 +24,10 @@ svg {
 
 </style>
 <div id="horizon-controls">
-  <input name="mode" type="radio" value="mirror" id="horizon-mode-mirror" checked><label for="horizon-mode-mirror"> Mirror</label>
-  <input name="mode" type="radio" value="offset" id="horizon-mode-offset"><label for="horizon-mode-offset"> Offset</label>
-  <span id="horizon-bands"><span id="horizon-bands-value">1</span> <button class="first">&#x2212;</button><button class="last">+</button></span>
+  <span id="horizon-bands">
+    <button class="horizon">Horizon</button>
+    <button class="area">Area</button>
+  </span>
 </div>
 <div id="horizon-chart"></div>
 <script src="//d3js.org/d3.v3.min.js"></script>
@@ -34,43 +35,51 @@ svg {
 <script>
 
 var width = 960,
-    height = 500;
+    height = 150;
 
 var chart = d3.horizon()
     .width(width)
     .height(height)
-    .bands(1)
+    .bands(6)
     .mode("mirror")
-    .interpolate("cardinal-open");
+    .interpolate("basis");
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
+
+d3.json("data-all.json", function(error, data) {
+  if (error) throw error;
+
+  var nestedData = d3.nest()
+      .key(function(d) { return d.category })
+      .entries(data);
+
+    console.log('nestedData', nestedData);
+    console.log('data', data);
+})
 
 d3.json("data.json", function(error, data) {
   if (error) throw error;
   // Offset so that positive is above-average and negative is below-average.
  // var mean = data.rate.reduce(function(p, v) { return p + v; }, 0) / data.rate.length;
 
-  // Transpose column values to rows. NOT WORKING
+  // Transpose column values to rows. 
   data = data.value.map(function(value, i) {
     return [data.year[i], value];
   });
 
+  console.log(data);
 
-console.log(data);
   // Render the chart.
   svg.data([data]).call(chart);
 
-  // Enable mode buttons.
-  d3.selectAll("#horizon-controls input[name=mode]").on("change", function() {
-    svg.call(chart.duration(0).mode(this.value));
-  });
 
-  // Enable bands buttons.
-  d3.selectAll("#horizon-bands button").data([-1, 1]).on("click", function(d) {
-    var n = Math.max(1, chart.bands() + d);
-    d3.select("#horizon-bands-value").text(n);
+  // Enable bands buttons. TO DO: Animate area to horizon chart better
+  d3.selectAll("#horizon-bands button").on("click", function() {
+    console.log('this = ', this.className);
+    (this.className === 'area') ?  n = 1 : n = 6;
+    console.log(this.className, n);
     svg.call(chart.duration(1000).bands(n).height(height));
   });
 });
