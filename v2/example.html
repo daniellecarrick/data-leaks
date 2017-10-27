@@ -80,8 +80,8 @@
                                     .width(width)
                                     .height(height)
                                     .bands(6)
-                                    .mode("mirror");
-                                //.interpolate("basis"); see https://github.com/mbostock/d3/wiki/SVG-Shapes for more interpolation
+                                    .mode("offset")
+                               		.interpolate("basis");
 
 
                                 var svg = d3.select("#chartsDiv").append("svg")
