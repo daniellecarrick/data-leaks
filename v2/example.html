@@ -1,24 +1,12 @@
-<!DOCTYPE html PUBLIC
- "-//W3C//DTD XHTML 1.0 Strict//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
+<meta charset="utf-8">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-    <title>IHG</title>
-    <!--<link rel="icon" href="http://www.aviz.fr/wiki/pub/skins/aviz-blix/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="http://www.aviz.fr/wiki/pub/skins/aviz-blix/favicon.ico" type="image/x-icon" />
-    <link rel='stylesheet' href='http://www.aviz.fr/wiki/pub/skins/aviz-blix/layout.css' type='text/css' />
-    <link rel='stylesheet' href='http://www.aviz.fr/wiki/pub/skins/aviz-blix/color-aviz.css' type='text/css' />
-    <link rel="stylesheet" href="http://www.aviz.fr/wiki/pub/skins/aviz-blix/hal.css" type="text/css" />
-    <link rel='stylesheet' href='http://www.aviz.fr/wiki/pub/wsplus/wsplus.css' type='text/css' />
-    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-    <link rel='stylesheet' type='text/css' href='http://www.aviz.fr/wiki/pub/fox/fox.css' media='screen' /> -->
-   
-    <meta name='robots' content='index,follow' />
+    <title>WIRED | Data Leaks</title>
+
     <script type="text/javascript" src="http://www.aviz.fr/wiki/pub/skins/aviz-blix/javascript/jquery.js"></script>
-   <!-- <script type="text/javascript" src="http://www.aviz.fr/wiki/pub/skins/aviz-blix/javascript/blix.js"></script>
-    <script type="text/javascript" src="http://www.aviz.fr/wiki/pub/skins/aviz-blix/javascript/relativedate.js"></script>
-    <link rel='stylesheet' type='text/css' href='http://www.aviz.fr/wiki/pub/css/local.css' />-->
+
 </head>
 
 <body>
@@ -38,22 +26,16 @@
                             <script type="text/javascript" src="http://www.aviz.fr/wiki/pub/skins/aviz-blix/javascript/d3.v2.min.js"></script>
                             <script type="text/javascript" src="http://www.aviz.fr/wiki/uploads/Research/horizon.js"></script>
                         </p>
-                        <div id="horizon-controls" style="margin-top:50px">
-                            <span id="horizon-nb">
-			Number of charts: (Up to 4, javascript starts to be slow...)
-			<input name="nbCharts" type="radio" value="2" id="n2" checked><label for="n3">N2 </label>
-			<input name="nbCharts" type="radio" value="4" id="n4"><label for="n3">N4 </label>
-			<input name="nbCharts" type="radio" value="8" id="n8"><label for="n3">N8 </label>
-			<input name="nbCharts" type="radio" value="16" id="n16"><label for="n3">N16 </label>
-		</span>
+                        <div id="horizon-controls">
+                            <span id="horizon-bands">
+   				 <button class="horizon">Horizon</button>
+   		 <button class="area">Area</button>
+  </span>
                         </div>
                         <div>
                             <div id="horizon-chart" style="margin-top:50px">
                                 <div id="chartsDiv"></div>
                             </div>
-                           <!-- <p>
-                                Thanks to <a href="http://romain.vuillemot.net/">Romain Vuillemot</a> for implementing the first version of Interactive Horizon Graphs using <a href="http://d3js.org/">d3</a>.
-                            </p> -->
                         </div>
                         <script>
                         var width = 960,
@@ -67,7 +49,7 @@
 
                         function createCharts(nbCharts) {
 
-                          	d3.select("#chartsDiv").remove();
+                            d3.select("#chartsDiv").remove();
                             d3.select("#horizon-chart").append("div").attr("id", "chartsDiv");
 
 
@@ -81,7 +63,7 @@
                                     .height(height)
                                     .bands(6)
                                     .mode("offset")
-                               		.interpolate("basis");
+                                    .interpolate("basis");
 
 
                                 var svg = d3.select("#chartsDiv").append("svg")
@@ -104,29 +86,33 @@
                                         //console.log("for data "+curData);
 
 
-
-
                                         var offset = 0;
                                         var orig_data = curData;
-                                       // var mean = curData.reduce(function(p, v) { return p + v; }, offset) / curData.length;
+                                        // var mean = curData.reduce(function(p, v) { return p + v; }, offset) / curData.length;
 
                                         data = curData.map(function(val, i) {
-                                            return [Date.UTC(data.year[i]), val];
+                                            return [data.year[i], val];
                                         });
 
                                         svgs[dc].data([data]).call(charts[dc]);
 
-
-
-                                        // buttons: to change the nb of charts
-                                        d3.selectAll("#horizon-controls input[name=nbCharts]").on("change", function() {
-                                            createCharts(this.value);
-                                        });
-
                                     })(dc);
                                 }
                             });
+
+                             // Enable bands buttons. ****** TO DO: Animate area to horizon chart better
+                                        d3.selectAll("#horizon-bands button").on("click", function() {
+                                            // console.log('this = ', this.className);
+                                            (this.className === 'area') ? n = 1: n = 6;
+                                            // console.log(this.className, n);
+                                            console.log(dc);
+                                             for (var dc = 0; dc < 5; dc++) {
+                                            svgs[dc].call(charts[dc].duration(1000).bands(n).height(height));
+                                        }
+                                        });
                         }
+
+                          
                         </script>
                     </div>
                 </div>

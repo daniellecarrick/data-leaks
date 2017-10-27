@@ -72,6 +72,8 @@ d3.json("experiement.json", function(error, data) {
   // Render the chart.
  svg.data([data]).call(chart);
 
+});
+
   // Enable bands buttons. ****** TO DO: Animate area to horizon chart better
   d3.selectAll("#horizon-bands button").on("click", function() {
    // console.log('this = ', this.className);
@@ -79,5 +81,4 @@ d3.json("experiement.json", function(error, data) {
    // console.log(this.className, n);
     svg.call(chart.duration(1000).bands(n).height(height));
   });
-});
 </script>
