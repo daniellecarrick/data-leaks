@@ -1,23 +1,23 @@
 var width = 960,
     height = 150;
 
-var nbChartsStart = 5;
-var marginCharts = 2;
+var thechartsStart = 5;
+var marginTop = 10;
 
-createCharts(nbChartsStart);
+createCharts(thechartsStart);
 
 
-function createCharts(nbCharts) {
+function createCharts(thecharts) {
 
-    d3.select("#chartsDiv").remove();
-    d3.select("#horizon-chart").append("div").attr("id", "chartsDiv");
+    d3.select("#chart-container").remove();
+    d3.select("#horizon-chart").append("div").attr("id", "chart-container");
 
 
     var charts = Array();
 
     var svgs = Array();
 
-    for (var n = 0; n < nbCharts; n++) {
+    for (var n = 0; n < thecharts; n++) {
         var chart = d3.horizon()
             .width(width)
             .height(height)
@@ -26,10 +26,10 @@ function createCharts(nbCharts) {
             .interpolate("basis");
 
 
-        var svg = d3.select("#chartsDiv").append("svg")
+        var svg = d3.select("#chart-container").append("svg")
             .attr("width", width)
             .attr("height", height)
-            .style("margin-top", marginCharts);
+            .style("margin-top", marginTop);
 
         charts.push(chart);
         svgs.push(svg);
@@ -39,36 +39,29 @@ function createCharts(nbCharts) {
 
     d3.json("data.json", function(dataOrig) {
 
-        for (var dc = 0; dc < nbCharts; dc++) {
-            (function(dc) {
+        for (var i = 0; i < thecharts; i++) {
+            (function(i) {
                 var data = dataOrig;
-                var curData = data.data[dc];
-                //console.log("for data "+curData);
-
-
-                var offset = 0;
-                var orig_data = curData;
-                // var mean = curData.reduce(function(p, v) { return p + v; }, offset) / curData.length;
-
-                data = curData.map(function(val, i) {
+                var formattedData = data.data[i];
+                var orig_data = formattedData;
+                data = formattedData.map(function(val, i) {
                     return [data.year[i], val];
                 });
 
-                svgs[dc].data([data]).call(charts[dc]);
+                svgs[i].data([data]).call(charts[i]);
 
-            })(dc);
+            })(i);
         }
     });
 
-    // Enable bands buttons. ****** TO DO: Animate area to horizon chart better
+    // Enable bands buttons. 
+    //****** TO DO: Animate area to horizon chart better
     d3.selectAll("#horizon-bands button").on("click", function() {
-        // console.log('this = ', this.className);
         (this.className === 'area') ? n = 1: n = 6;
-        // console.log(this.className, n);
-       // this.addClass('selected');
+       // this.adilass('selected');
 
-        for (var dc = 0; dc < 5; dc++) {
-            svgs[dc].call(charts[dc].duration(1000).bands(n).height(height));
+        for (var i = 0; i < 5; i++) {
+            svgs[i].call(charts[i].duration(2000).bands(n).height(height));
         }
     });
 }
