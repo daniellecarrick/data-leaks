@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <title>WIRED | Data Leaks</title>
+<style>
+    button {
+        padding: 15px;
+        background-color: white;
+        border: 1px solid lightgrey;
+        color: black;
+        border-radius: 2px;
+    }
+
+    button:hover {
+        background-color: #f7f7f7;
+    }
+
+    button.selected {
+        background-color: blue;
+    }
+
+</style>
+</head>
+
+<body> 
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="horizon.js?0.0.1"></script>
+                        
+    <div id="horizon-controls">
+        <span id="horizon-bands">
+            <button class="horizon">Horizon</button>
+            <button class="area">Area</button>
+        </span>
+    </div>
+    <div>
+        <div id="horizon-chart" style="margin-top:50px">
+            <div id="chartsDiv"></div>
+        </div>
+    </div>
+
+
+<script src="main.js"></script>
+</body>
+
+</html>
