@@ -21,6 +21,35 @@
         background-color: blue;
     }
 
+    body {
+        background-color: black;
+    }
+
+    #horizon-chart {
+        position: relative;
+    }
+
+    .y-axis, .x-axis {
+        fill: white;
+        font-size: 12px;
+        font-family: Arial;
+    }
+
+    .x-axis {
+        position: absolute;
+        top: -20px;
+    }
+
+    .tick line {
+        stroke-width: 2;
+        stroke: white;
+        shape-rendering:crispEdges;
+    }
+
+    .domain {
+        display: none;
+    }
+
 </style>
 </head>
 
@@ -36,7 +65,7 @@
     </div>
     <div>
         <div id="horizon-chart" style="margin-top:50px">
-            <div id="chartsDiv"></div>
+           <!--  <div id="chart-container"></div> -->
         </div>
     </div>
 

@@ -1,74 +1,97 @@
-var width = 960,
-    height = 150;
+var width = 800,
+    height = 100;
 
-var nbChartsStart = 5;
-var marginCharts = 2;
+var numberOfCharts = 5;
+var marginTop = 5;
+var paddingTop = 5;
 
-createCharts(nbChartsStart);
+function drawAxis() {
+    // This is just for the full scale x-axis 
+    var axis_svg = d3.select('#horizon-chart').append('svg')
+        .attr('class', 'x-axis')
+        .attr('width', width)
+        .attr('height', ((height + marginTop + (paddingTop * 4)) * numberOfCharts));
+
+    var xScale = d3.scale.linear()
+        .domain([2007, 2017])
+        .range([0, width-40]);
+
+    var xAxis = d3.svg.axis()
+        .scale(xScale)
+       // .ticks(14)
+        .tickValues([2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017])
+        .tickSize(650)
+        .tickFormat(d3.format('d'))
+        .tickPadding(10)
+        .orient('top');
+
+    axis_svg.append('g')
+        .attr("transform", "translate(0, 670)")
+        .call(xAxis);
+    }
+
+drawAxis();
+
+createCharts(numberOfCharts);
 
 
-function createCharts(nbCharts) {
 
-    d3.select("#chartsDiv").remove();
-    d3.select("#horizon-chart").append("div").attr("id", "chartsDiv");
+function createCharts(thecharts) {
+
+    d3.select("#chart-container").remove();
+    d3.select("#horizon-chart").append("div").attr("id", "chart-container");
 
 
-    var charts = Array();
+    var charts_arr = Array();
 
-    var svgs = Array();
+    var svg_arr = Array();
 
-    for (var n = 0; n < nbCharts; n++) {
+    for (var n = 0; n < thecharts; n++) {
         var chart = d3.horizon()
             .width(width)
             .height(height)
             .bands(6)
             .mode("offset")
-            .interpolate("basis");
+            .interpolate("cardinal");
 
 
-        var svg = d3.select("#chartsDiv").append("svg")
+        var svg = d3.select("#chart-container").append("svg")
             .attr("width", width)
-            .attr("height", height)
-            .style("margin-top", marginCharts);
+            .attr("height", height + 10)
+            .style('padding-top', paddingTop)
+            .style("margin-top", marginTop);
 
-        charts.push(chart);
-        svgs.push(svg);
+        charts_arr.push(chart);
+        svg_arr.push(svg);
     }
 
 
 
     d3.json("data.json", function(dataOrig) {
 
-        for (var dc = 0; dc < nbCharts; dc++) {
-            (function(dc) {
+        for (var i = 0; i < thecharts; i++) {
+            (function(i) {
                 var data = dataOrig;
-                var curData = data.data[dc];
-                //console.log("for data "+curData);
-
-
-                var offset = 0;
-                var orig_data = curData;
-                // var mean = curData.reduce(function(p, v) { return p + v; }, offset) / curData.length;
-
-                data = curData.map(function(val, i) {
+                var formattedData = data.data[i];
+                var orig_data = formattedData;
+                data = formattedData.map(function(val, i) {
                     return [data.year[i], val];
                 });
 
-                svgs[dc].data([data]).call(charts[dc]);
+                svg_arr[i].data([data]).call(charts_arr[i]);
 
-            })(dc);
+            })(i);
         }
     });
 
-    // Enable bands buttons. ****** TO DO: Animate area to horizon chart better
+    // Enable bands buttons. 
+    //****** TO DO: Animate area to horizon chart better
     d3.selectAll("#horizon-bands button").on("click", function() {
-        // console.log('this = ', this.className);
         (this.className === 'area') ? n = 1: n = 6;
-        // console.log(this.className, n);
-       // this.addClass('selected');
+       // this.adilass('selected');
 
-        for (var dc = 0; dc < 5; dc++) {
-            svgs[dc].call(charts[dc].duration(1000).bands(n).height(height));
+        for (var i = 0; i < numberOfCharts; i++) {
+            svg_arr[i].call(charts_arr[i].duration(2000).bands(n).height(height));
         }
     });
 }
