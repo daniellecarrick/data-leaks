@@ -72,7 +72,6 @@
 
         defs.select("rect").transition()
             .duration(duration)
-          // .attr("width", (w - 40))
             .attr("width", w)
             .attr("height", h);
 
@@ -120,12 +119,12 @@
             .orient('right')
             .tickValues([0, yMax/2, yMax])
             .tickSize(1)
+            .tickPadding(10)
             .scale(yScale);
         
-        // note: getting clipped
        g.append('g')
             .attr('class', 'y-axis')
-            .attr("transform", "translate(960,0)")
+            .attr("transform", "translate(" + (w - 40) + ",0)")
             .call(yAxis);
 
         // Stash the new scales.
