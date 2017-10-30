@@ -1,5 +1,6 @@
 (function() {
   d3.horizon = function() {
+
     var bands = 1, // between 1 and 5, typically
         mode = "offset", // or mirror
         interpolate = "linear", // or basis, monotone, step-before, etc.
@@ -14,6 +15,7 @@
         .range(["#DAE8F3", "#1F77B4"]);
         //.range(["#DAE8F3", "#B4D2E6", "#8FBBDA", "#6AA4CD", "#448EC1", "#1F77B4"]);
 
+    var margin = {top: 20, right: 40, bottom: 20, left: 40};
 
     // For each small multiple…
     function horizon(g) {
@@ -39,8 +41,9 @@
         });
 
         // Compute the new x- and y-scales, and transform.
-        var x1 = d3.scale.linear().domain([xMin, xMax]).range([0, w]),
+        var x1 = d3.scale.linear().domain([xMin, xMax]).range([0, w - margin.right]),
             y1 = d3.scale.linear().domain([0, yMax]).range([0, h * bands]),
+            yScale = d3.scale.linear().domain([0, yMax]).range([height, 0]),
             t1 = d3_horizonTransform(bands, h, mode);
 
         // Retrieve the old scales, if this is an update.
@@ -64,11 +67,12 @@
         defs.enter().append("defs").append("clipPath")
             .attr("id", "d3_horizon_clip" + id)
           .append("rect")
-            .attr("width", w)
+            .attr("width", (w - 40))
             .attr("height", h);
 
         defs.select("rect").transition()
             .duration(duration)
+          // .attr("width", (w - 40))
             .attr("width", w)
             .attr("height", h);
 
@@ -110,6 +114,19 @@
             .attr("transform", t1)
             .attr("d", d1)
             .remove();
+
+        // Y-axis
+        var yAxis = d3.svg.axis()
+            .orient('right')
+            .tickValues([0, yMax/2, yMax])
+            .tickSize(1)
+            .scale(yScale);
+        
+        // note: getting clipped
+       g.append('g')
+            .attr('class', 'y-axis')
+            .attr("transform", "translate(960,0)")
+            .call(yAxis);
 
         // Stash the new scales.
         this.__chart__ = {x: x1, y: y1, t: t1, id: id};

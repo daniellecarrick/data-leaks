@@ -1,11 +1,15 @@
-var width = 960,
-    height = 150;
+var width = 1000,
+    height = 160;
 
-var thechartsStart = 5;
+var numberOfCharts = 5;
 var marginTop = 10;
+var paddingTop = 10;
 
-createCharts(thechartsStart);
+createCharts(numberOfCharts);
 
+d3.select('#horizon-chart').append('svg')
+    .attr('class', 'x-axis')
+    .attr('width', width);
 
 function createCharts(thecharts) {
 
@@ -13,9 +17,9 @@ function createCharts(thecharts) {
     d3.select("#horizon-chart").append("div").attr("id", "chart-container");
 
 
-    var charts = Array();
+    var charts_arr = Array();
 
-    var svgs = Array();
+    var svg_arr = Array();
 
     for (var n = 0; n < thecharts; n++) {
         var chart = d3.horizon()
@@ -28,11 +32,12 @@ function createCharts(thecharts) {
 
         var svg = d3.select("#chart-container").append("svg")
             .attr("width", width)
-            .attr("height", height)
+            .attr("height", height + 10)
+            .style('padding-top', paddingTop)
             .style("margin-top", marginTop);
 
-        charts.push(chart);
-        svgs.push(svg);
+        charts_arr.push(chart);
+        svg_arr.push(svg);
     }
 
 
@@ -48,7 +53,7 @@ function createCharts(thecharts) {
                     return [data.year[i], val];
                 });
 
-                svgs[i].data([data]).call(charts[i]);
+                svg_arr[i].data([data]).call(charts_arr[i]);
 
             })(i);
         }
@@ -60,8 +65,8 @@ function createCharts(thecharts) {
         (this.className === 'area') ? n = 1: n = 6;
        // this.adilass('selected');
 
-        for (var i = 0; i < 5; i++) {
-            svgs[i].call(charts[i].duration(2000).bands(n).height(height));
+        for (var i = 0; i < numberOfCharts; i++) {
+            svg_arr[i].call(charts_arr[i].duration(2000).bands(n).height(height));
         }
     });
 }
