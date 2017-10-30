@@ -20,13 +20,13 @@ function drawAxis() {
         .scale(xScale)
        // .ticks(14)
         .tickValues([2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017])
-        .tickSize(650)
+        .tickSize(660)
         .tickFormat(d3.format('d'))
         .tickPadding(10)
         .orient('top');
 
     axis_svg.append('g')
-        .attr("transform", "translate(0, 670)")
+        .attr("transform", "translate(0, 680)")
         .call(xAxis);
     }
 
