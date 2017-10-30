@@ -19,10 +19,12 @@
 
     button.selected {
         background-color: blue;
+        font-family: 'OxideSolidOT';
     }
 
     body {
         background-color: black;
+        font-family: OTSolidRegular;
     }
 
     #horizon-chart {
@@ -31,8 +33,9 @@
 
     .y-axis, .x-axis {
         fill: white;
-        font-size: 12px;
-        font-family: Arial;
+        font-size: 10px;
+        font-family: OTSolidRegular;
+        shape-rendering:crispEdges;
     }
 
     .x-axis {
@@ -41,13 +44,19 @@
     }
 
     .tick line {
-        stroke-width: 2;
+        stroke-width: 1;
         stroke: white;
         shape-rendering:crispEdges;
     }
 
     .domain {
         display: none;
+    }
+
+@font-face {
+    font-family: OTSolidRegular;
+    src: url(font/oxidesolidot-light-webfont.ttf);
+    font-weight:400;
     }
 
 </style>
