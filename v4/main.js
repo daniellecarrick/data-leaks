@@ -1,20 +1,20 @@
-var width = 800,
-    height = 100;
+var width = 700,
+    height = 90;
 
 var numberOfCharts = 5;
-var marginTop = 5;
+var marginTop = 0;
 var paddingTop = 5;
 
 function drawAxis() {
     // This is just for the full scale x-axis 
-    var axis_svg = d3.select('#horizon-chart').append('svg')
+    var axis_svg = d3.select('#horizon-chart').insert('svg')
         .attr('class', 'x-axis')
         .attr('width', width)
         .attr('height', ((height + marginTop + (paddingTop * 4)) * numberOfCharts));
 
     var xScale = d3.scale.linear()
         .domain([2007, 2017])
-        .range([0, width-40]);
+        .range([20, width-40]);
 
     var xAxis = d3.svg.axis()
         .scale(xScale)

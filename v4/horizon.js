@@ -15,7 +15,7 @@
         .range(["#DAE8F3", "#1F77B4"]);
         //.range(["#DAE8F3", "#B4D2E6", "#8FBBDA", "#6AA4CD", "#448EC1", "#1F77B4"]);
 
-    var margin = {top: 20, right: 40, bottom: 20, left: 40};
+    var margin = {top: 0, right: 40, bottom: 20, left: 20};
 
     // For each small multiple…
     function horizon(g) {
@@ -68,7 +68,8 @@
             .attr("id", "d3_horizon_clip" + id)
           .append("rect")
             .attr("width", (w - 40))
-            .attr("height", h);
+            .attr("height", h)
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         defs.select("rect").transition()
             .duration(duration)
