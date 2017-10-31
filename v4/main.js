@@ -6,11 +6,12 @@ var marginTop = 0;
 var paddingTop = 5;
 
 function drawAxis() {
+    console.log('drawing the axis');
     // This is just for the full scale x-axis 
-    var axis_svg = d3.select('#horizon-chart').insert('svg')
-        .attr('class', 'x-axis')
+    var axis_svg = d3.select('#long-axis').insert('svg')
+        .attr('class', 'axis x-axis')
         .attr('width', width)
-        .attr('height', ((height + marginTop + (paddingTop * 4)) * numberOfCharts));
+        .attr('height', ((height + marginTop + (paddingTop * 5)) * numberOfCharts));
 
     var xScale = d3.scale.linear()
         .domain([2007, 2017])
@@ -31,16 +32,13 @@ function drawAxis() {
     }
 
 drawAxis();
-
 createCharts(numberOfCharts);
 
 
-
 function createCharts(thecharts) {
-
+console.log('drawing the charts');
     d3.select("#chart-container").remove();
     d3.select("#horizon-chart").append("div").attr("id", "chart-container");
-
 
     var charts_arr = Array();
 
@@ -61,8 +59,19 @@ function createCharts(thecharts) {
             .style('padding-top', paddingTop)
             .style("margin-top", marginTop);
 
+    var titles = ["Hacking, Skimming, and Phishing", "Insider Theft", "Weak Corporate Internet Security", "Data Breaches from Lost/Stolen Devices", "Leak by Outside Vendor"];
+
+    var the_title = titles[n];
+   
+   svg.append('p').html(the_title)
+      //.attr('x', 0)
+      //.attr('y', function(d) {return titles.indexOf(d) * (height + 20)})
+      //.attr("transform", "translate(0,40)")
+      .attr('class', 'titles');
+
         charts_arr.push(chart);
         svg_arr.push(svg);
+
     }
 
 

@@ -17,6 +17,15 @@
 
     var margin = {top: 0, right: 40, bottom: 20, left: 20};
 
+/*    var titles = ["Hacking, Skimming, and Phishing", "Insider Theft", "Weak Corporate Internet Security", "Data Breaches from Lost/Stolen Devices", "Leak by Outside Vendor"];
+
+    d3.select('body').data(titles).enter().append('g')
+      .text(function(d) {return d})
+      .attr('x', 0)
+      .attr('y', 10)
+      .attr("transform", "translate(0,40)")
+      .attr('class', 'titles');*/
+
     // For each small multiple…
     function horizon(g) {
       g.each(function(d, i) {
@@ -68,7 +77,7 @@
             .attr("id", "d3_horizon_clip" + id)
           .append("rect")
             .attr("width", (w - 40))
-            .attr("height", h)
+            .attr("height", (h + 10))
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         defs.select("rect").transition()
@@ -124,9 +133,23 @@
             .scale(yScale);
         
        g.append('g')
-            .attr('class', 'y-axis')
+            .attr('class', 'axis y-axis')
             .attr("transform", "translate(" + (w - 40) + ",0)")
             .call(yAxis);
+
+/*    var titles = ["Hacking, Skimming, and Phishing", "Insider Theft", "Weak Corporate Internet Security", "Data Breaches from Lost/Stolen Devices", "Leak by Outside Vendor"];
+
+    d3.select('body').data(titles).enter().append('g')
+      .text(function(d) {return d})
+      .attr('x', 0)
+      .attr('y', function(d) {return titles.indexOf(d) * h})
+      .attr("transform", "translate(0,40)")
+      .attr('class', 'titles');*/
+
+       /*g.data(["Hacking, Skimming, and Phishing", "Insider Theft", "Weak Corporate Internet Security", "Data Breaches from Lost/Stolen Devices", "Leak by Outside Vendor"])
+            .enter().append('g')
+            .text("hi")
+            .attr('class', 'titles');*/
 
         // Stash the new scales.
         this.__chart__ = {x: x1, y: y1, t: t1, id: id};

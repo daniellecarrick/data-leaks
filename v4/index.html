@@ -6,11 +6,13 @@
     <title>WIRED | Data Leaks</title>
 <style>
     button {
-        padding: 15px;
+        padding: 10px;
         background-color: white;
         border: 1px solid lightgrey;
         color: black;
         border-radius: 2px;
+        font-family: OTSolidLight;
+        width: 80px;
     }
 
     button:hover {
@@ -19,7 +21,7 @@
 
     button.selected {
         background-color: blue;
-        font-family: 'OxideSolidOT';
+        font-family: OTSolidLight;
     }
 
     body {
@@ -27,36 +29,74 @@
         font-family: OTSolidRegular;
     }
 
-    #horizon-chart {
+    #visual-container {
         position: relative;
+        margin-top: 40px;
     }
 
-    .y-axis, .x-axis {
+    #long-axis {
+        position: absolute;
+        margin-top: -20px;
+    }
+
+    #horizon-chart {
+        position: absolute;
+    }
+
+    #horizon-controls {
+        width: 700px;
+        text-align: center;
+    }
+
+    .axis {
         fill: white;
-        font-size: 10px;
-        font-family: OTSolidRegular;
-        shape-rendering:crispEdges;
+        font-size: 8px;
+        shape-rendering: crispEdges;
     }
 
     .x-axis {
         position: absolute;
-        top: -20px;
+        font-family: OTSolidRegular;
+    }
+
+    .y-axis {
+        font-family: OTSolidLight;
     }
 
     .tick line {
         stroke-width: 1;
         stroke: white;
-        shape-rendering:crispEdges;
+        shape-rendering: crispEdges;
     }
 
     .domain {
         display: none;
     }
 
+    .titles {
+        /* height: 40px; */
+        background-color: black;
+        fill: white;
+        color: white;
+        font-family: OTSolidLight;
+        display: inline-block;
+        border: 1px solid red;
+        padding: 4px;
+        font-size: 10px;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 50px;
+    }
+
+@font-face {
+    font-family: OTSolidLight;
+    src: url(font/oxidesolidot-light-webfont.ttf);
+    }
+
 @font-face {
     font-family: OTSolidRegular;
-    src: url(font/oxidesolidot-light-webfont.ttf);
-    font-weight:400;
+    src: url(font/oxidesolidot-webfont.ttf);
     }
 
 </style>
@@ -72,8 +112,9 @@
             <button class="area">Area</button>
         </span>
     </div>
-    <div>
-        <div id="horizon-chart" style="margin-top:50px">
+    <div id="visual-container">
+        <div id="long-axis"></div>
+        <div id="horizon-chart">
            <!--  <div id="chart-container"></div> -->
         </div>
     </div>
