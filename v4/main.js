@@ -81,15 +81,36 @@ function createCharts(thecharts) {
         }
     });
 
-    // Mouse and Tooltips
+    // Goal: have the text follow the mouse and update with the y value -- need access to the data
     var coordinates = [0, 0];
-    d3.select("#chart-container").on('mousemove', function() {
 
+    // capture the mouse position (single source of truth?)
+    d3.select("#chart-container").on('mousemove', function() {
         coordinates = d3.mouse(this);
         var x = coordinates[0];
         var y = coordinates[1];
-        console.log(coordinates);
+        updateTooltip();
     })
+
+    // create the tooltip
+    var overlay = d3.select("#chart-container").append('rect').attr('width', 100).attr('height', 100).attr('fill', 'red').attr('class', 'overlay');
+
+    var tooltip = overlay.append('circle');
+
+    tooltip.attr('class', 'tooltip')
+        .attr('stroke', 'white')
+        .attr('r', 5).attr('fill', 'red').append('text')
+        .text("");
+
+    // update the tooltip value
+    var updateTooltip = function() {
+        console.log('in the update function');
+        // tooltip.text("updated");
+        tooltip.attr('cx', coordinates[0])
+            .attr('cy', coordinates[1])
+            .text(coordinates);
+    }
+
 
     // Enable bands buttons.
     //****** TO DO: Animate area to horizon chart better
