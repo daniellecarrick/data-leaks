@@ -155,9 +155,9 @@
 
     var the_title = titles[n];
 
-   var titles = g.append('g')
-   titles.append('rect').attr('class', 'titles');
-   titles.append('text').attr('class', 'titles').text("Placeholder Title");
+   var titles = g.append('g').attr("transform", "translate(25,70)");
+   titles.append('rect').attr('class', 'title-bg');
+   titles.append('text').attr('class', 'titles').text("Placeholder Title").attr("transform", "translate(5,10)");
       //.attr('x', 0)
       //.attr('y', function(d) {return titles.indexOf(d) * (height + 20)})
      // .attr("transform", "translate(0,40)")
