@@ -58,13 +58,10 @@ console.log('drawing the charts');
             .style('padding-top', paddingTop)
             .style("margin-top", marginTop);
 
-
         charts_arr.push(chart);
         svg_arr.push(svg);
 
     }
-
-
 
     d3.json("data.json", function(dataOrig) {
 

@@ -130,15 +130,6 @@
                     .attr("transform", "translate(" + (w - 40) + ",0)")
                     .call(yAxis);
 
-                /*    var titles = ["Hacking, Skimming, and Phishing", "Insider Theft", "Weak Corporate Internet Security", "Data Breaches from Lost/Stolen Devices", "Leak by Outside Vendor"];
-
-                    d3.select('body').data(titles).enter().append('g')
-                      .text(function(d) {return d})
-                      .attr('x', 0)
-                      .attr('y', function(d) {return titles.indexOf(d) * h})
-                      .attr("transform", "translate(0,40)")
-                      .attr('class', 'titles');*/
-
                 var titles_arr = ["Hacking, Skimming, and Phishing", "Insider Theft", "Weak Corporate Internet Security", "Data Breaches from Lost/Stolen Devices", "Leak by Outside Vendor"];
 
                var the_title = titles_arr[counter];
@@ -147,11 +138,6 @@
                 var titles = g.append('g').attr("transform", "translate(25,70)");
                 titles.append('rect').attr('class', 'title-bg');
                 titles.append('text').attr('class', 'titles').text(the_title).attr("transform", "translate(5,10)");
-                //.attr('x', 0)
-                //.attr('y', function(d) {return titles.indexOf(d) * (height + 20)})
-                // .attr("transform", "translate(0,40)")
-
-
 
                 // Stash the new scales.
                 this.__chart__ = { x: x1, y: y1, t: t1, id: id };
