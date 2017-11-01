@@ -63,8 +63,9 @@ console.log('drawing the charts');
 
     var the_title = titles[n];
    
-   svg.append('p').html(the_title)
-      //.attr('x', 0)
+   svg.append('svg').text(the_title)
+      .attr('width', 100)
+      .attr('height', 100)
       //.attr('y', function(d) {return titles.indexOf(d) * (height + 20)})
       //.attr("transform", "translate(0,40)")
       .attr('class', 'titles');
