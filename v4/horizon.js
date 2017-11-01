@@ -131,7 +131,7 @@
             .tickSize(1)
             .tickPadding(10)
             .scale(yScale);
-        
+
        g.append('g')
             .attr('class', 'axis y-axis')
             .attr("transform", "translate(" + (w - 40) + ",0)")
@@ -150,6 +150,19 @@
             .enter().append('g')
             .text("hi")
             .attr('class', 'titles');*/
+
+            var titles = ["Hacking, Skimming, and Phishing", "Insider Theft", "Weak Corporate Internet Security", "Data Breaches from Lost/Stolen Devices", "Leak by Outside Vendor"];
+
+    var the_title = titles[n];
+
+   var titles = g.append('g')
+   titles.append('rect').attr('class', 'titles');
+   titles.append('text').attr('class', 'titles').text("Placeholder Title");
+      //.attr('x', 0)
+      //.attr('y', function(d) {return titles.indexOf(d) * (height + 20)})
+     // .attr("transform", "translate(0,40)")
+
+
 
         // Stash the new scales.
         this.__chart__ = {x: x1, y: y1, t: t1, id: id};
