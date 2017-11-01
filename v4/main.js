@@ -7,7 +7,7 @@ var paddingTop = 5;
 
 function drawAxis() {
     console.log('drawing the axis');
-    // This is just for the full scale x-axis 
+    // This is just for the full scale x-axis
     var axis_svg = d3.select('#long-axis').insert('svg')
         .attr('class', 'axis x-axis')
         .attr('width', width)
@@ -41,7 +41,6 @@ console.log('drawing the charts');
     d3.select("#horizon-chart").append("div").attr("id", "chart-container");
 
     var charts_arr = Array();
-
     var svg_arr = Array();
 
     for (var n = 0; n < thecharts; n++) {
@@ -59,23 +58,11 @@ console.log('drawing the charts');
             .style('padding-top', paddingTop)
             .style("margin-top", marginTop);
 
-    var titles = ["Hacking, Skimming, and Phishing", "Insider Theft", "Weak Corporate Internet Security", "Data Breaches from Lost/Stolen Devices", "Leak by Outside Vendor"];
-
-    var the_title = titles[n];
-   
-   svg.append('svg').text(the_title)
-      .attr('width', 100)
-      .attr('height', 100)
-      //.attr('y', function(d) {return titles.indexOf(d) * (height + 20)})
-      //.attr("transform", "translate(0,40)")
-      .attr('class', 'titles');
 
         charts_arr.push(chart);
         svg_arr.push(svg);
 
     }
-
-
 
     d3.json("data.json", function(dataOrig) {
 
@@ -94,7 +81,7 @@ console.log('drawing the charts');
         }
     });
 
-    // Enable bands buttons. 
+    // Enable bands buttons.
     //****** TO DO: Animate area to horizon chart better
     d3.selectAll("#horizon-bands button").on("click", function() {
         (this.className === 'area') ? n = 1: n = 6;
