@@ -136,7 +136,7 @@
                counter++;
 
                 var titles = g.append('g').attr("transform", "translate(25,70)");
-                titles.append('rect').attr('class', 'title-bg');
+              //  titles.append('rect').attr('class', 'title-bg');
                 titles.append('text').attr('class', 'titles').text(the_title).attr("transform", "translate(5,10)");
 
                 // Stash the new scales.
