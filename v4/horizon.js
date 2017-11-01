@@ -124,16 +124,13 @@ var coordinates = [0, 0];
                 var bisect = d3.bisector(function(date_arr) { return date_arr; }).left;
 
                 path.on('mouseover', function() { 
-                    console.log('data', d[5][0]); // first data point on that chart
-                    console.log('bisector', bisect(date_arr, d[5][0]));
+                   console.log('data', d); 
+
+                    path.append('circle').attr('fill', 'red').attr('r', 5);
+                    //console.log('horixonX', d3_horizonX(d))
+                    var hovered_date = Math.floor(x1.invert(d3.mouse(this)[0])) //this gets the hovered year
                     console.log('inverted', y1.invert(d[0][1]));
-                    console.log('horixonX', d3_horizonX(d))
-                    var x0 = x1.invert(d3.mouse(this)[0]) //this gets the hovered year
-                       //coordinates = d3.mouse(this);
-                       // var x = coordinates[0];
-                      //  var y = coordinates[1];
-                    console.log('x0', x0);
-                   // console.log(data);
+                    console.log('hovered_date', hovered_date);
                 });
 
                  /*************** 
@@ -149,6 +146,7 @@ var coordinates = [0, 0];
                  g.append('g')
                      .attr('class', 'axis y-axis')
                      .attr('transform', 'translate(' + (w - 40) + ',0)')
+                     .attr('display', 'none')
                      .call(yAxis);
 
                  /******************* 
