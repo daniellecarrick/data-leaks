@@ -6,11 +6,12 @@ var marginTop = 0;
 var paddingTop = 5;
 
 function drawAxis() {
-    // This is just for the full scale x-axis 
-    var axis_svg = d3.select('#horizon-chart').insert('svg')
-        .attr('class', 'x-axis')
+    console.log('drawing the axis');
+    // This is just for the full scale x-axis
+    var axis_svg = d3.select('#long-axis').insert('svg')
+        .attr('class', 'axis x-axis')
         .attr('width', width)
-        .attr('height', ((height + marginTop + (paddingTop * 4)) * numberOfCharts));
+        .attr('height', ((height + marginTop + (paddingTop * 5)) * numberOfCharts));
 
     var xScale = d3.scale.linear()
         .domain([2007, 2017])
@@ -31,19 +32,15 @@ function drawAxis() {
     }
 
 drawAxis();
-
 createCharts(numberOfCharts);
 
 
-
 function createCharts(thecharts) {
-
+console.log('drawing the charts');
     d3.select("#chart-container").remove();
     d3.select("#horizon-chart").append("div").attr("id", "chart-container");
 
-
     var charts_arr = Array();
-
     var svg_arr = Array();
 
     for (var n = 0; n < thecharts; n++) {
@@ -63,9 +60,8 @@ function createCharts(thecharts) {
 
         charts_arr.push(chart);
         svg_arr.push(svg);
+
     }
-
-
 
     d3.json("data.json", function(dataOrig) {
 
@@ -84,7 +80,7 @@ function createCharts(thecharts) {
         }
     });
 
-    // Enable bands buttons. 
+    // Enable bands buttons.
     //****** TO DO: Animate area to horizon chart better
     d3.selectAll("#horizon-bands button").on("click", function() {
         (this.className === 'area') ? n = 1: n = 6;
