@@ -1,3 +1,4 @@
+ var counter = 0;
 (function() {
     d3.horizon = function() {
 
@@ -10,21 +11,13 @@
             h = 40,
             duration = 0;
 
+
         var color = d3.scale.linear()
             .domain([0, 1])
             .range(["#DAE8F3", "#1F77B4"]);
         //.range(["#DAE8F3", "#B4D2E6", "#8FBBDA", "#6AA4CD", "#448EC1", "#1F77B4"]);
 
         var margin = { top: 0, right: 40, bottom: 20, left: 20 };
-
-        /*    var titles = ["Hacking, Skimming, and Phishing", "Insider Theft", "Weak Corporate Internet Security", "Data Breaches from Lost/Stolen Devices", "Leak by Outside Vendor"];
-
-            d3.select('body').data(titles).enter().append('g')
-              .text(function(d) {return d})
-              .attr('x', 0)
-              .attr('y', 10)
-              .attr("transform", "translate(0,40)")
-              .attr('class', 'titles');*/
 
         // For each small multiple…
         function horizon(g) {
@@ -146,18 +139,14 @@
                       .attr("transform", "translate(0,40)")
                       .attr('class', 'titles');*/
 
-                /*g.data(["Hacking, Skimming, and Phishing", "Insider Theft", "Weak Corporate Internet Security", "Data Breaches from Lost/Stolen Devices", "Leak by Outside Vendor"])
-                     .enter().append('g')
-                     .text("hi")
-                     .attr('class', 'titles');*/
+                var titles_arr = ["Hacking, Skimming, and Phishing", "Insider Theft", "Weak Corporate Internet Security", "Data Breaches from Lost/Stolen Devices", "Leak by Outside Vendor"];
 
-                var titles = ["Hacking, Skimming, and Phishing", "Insider Theft", "Weak Corporate Internet Security", "Data Breaches from Lost/Stolen Devices", "Leak by Outside Vendor"];
-
-                var the_title = titles[n];
+               var the_title = titles_arr[counter];
+               counter++;
 
                 var titles = g.append('g').attr("transform", "translate(25,70)");
                 titles.append('rect').attr('class', 'title-bg');
-                titles.append('text').attr('class', 'titles').text("Placeholder Title").attr("transform", "translate(5,10)");
+                titles.append('text').attr('class', 'titles').text(the_title).attr("transform", "translate(5,10)");
                 //.attr('x', 0)
                 //.attr('y', function(d) {return titles.indexOf(d) * (height + 20)})
                 // .attr("transform", "translate(0,40)")

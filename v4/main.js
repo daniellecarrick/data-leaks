@@ -62,17 +62,6 @@ console.log('drawing the charts');
         charts_arr.push(chart);
         svg_arr.push(svg);
 
-/*    var titles = ["Hacking, Skimming, and Phishing", "Insider Theft", "Weak Corporate Internet Security", "Data Breaches from Lost/Stolen Devices", "Leak by Outside Vendor"];
-
-    var the_title = titles[n];
-
-   svg.append('rect')
-      //.attr('x', 0)
-      //.attr('y', function(d) {return titles.indexOf(d) * (height + 20)})
-      .attr("transform", "translate(0,40)")
-      .attr('class', 'titles')
-      .append('text').text(the_title);*/
-
     }
 
 
