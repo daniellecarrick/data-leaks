@@ -1,10 +1,11 @@
  var counter = 0;
+var coordinates = [0, 0];
  (function() {
      d3.horizon = function() {
 
          var bands = 1, // between 1 and 5, typically
-             mode = "offset", // or mirror
-             interpolate = "linear", // or basis, monotone, step-before, etc.
+             mode = 'offset', // or mirror
+             interpolate = 'linear', // or basis, monotone, step-before, etc.
              x = d3_horizonX,
              y = d3_horizonY,
              w = 960,
@@ -14,8 +15,8 @@
 
          var color = d3.scale.linear()
              .domain([0, 1])
-             .range(["#DAE8F3", "#1F77B4"]);
-         //.range(["#DAE8F3", "#B4D2E6", "#8FBBDA", "#6AA4CD", "#448EC1", "#1F77B4"]);
+             .range(['#DAE8F3', '#1F77B4']);
+         //.range(['#DAE8F3', '#B4D2E6', '#8FBBDA', '#6AA4CD', '#448EC1', '#1F77B4']);
 
          var margin = { top: 0, right: 40, bottom: 20, left: 20 };
 
@@ -62,30 +63,30 @@
                  }
 
                  // We'll use a defs to store the area path and the clip path.
-                 var defs = g.selectAll("defs")
+                 var defs = g.selectAll('defs')
                      .data([null]);
 
                  // The clip path is a simple rect.
-                 defs.enter().append("defs").append("clipPath")
-                     .attr("id", "d3_horizon_clip" + id)
-                     .append("rect")
-                     .attr("width", (w - 40))
-                     .attr("height", (h + 10))
-                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                 defs.enter().append('defs').append('clipPath')
+                     .attr('id', 'd3_horizon_clip' + id)
+                     .append('rect')
+                     .attr('width', (w - 40))
+                     .attr('height', (h + 10))
+                     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-                 defs.select("rect").transition()
+                 defs.select('rect').transition()
                      .duration(duration)
-                     .attr("width", w)
-                     .attr("height", h);
+                     .attr('width', w)
+                     .attr('height', h);
 
                  // We'll use a container to clip all horizon layers at once.
-                 g.selectAll("g")
+                 g.selectAll('g')
                      .data([null])
-                     .enter().append("g")
-                     .attr("clip-path", "url(#d3_horizon_clip" + id + ")");
+                     .enter().append('g')
+                     .attr('clip-path', 'url(#d3_horizon_clip' + id + ')');
 
                  // Instantiate each copy of the path with different transforms.
-                 var path = g.select("g").selectAll("path")
+                 var path = g.select('g').selectAll('path')
                      .data(d3.range(-1, -bands - 1, -1).concat(d3.range(1, bands + 1)), Number);
 
                  var d0 = d3_horizonArea
@@ -95,27 +96,45 @@
                      .y1(function(d) { return h * bands - y0(d[1]); })
                      (data);
 
+
                  var d1 = d3_horizonArea
                      .x(function(d) { return x1(d[0]); })
                      .y1(function(d) { return h * bands - y1(d[1]); })
                      (data);
 
-                 path.enter().append("path")
-                     .style("fill", color)
-                     .attr("transform", t0)
-                     .attr("d", d0);
+                 path.enter().append('path')
+                     .style('fill', color)
+                     .attr('transform', t0)
+                     .attr('d', d0);
 
                  path.transition()
                      .duration(duration)
-                     .style("fill", color)
-                     .attr("transform", t1)
-                     .attr("d", d1);
+                     .style('fill', color)
+                     .attr('transform', t1)
+                     .attr('d', d1);
 
                  path.exit().transition()
                      .duration(duration)
-                     .attr("transform", t1)
-                     .attr("d", d1)
+                     .attr('transform', t1)
+                     .attr('d', d1)
                      .remove();
+
+                var date_arr = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];  
+
+                var bisect = d3.bisector(function(date_arr) { return date_arr; }).left;
+
+                path.on('mouseover', function() { 
+                    console.log('data', d[5][0]); // first data point on that chart
+                    console.log('bisector', bisect(date_arr, d[5][0]));
+                    console.log('inverted', y1.invert(d[0][1]));
+                    console.log('horixonX', d3_horizonX(d))
+                    var x0 = x1.invert(d3.mouse(this)[0]) //this gets the hovered year
+                       //coordinates = d3.mouse(this);
+                       // var x = coordinates[0];
+                      //  var y = coordinates[1];
+                    console.log('x0', x0);
+                   // console.log(data);
+                });
 
                  /*************** 
                        Y-axis
@@ -123,24 +142,24 @@
                  var yAxis = d3.svg.axis()
                      .orient('right')
                      .tickValues([0, yMax / 2, yMax])
-                     .tickSize(1)
+                     .tickSize(0)
                      .tickPadding(10)
                      .scale(yScale);
 
                  g.append('g')
                      .attr('class', 'axis y-axis')
-                     .attr("transform", "translate(" + (w - 40) + ",0)")
+                     .attr('transform', 'translate(' + (w - 40) + ',0)')
                      .call(yAxis);
 
                  /******************* 
                  Titles generated here
                 ********************/
-                 var titles_arr = ["Hacking, Skimming, and Phishing", "Insider Theft", "Weak Corporate Internet Security", "Data Breaches from Lost/Stolen Devices", "Leak by Outside Vendor"];
+                 var titles_arr = ['Hacking, Skimming, and Phishing', 'Insider Theft', 'Weak Corporate Internet Security', 'Data Breaches from Lost/Stolen Devices', 'Leak by Outside Vendor'];
                  var the_title = titles_arr[counter];
                  counter++;
-                 var titles = g.append('g').attr("transform", "translate(25,70)");
+                 var titles = g.append('g').attr('transform', 'translate(25,70)');
                  //  titles.append('rect').attr('class', 'title-bg'); // go here for more info: https://github.com/d3/d3/issues/252
-                 titles.append('text').attr('class', 'titles').text(the_title).attr("transform", "translate(5,10)");
+                 titles.append('text').attr('class', 'titles').text(the_title).attr('transform', 'translate(5,10)');
 
 
                  // Stash the new scales.
@@ -172,7 +191,7 @@
 
          horizon.mode = function(x) {
              if (!arguments.length) return mode;
-             mode = x + "";
+             mode = x + '';
              return horizon;
          };
 
@@ -184,7 +203,7 @@
 
          horizon.interpolate = function(x) {
              if (!arguments.length) return interpolate;
-             interpolate = x + "";
+             interpolate = x + '';
              return horizon;
          };
 
@@ -227,8 +246,8 @@
      }
 
      function d3_horizonTransform(bands, h, mode) {
-         return mode == "offset" ?
-             function(d) { return "translate(0," + (d + (d < 0) - bands) * h + ")"; } :
-             function(d) { return (d < 0 ? "scale(1,-1)" : "") + "translate(0," + (d - bands) * h + ")"; };
+         return mode == 'offset' ?
+             function(d) { return 'translate(0,' + (d + (d < 0) - bands) * h + ')'; } :
+             function(d) { return (d < 0 ? 'scale(1,-1)' : '') + 'translate(0,' + (d - bands) * h + ')'; };
      }
  })();

@@ -81,9 +81,9 @@ function createCharts(thecharts) {
         }
     });
 
-    // Goal: have the text follow the mouse and update with the y value -- need access to the data
+   // Goal: have the text follow the mouse and update with the y value -- need access to the data
     var coordinates = [0, 0];
-
+/* 
     // capture the mouse position (single source of truth?)
     d3.select("#chart-container").on('mousemove', function() {
         coordinates = d3.mouse(this);
@@ -104,12 +104,12 @@ function createCharts(thecharts) {
 
     // update the tooltip value
     var updateTooltip = function() {
-        console.log('in the update function');
+       // console.log('in the update function');
         // tooltip.text("updated");
         tooltip.attr('cx', coordinates[0])
             .attr('cy', coordinates[1])
             .text(coordinates);
-    }
+    }*/
 
 
     // Enable bands buttons.
