@@ -15,11 +15,11 @@ function drawAxis() {
 
     var xScale = d3.scale.linear()
         .domain([2007, 2017])
-        .range([20, width-40]);
+        .range([20, width - 40]);
 
     var xAxis = d3.svg.axis()
         .scale(xScale)
-       // .ticks(14)
+        // .ticks(14)
         .tickValues([2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017])
         .tickSize(660)
         .tickFormat(d3.format('d'))
@@ -29,14 +29,14 @@ function drawAxis() {
     axis_svg.append('g')
         .attr("transform", "translate(0, 680)")
         .call(xAxis);
-    }
+}
 
 drawAxis();
 createCharts(numberOfCharts);
 
 
 function createCharts(thecharts) {
-console.log('drawing the charts');
+    console.log('drawing the charts');
     d3.select("#chart-container").remove();
     d3.select("#horizon-chart").append("div").attr("id", "chart-container");
 
@@ -81,11 +81,21 @@ console.log('drawing the charts');
         }
     });
 
+    // Mouse and Tooltips
+    var coordinates = [0, 0];
+    d3.select("#chart-container").on('mousemove', function() {
+
+        coordinates = d3.mouse(this);
+        var x = coordinates[0];
+        var y = coordinates[1];
+        console.log(coordinates);
+    })
+
     // Enable bands buttons.
     //****** TO DO: Animate area to horizon chart better
     d3.selectAll("#horizon-bands button").on("click", function() {
         (this.className === 'area') ? n = 1: n = 6;
-       // this.adilass('selected');
+        // this.adilass('selected');
 
         for (var i = 0; i < numberOfCharts; i++) {
             svg_arr[i].call(charts_arr[i].duration(2000).bands(n).height(height));

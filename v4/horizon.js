@@ -130,13 +130,14 @@
                     .attr("transform", "translate(" + (w - 40) + ",0)")
                     .call(yAxis);
 
+            // Titles generated here
                 var titles_arr = ["Hacking, Skimming, and Phishing", "Insider Theft", "Weak Corporate Internet Security", "Data Breaches from Lost/Stolen Devices", "Leak by Outside Vendor"];
 
                var the_title = titles_arr[counter];
                counter++;
 
                 var titles = g.append('g').attr("transform", "translate(25,70)");
-              //  titles.append('rect').attr('class', 'title-bg');
+              //  titles.append('rect').attr('class', 'title-bg'); // go here for more info: https://github.com/d3/d3/issues/252
                 titles.append('text').attr('class', 'titles').text(the_title).attr("transform", "translate(5,10)");
 
                 // Stash the new scales.
