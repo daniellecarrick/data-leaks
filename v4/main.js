@@ -61,7 +61,7 @@ function createCharts(thecharts) {
         svg_arr.push(svg);
 
         // shows the axis on hover
-        svg.on('mouseover', function() {
+ /*       svg.on('mouseover', function() {
            // var mouse_x = d3.mouse(this)[0];
           //  var mouse_y = d3.mouse(this)[1];
             d3.select(this).select('.y-axis').attr('display', 'block');
@@ -71,7 +71,7 @@ function createCharts(thecharts) {
         svg.on('mouseout', function() {
             d3.select(this).select('.y-axis').attr('display', 'none');
         })
-
+*/
     }
 
     d3.json("data.json", function(dataOrig) {

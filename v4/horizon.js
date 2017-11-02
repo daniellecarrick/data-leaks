@@ -1,5 +1,5 @@
  var counter = 0;
-var coordinates = [0, 0];
+ var coordinates = [0, 0];
  (function() {
      d3.horizon = function() {
 
@@ -146,28 +146,35 @@ var coordinates = [0, 0];
                  //  titles.append('rect').attr('class', 'title-bg'); // go here for more info: https://github.com/d3/d3/issues/252
                  titles.append('text').attr('class', 'titles').text(the_title).attr('transform', 'translate(5,10)');
 
-                /******************* 
-                 Tooltip generated here
-                ********************/
-                var tooltip = g.append('g').attr('class', 'tooltip-container');
-                tooltip.append('circle').attr('fill', 'red').attr('r', 5).attr('class', 'tooltip')
-                tooltip.append('text').attr('class', 'tooltip-text').attr('fill', 'white');
+                 /******************* 
+                  Tooltip generated here
+                 ********************/
+                 var tooltip = g.append('g').attr('class', 'tooltip-container');
+                 // tooltip.append('circle').attr('fill', 'red').attr('r', 5).attr('class', 'tooltip')
+                 tooltip.append('line').attr('stroke', 'black').attr('class', 'tooltip-line');
+                 tooltip.append('text').attr('class', 'tooltip-text').attr('fill', 'white');
 
-                var date_arr = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];  
+                 var date_arr = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
 
-                var bisect = d3.bisector(function(date_arr) { return date_arr; }).left;
+                 var bisect = d3.bisector(function(date_arr) { return date_arr; }).left;
 
-                // only works on the path -- want it to work across entire svg
-                d3.selectAll('svg').on('mouseover', function() { 
-                   //console.log('data', d); 
-                   var mouse_x = d3.mouse(this)[0];
-                   var mouse_y = d3.mouse(this)[1];
-                    var hovered_date = Math.floor(x1.invert(d3.mouse(this)[0])) //this gets the hovered year
-                   // console.log('inverted', y1.invert(d[0][1]));
-                   // console.log('hovered_date', hovered_date);
-                 d3.selectAll('.tooltip').attr('cx', mouse_x).attr('cy', mouse_y)
-                 d3.selectAll('.tooltip-text').attr('x', mouse_x).attr('y', mouse_y).text(hovered_date);
-                });
+                 // only works on the path -- want it to work across entire svg
+                 d3.selectAll('svg').on('mouseover', function() {
+                     //console.log('data', d); 
+                     var mouse_x = d3.mouse(this)[0];
+                     var mouse_y = d3.mouse(this)[1];
+                     var hovered_date = Math.floor(x1.invert(d3.mouse(this)[0])) //this gets the hovered year
+                     // console.log('inverted', y1.invert(d[0][1]));
+                     // d3.selectAll('.tooltip').attr('cx', mouse_x).attr('cy', mouse_y); // The red circle
+                     d3.selectAll('.tooltip-line').attr('x1', mouse_x).attr('x2', mouse_x).attr('y1', 0).attr('y2', 100);
+                     d3.selectAll('.tooltip-text').attr('x', mouse_x + 10).attr('y', 40).text(hovered_date);
+                     d3.select(this).select('.y-axis').attr('display', 'block');
+                     var getDataPoint = function() {
+
+                     }
+                 }).on('mouseout', function() {
+                     d3.select(this).select('.y-axis').attr('display', 'none');
+                 })
 
                  // Stash the new scales.
                  this.__chart__ = { x: x1, y: y1, t: t1, id: id };
