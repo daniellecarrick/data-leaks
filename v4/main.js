@@ -62,6 +62,13 @@ function createLegend() {
             })(i);
         }
     });
+
+         // Enable bands buttons.
+  d3.selectAll("#horizon-bands button").data([-1, 1]).on("click", function(d) {
+    var n = Math.max(1, chart.bands() + d);
+    d3.select("#horizon-bands-value").text(n);
+    svg.call(chart.duration(1000).bands(n).height(height));
+  });
 }
 
 createLegend();

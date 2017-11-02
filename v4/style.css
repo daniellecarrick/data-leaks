@@ -1,4 +1,4 @@
-    button {
+    #horizon-controls button {
         padding: 10px;
         background-color: white;
         border: 1px solid lightgrey;
@@ -94,7 +94,7 @@
     .super-container {
         position: relative;
         width: 800px;
-        height: 800px;
+        height: 900px;
         overflow: hidden;
         text-align: center;
         margin: 0 auto;
@@ -109,6 +109,10 @@
         text-align: left;
         font-size: 12px;
 
+    }
+
+    #legend-chart .tooltip-container {
+        display: none;
     }
 
 @font-face {
