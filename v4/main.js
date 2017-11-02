@@ -36,14 +36,14 @@ createCharts(numberOfCharts);
 function createLegend() {
     d3.select("#legend-chart").append("div").attr("id", "legend-container");
     var chart = d3.horizon()
-            .width(width)
+            .width(width*.75)
             .height(height)
             .bands(1)
             .mode("offset")
             .interpolate("cardinal");
 
       var svg = d3.select("#legend-container").append("svg")
-            .attr("width", width)
+            .attr("width", width*.75)
             .attr("height", height + 10)
             .style('padding-top', paddingTop)
             .style("margin-top", marginTop);
@@ -68,12 +68,12 @@ var click_counter = 0;
     click_counter++;
     var n = Math.max(1, chart.bands() + d);
     if (click_counter === 0) {
-        var legend_text = "Step 1. Horizon charts are created by dividing an area chart into bands and overlaying the bands.";
+        var legend_text = "Horizon charts are created by dividing an area chart into bands and overlaying the bands. Press next to add bands.";
         var button_text = "Next";
         n = 1
     }
     else if (click_counter === 1) {
-        var legend_text = "Step 2. Let's add a few more bands.";
+        var legend_text = "The area chart is now a horizon chart with 3 bands. Click next to add a few more bands.";
         var button_text = "Next";
         n = 3
     } else if (click_counter === 2) {

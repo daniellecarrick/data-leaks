@@ -6,6 +6,10 @@
         padding: 3px;
     }
 
+    hr {
+        clear: both;
+    }
+
     button {
         background-color: white;
         border: 1px solid lightgrey;
@@ -111,6 +115,23 @@
 
     #legend-chart .tooltip-container {
         display: none;
+    }
+
+    #legend-chart {
+        float: left;
+    }
+
+    #legend-controls {
+        float: left;
+        width: 25%;
+        text-align: left;
+        line-height: 1;
+        padding-left: 50px;
+    }
+
+    .last {
+        display: block;
+        margin-top: 20px;
     }
 
 @font-face {
