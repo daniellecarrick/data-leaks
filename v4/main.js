@@ -33,6 +33,38 @@ function drawAxis() {
 drawAxis();
 createCharts(numberOfCharts);
 
+function createLegend() {
+    d3.select("#legend-chart").append("div").attr("id", "legend-container");
+    var chart = d3.horizon()
+            .width(width)
+            .height(height)
+            .bands(1)
+            .mode("offset")
+            .interpolate("cardinal");
+
+      var svg = d3.select("#legend-container").append("svg")
+            .attr("width", width)
+            .attr("height", height + 10)
+            .style('padding-top', paddingTop)
+            .style("margin-top", marginTop);
+
+        d3.json("data.json", function(dataOrig) {
+        for (var i = 0; i < 1; i++) {
+            (function(i) {
+                var data = dataOrig;
+                var formattedData = data.data[i];
+                var orig_data = formattedData;
+                data = formattedData.map(function(val, i) {
+                    return [data.year[i], val];
+                });
+
+                svg.data([data]).call(chart);
+            })(i);
+        }
+    });
+}
+
+createLegend();
 
 function createCharts(thecharts) {
     d3.select("#chart-container").remove();
@@ -62,13 +94,8 @@ function createCharts(thecharts) {
 
         // shows the axis on hover
       svg.on('mouseover', function() {
-           // var mouse_x = d3.mouse(this)[0];
-          //  var mouse_y = d3.mouse(this)[1];
             d3.select(this).select('.y-axis').attr('display', 'block');
-           // d3.selectAll('.tooltip').attr('cx', mouse_x).attr('cy', mouse_y);
-        })
-
-        svg.on('mouseout', function() {
+        }).on('mouseout', function() {
             d3.select(this).select('.y-axis').attr('display', 'none');
         })
 

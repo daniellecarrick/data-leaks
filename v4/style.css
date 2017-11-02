@@ -100,6 +100,17 @@
         margin: 0 auto;
     }
 
+    .legend {
+        color: white;
+    }
+
+    .legend p {
+        font-family: Arial;
+        text-align: left;
+        font-size: 12px;
+
+    }
+
 @font-face {
     font-family: OTSolidLight;
     src: url(font/oxidesolidot-light-webfont.ttf);

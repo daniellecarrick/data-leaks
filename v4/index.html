@@ -8,28 +8,31 @@
 </head>
 
 <body>
-<script src="//d3js.org/d3.v3.min.js"></script>
-<script src="horizon.js?0.0.1"></script>
-<div class= "super-container">
-<h3>How to read a horizon chart</h3>
-<p>Horizon charts are created by dividing an area chart into bands and overlaying the bands. Lighter colors indicate lower bands and values and darker colros indicate higher bands and values. Play with the number of bands to see how you get from an area chart to a horizon chart.</p>
-
-<hr />
-    <div id="horizon-controls">
-        <span id="horizon-bands">
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="horizon.js?0.0.1"></script>
+    <div class="super-container">
+        <div class="legend">
+            <h3>How to read a horizon chart</h3>
+            <p>Horizon charts are created by dividing an area chart into bands and overlaying the bands. Lighter colors indicate lower bands and values and darker colors indicate higher bands and values. Play with the number of bands to see how you get from an area chart to a horizon chart.</p>
+            <div id="legend-chart">
+                <!--  <div id="legend-container"></div> -->
+            </div>
+        </div>
+        <hr />
+        <div id="horizon-controls">
+            <span id="horizon-bands">
             <button class="horizon">Horizon</button>
             <button class="area">Area</button>
         </span>
-    </div>
-    <div id="visual-container">
-        <div id="long-axis"></div>
-        <div id="horizon-chart">
-           <!--  <div id="chart-container"></div> -->
+        </div>
+        <div id="visual-container">
+            <div id="long-axis"></div>
+            <div id="horizon-chart">
+                <!--  <div id="chart-container"></div> -->
+            </div>
         </div>
     </div>
-
-</div>
-<script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

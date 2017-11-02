@@ -173,16 +173,17 @@
                     i = bisect(date_arr, x0, 1);
                      console.log(i); console.log(x0);
                      var y_val = d[i-1][1];
-
                      var hovered_date = Math.floor(x1.invert(d3.mouse(this)[0])) //this gets the hovered year
                      d3.selectAll('.tooltip-line').attr('x1', mouse_x).attr('x2', mouse_x).attr('y1', 0).attr('y2', 100);
                      d3.selectAll('.tooltip-text').attr('x', mouse_x + 10).attr('y', 40).text(y_val + " data leaks");
-                   //  d3.select(this).select('.y-axis').attr('display', 'block');
-
-                 }).on('mouseout', function() {
-                   
-                     // add code to hide tooltip container here
                  })
+
+                 d3.select('#chart-container').on('mouseover', function() {
+                    d3.selectAll('.tooltip-container').attr('display','block');
+                 }).on('mouseout', function() {
+                   d3.selectAll('.tooltip-container').attr('display','none');
+                     // add code to hide tooltip container here
+                 });
 
                  // Stash the new scales.
                  this.__chart__ = { x: x1, y: y1, t: t1, id: id };
