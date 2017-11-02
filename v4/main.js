@@ -14,12 +14,12 @@ function drawAxis() {
         .attr('height', ((height + marginTop + (paddingTop * 5)) * numberOfCharts));
 
     var xScale = d3.scale.linear()
-        .domain([2006, 2017])
+        .domain([2006, 2016])
         .range([20, width - 40]);
 
     var xAxis = d3.svg.axis()
         .scale(xScale)
-        .tickValues([2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017])
+        .tickValues([2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016])
         .tickSize(660)
         .tickFormat(d3.format('d'))
         .tickPadding(10)

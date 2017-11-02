@@ -154,7 +154,7 @@
                  tooltip.append('line').attr('stroke', 'black').attr('class', 'tooltip-line');
                  tooltip.append('text').attr('class', 'tooltip-text').attr('fill', 'white');
 
-                 var date_arr = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
+                 var date_arr = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016];
 
                  var bisect = d3.bisector(function(date_arr) { return date_arr; }).left;
 
@@ -169,11 +169,10 @@
                      d3.selectAll('.tooltip-line').attr('x1', mouse_x).attr('x2', mouse_x).attr('y1', 0).attr('y2', 100);
                      d3.selectAll('.tooltip-text').attr('x', mouse_x + 10).attr('y', 40).text(hovered_date);
                      d3.select(this).select('.y-axis').attr('display', 'block');
-                     var getDataPoint = function() {
 
-                     }
                  }).on('mouseout', function() {
                      d3.select(this).select('.y-axis').attr('display', 'none');
+                     // add code to hide tooltip container here
                  })
 
                  // Stash the new scales.
