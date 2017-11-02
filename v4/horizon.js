@@ -124,13 +124,13 @@ var coordinates = [0, 0];
                 var bisect = d3.bisector(function(date_arr) { return date_arr; }).left;
 
                 path.on('mouseover', function() { 
-                   console.log('data', d); 
-
-                    path.append('circle').attr('fill', 'red').attr('r', 5);
-                    //console.log('horixonX', d3_horizonX(d))
+                   //console.log('data', d); 
+                   var mouse_x = d3.mouse(this)[0];
+                   var mouse_y = d3.mouse(this)[1];
                     var hovered_date = Math.floor(x1.invert(d3.mouse(this)[0])) //this gets the hovered year
-                    console.log('inverted', y1.invert(d[0][1]));
-                    console.log('hovered_date', hovered_date);
+                   // console.log('inverted', y1.invert(d[0][1]));
+                   // console.log('hovered_date', hovered_date);
+                   d3.selectAll('.tooltip').attr('cx', mouse_x).attr('cy', mouse_y).text(hovered_date);
                 });
 
                  /*************** 

@@ -19,7 +19,6 @@ function drawAxis() {
 
     var xAxis = d3.svg.axis()
         .scale(xScale)
-        // .ticks(14)
         .tickValues([2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017])
         .tickSize(660)
         .tickFormat(d3.format('d'))
@@ -36,7 +35,6 @@ createCharts(numberOfCharts);
 
 
 function createCharts(thecharts) {
-    console.log('drawing the charts');
     d3.select("#chart-container").remove();
     d3.select("#horizon-chart").append("div").attr("id", "chart-container");
 
@@ -58,10 +56,11 @@ function createCharts(thecharts) {
             .style('padding-top', paddingTop)
             .style("margin-top", marginTop);
 
-
+        
         charts_arr.push(chart);
         svg_arr.push(svg);
 
+        // shows the axis on hover
         svg.on('mouseover', function() {
           d3.select(this).select('.y-axis').attr('display', 'block');
          })
@@ -69,11 +68,12 @@ function createCharts(thecharts) {
         svg.on('mouseout', function() {
           d3.select(this).select('.y-axis').attr('display', 'none');
          })
+        
+        svg.insert('circle').attr('fill', 'red').attr('r', 5).attr('class', 'tooltip').append('text');
 
     }
 
     d3.json("data.json", function(dataOrig) {
-
         for (var i = 0; i < thecharts; i++) {
             (function(i) {
                 var data = dataOrig;
@@ -84,14 +84,9 @@ function createCharts(thecharts) {
                 });
 
                 svg_arr[i].data([data]).call(charts_arr[i]);
-
             })(i);
         }
     });
-
-
-
-
 
     // Enable bands buttons.
     //****** TO DO: Animate area to horizon chart better
