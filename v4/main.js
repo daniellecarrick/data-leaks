@@ -62,12 +62,30 @@ function createLegend() {
             })(i);
         }
     });
-
+var click_counter = 0;
          // Enable bands buttons.
-  d3.selectAll("#horizon-bands button").data([-1, 1]).on("click", function(d) {
+  d3.selectAll("#legend-bands button").data([-1, 1]).on("click", function(d) {
+    click_counter++;
     var n = Math.max(1, chart.bands() + d);
-    d3.select("#horizon-bands-value").text(n);
-    svg.call(chart.duration(1000).bands(n).height(height));
+    if (click_counter === 0) {
+        var legend_text = "Step 1. Horizon charts are created by dividing an area chart into bands and overlaying the bands.";
+        var button_text = "Next";
+        n = 1
+    }
+    else if (click_counter === 1) {
+        var legend_text = "Step 2. Let's add a few more bands.";
+        var button_text = "Next";
+        n = 3
+    } else if (click_counter === 2) {
+        var legend_text = "Now we have a horizon chart with 6 bands.";
+        var button_text = "Reset";
+        n = 6
+         click_counter = -1;
+    }
+
+    d3.select("#horizon-bands-value").text(legend_text);
+    d3.select(".last").text(button_text);
+    svg.call(chart.duration(2000).bands(n).height(height));
   });
 }
 

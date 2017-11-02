@@ -1,20 +1,18 @@
     #horizon-controls button {
         padding: 10px;
+    }
+
+    #legend-controls button {
+        padding: 3px;
+    }
+
+    button {
         background-color: white;
         border: 1px solid lightgrey;
         color: black;
         border-radius: 2px;
         font-family: OTSolidLight;
         width: 80px;
-    }
-
-    button:hover {
-        background-color: #f7f7f7;
-    }
-
-    button.selected {
-        background-color: blue;
-        font-family: OTSolidLight;
     }
 
     body {
@@ -104,7 +102,7 @@
         color: white;
     }
 
-    .legend p {
+    .legend p, #legend-bands {
         font-family: Arial;
         text-align: left;
         font-size: 12px;
