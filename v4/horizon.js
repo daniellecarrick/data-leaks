@@ -130,7 +130,7 @@ var coordinates = [0, 0];
                     var hovered_date = Math.floor(x1.invert(d3.mouse(this)[0])) //this gets the hovered year
                    // console.log('inverted', y1.invert(d[0][1]));
                    // console.log('hovered_date', hovered_date);
-                   d3.selectAll('.tooltip').attr('cx', mouse_x).attr('cy', mouse_y).text(hovered_date);
+                  d3.selectAll('.tooltip').text(hovered_date);
                 });
 
                  /*************** 

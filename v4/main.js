@@ -5,6 +5,8 @@ var numberOfCharts = 5;
 var marginTop = 0;
 var paddingTop = 5;
 
+var tooltip_overlay = d3.select('#chart-container').append('svg').attr('class', 'tooltip_overlay')
+
 function drawAxis() {
     console.log('drawing the axis');
     // This is just for the full scale x-axis
@@ -56,20 +58,23 @@ function createCharts(thecharts) {
             .style('padding-top', paddingTop)
             .style("margin-top", marginTop);
 
-        
+
         charts_arr.push(chart);
         svg_arr.push(svg);
 
         // shows the axis on hover
         svg.on('mouseover', function() {
-          d3.select(this).select('.y-axis').attr('display', 'block');
-         })
+            var mouse_x = d3.mouse(this)[0];
+            var mouse_y = d3.mouse(this)[1];
+            d3.select(this).select('.y-axis').attr('display', 'block');
+            d3.selectAll('.tooltip').attr('cx', mouse_x).attr('cy', mouse_y);
+        })
 
         svg.on('mouseout', function() {
-          d3.select(this).select('.y-axis').attr('display', 'none');
-         })
-        
-        svg.insert('circle').attr('fill', 'red').attr('r', 5).attr('class', 'tooltip').append('text');
+            d3.select(this).select('.y-axis').attr('display', 'none');
+        })
+
+        svg.insert('circle', 'y-axis').attr('fill', 'red').attr('r', 5).attr('class', 'tooltip').append('text');
 
     }
 
