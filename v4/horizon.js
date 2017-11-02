@@ -162,21 +162,25 @@
 
                  var bisect = d3.bisector(function(date_arr) { return date_arr; }).left;
 
-                 // only works on the path -- want it to work across entire svg
-                 d3.selectAll('svg').on('mousemove', function() {
+                 // need to put this on path in order to pull the correct data
+                 path.on('mousemove', function() {
                      //console.log('data', d); 
                      var mouse_x = d3.mouse(this)[0];
                      var mouse_y = d3.mouse(this)[1];
-                     // console.log(mouse_x);
+                     console.log('data', d);
+                     // The Mike Bostock way
+                     var x0 = x1.invert(d3.mouse(this)[0]),
+                    i = bisect(date_arr, x0, 1);
+                     console.log(i); console.log(x0);
+                     var y_val = d[i-1][1];
+
                      var hovered_date = Math.floor(x1.invert(d3.mouse(this)[0])) //this gets the hovered year
-                     // console.log('inverted', y1.invert(d[0][1]));
-                     // d3.selectAll('.tooltip').attr('cx', mouse_x).attr('cy', mouse_y); // The red circle
                      d3.selectAll('.tooltip-line').attr('x1', mouse_x).attr('x2', mouse_x).attr('y1', 0).attr('y2', 100);
-                     d3.selectAll('.tooltip-text').attr('x', mouse_x + 10).attr('y', 40).text(hovered_date);
-                     d3.select(this).select('.y-axis').attr('display', 'block');
+                     d3.selectAll('.tooltip-text').attr('x', mouse_x + 10).attr('y', 40).text(y_val + " data leaks");
+                   //  d3.select(this).select('.y-axis').attr('display', 'block');
 
                  }).on('mouseout', function() {
-                     d3.select(this).select('.y-axis').attr('display', 'none');
+                   
                      // add code to hide tooltip container here
                  })
 

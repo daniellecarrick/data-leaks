@@ -30,6 +30,7 @@
     #long-axis {
         position: absolute;
         margin-top: -20px;
+        margin-left: 50px;
     }
 
     #horizon-chart {
@@ -87,6 +88,16 @@
 
     .tooltip-text {
         font-size: 9px;
+        shape-rendering: crispEdges;
+    }
+
+    .super-container {
+        position: relative;
+        width: 800px;
+        height: 800px;
+        overflow: hidden;
+        text-align: center;
+        margin: 0 auto;
     }
 
 @font-face {
