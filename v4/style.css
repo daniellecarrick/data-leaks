@@ -66,15 +66,9 @@
     }
 
     .title-bg {
-        /* height: 40px; */
         fill: black;
-        /*display: inline-block;*/
-        /*stroke: red;*/
         padding: 4px;
-       /* position: absolute;
-        top: 0;*/
-        width: 100px;
-        height: 15px;
+        height: 18px;
     }
 
     .titles {

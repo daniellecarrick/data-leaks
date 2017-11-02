@@ -139,18 +139,22 @@
                  /******************* 
                  Titles generated here
                 ********************/
+
                  var titles_arr = ['Hacking, Skimming, and Phishing', 'Insider Theft', 'Weak Corporate Internet Security', 'Data Breaches from Lost/Stolen Devices', 'Leak by Outside Vendor'];
+                 var title_bg_width_arr = [160, 70, 160, 190, 120];
+                 var title_bg_width = title_bg_width_arr[counter];
                  var the_title = titles_arr[counter];
                  counter++;
                  var titles = g.append('g').attr('transform', 'translate(25,70)');
-                 //  titles.append('rect').attr('class', 'title-bg'); // go here for more info: https://github.com/d3/d3/issues/252
-                 titles.append('text').attr('class', 'titles').text(the_title).attr('transform', 'translate(5,10)');
+                 titles.append('rect').attr('class', 'title-bg').attr('width', title_bg_width); // go here for more info: https://github.com/d3/d3/issues/252
+                 titles.append('text').attr('class', 'titles').text(the_title).attr('transform', 'translate(5,12)');
+
 
                  /******************* 
                   Tooltip generated here
                  ********************/
                  var tooltip = g.append('g').attr('class', 'tooltip-container');
-                 // tooltip.append('circle').attr('fill', 'red').attr('r', 5).attr('class', 'tooltip')
+                 // var tooltip = rect_container.append('g').attr('class', 'tooltip-container');
                  tooltip.append('line').attr('stroke', 'black').attr('class', 'tooltip-line');
                  tooltip.append('text').attr('class', 'tooltip-text').attr('fill', 'white');
 
@@ -159,10 +163,11 @@
                  var bisect = d3.bisector(function(date_arr) { return date_arr; }).left;
 
                  // only works on the path -- want it to work across entire svg
-                 d3.selectAll('svg').on('mouseover', function() {
+                 d3.selectAll('svg').on('mousemove', function() {
                      //console.log('data', d); 
                      var mouse_x = d3.mouse(this)[0];
                      var mouse_y = d3.mouse(this)[1];
+                     // console.log(mouse_x);
                      var hovered_date = Math.floor(x1.invert(d3.mouse(this)[0])) //this gets the hovered year
                      // console.log('inverted', y1.invert(d[0][1]));
                      // d3.selectAll('.tooltip').attr('cx', mouse_x).attr('cy', mouse_y); // The red circle
