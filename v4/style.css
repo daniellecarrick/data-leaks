@@ -24,6 +24,16 @@
         font-family: OTSolidRegular;
     }
 
+    #super-container {
+        position: relative;
+        max-width: 800px;
+        min-width: 400px;
+        height: 900px;
+        overflow: hidden;
+        text-align: center;
+        margin: 0 auto;
+    }
+
     #visual-container {
         position: relative;
         margin-top: 40px;
@@ -32,7 +42,6 @@
     #long-axis {
         position: absolute;
         margin-top: -20px;
-        margin-left: 50px;
     }
 
     #horizon-chart {
@@ -78,9 +87,7 @@
         fill: white;
         color: white;
         font-size: 10px;
-        /*font-family: OTSolidRLight;
-        text-transform: lowercase;*/
-         font-family: Arial;
+        font-family: Arial;
     }
 
     .tooltip {
@@ -91,15 +98,6 @@
     .tooltip-text {
         font-size: 9px;
         shape-rendering: crispEdges;
-    }
-
-    .super-container {
-        position: relative;
-        width: 800px;
-        height: 900px;
-        overflow: hidden;
-        text-align: center;
-        margin: 0 auto;
     }
 
     .legend {
@@ -143,3 +141,9 @@
     font-family: OTSolidRegular;
     src: url(font/oxidesolidot-webfont.ttf);
     }
+
+@media (max-width: 650px) {
+    .legend {
+        display: none;
+    }
+ }

@@ -70,7 +70,7 @@
                  defs.enter().append('defs').append('clipPath')
                      .attr('id', 'd3_horizon_clip' + id)
                      .append('rect')
-                     .attr('width', (w - 40))
+                     .attr('width', w)
                      .attr('height', (h + 10))
                      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
@@ -168,9 +168,9 @@
                      // console.log(data);
                      // Find the x mouse position and use it to grab the y-value
                      var mouse_x = d3.mouse(this)[0],
-                         x0 = x1.invert(d3.mouse(this)[0]),
-                         z = bisect(date_arr, x0, 1),
-                     y_val = d[z - 1][1];
+                         x0 = x1.invert(d3.mouse(this)[0]);
+                        // z = bisect(date_arr, x0, 1),
+                    // y_val = d[z - 1][1];
                      // Add a vertical line
                      d3.selectAll('.tooltip-line').attr('x1', mouse_x).attr('x2', mouse_x).attr('y1', 0).attr('y2', 100);
                      // Add the data label
