@@ -120,7 +120,7 @@
                      .remove();
 
 
-                 /*************** 
+                 /***************
                        Y-axis
                   ***************/
                  var yAxis = d3.svg.axis()
@@ -136,7 +136,7 @@
                      .attr('display', 'none')
                      .call(yAxis);
 
-                 /******************* 
+                 /*******************
                  Titles generated here
                 ********************/
 
@@ -150,7 +150,7 @@
                  titles.append('text').attr('class', 'titles').text(the_title).attr('transform', 'translate(5,12)');
 
 
-                 /******************* 
+                 /*******************
                   Tooltip generated here
                  ********************/
                  var tooltip = g.append('g').attr('class', 'tooltip-container');
@@ -158,30 +158,27 @@
                  tooltip.append('line').attr('stroke', 'black').attr('class', 'tooltip-line');
                  tooltip.append('text').attr('class', 'tooltip-text').attr('fill', 'white');
 
-                 var date_arr = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016];
+                 var date_arr = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
 
                  var bisect = d3.bisector(function(date_arr) { return date_arr; }).left;
 
-                 // need to put this on path in order to pull the correct data
+                 // TO DO: Apply data value per chart
                  path.on('mousemove', function() {
-                     //console.log('data', d); 
-                     var mouse_x = d3.mouse(this)[0];
-                     var mouse_y = d3.mouse(this)[1];
-                     console.log('data', d);
-                     // The Mike Bostock way
-                     var x0 = x1.invert(d3.mouse(this)[0]),
-                    i = bisect(date_arr, x0, 1);
-                     console.log(i); console.log(x0);
-                     var y_val = d[i-1][1];
-                     var hovered_date = Math.floor(x1.invert(d3.mouse(this)[0])) //this gets the hovered year
+                  // Find the x mouse position and use it to grab the y-value
+                     var mouse_x = d3.mouse(this)[0],
+                         x0 = x1.invert(d3.mouse(this)[0]),
+                         i = bisect(date_arr, x0, 1),
+                         y_val = d[i - 1][1];
+                         // Add a vertical line
                      d3.selectAll('.tooltip-line').attr('x1', mouse_x).attr('x2', mouse_x).attr('y1', 0).attr('y2', 100);
+                     // Add the data label
                      d3.selectAll('.tooltip-text').attr('x', mouse_x + 10).attr('y', 40).text(y_val + " data leaks");
                  })
 
                  d3.select('#chart-container').on('mouseover', function() {
-                    d3.selectAll('.tooltip-container').attr('display','block');
+                     d3.selectAll('.tooltip-container').attr('display', 'block');
                  }).on('mouseout', function() {
-                   d3.selectAll('.tooltip-container').attr('display','none');
+                     d3.selectAll('.tooltip-container').attr('display', 'none');
                      // add code to hide tooltip container here
                  });
 

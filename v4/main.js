@@ -19,7 +19,7 @@ function drawAxis() {
 
     var xAxis = d3.svg.axis()
         .scale(xScale)
-        .tickValues([2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016])
+        .tickValues([2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017])
         .tickSize(660)
         .tickFormat(d3.format('d'))
         .tickPadding(10)
