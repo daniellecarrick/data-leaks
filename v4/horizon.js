@@ -105,7 +105,8 @@
                  path.enter().append('path')
                      .style('fill', color)
                      .attr('transform', t0)
-                     .attr('d', d0);
+                     .attr('d', d0)
+                     .on('mousemove', mousemove);
 
                  path.transition()
                      .duration(duration)
@@ -163,17 +164,24 @@
                  var bisect = d3.bisector(function(date_arr) { return date_arr; }).left;
 
                  // TO DO: Apply data value per chart
-                 path.on('mousemove', function() {
-                  // Find the x mouse position and use it to grab the y-value
+                 function mousemove() {
+                     // console.log(data);
+                     // Find the x mouse position and use it to grab the y-value
                      var mouse_x = d3.mouse(this)[0],
                          x0 = x1.invert(d3.mouse(this)[0]),
-                         i = bisect(date_arr, x0, 1),
-                         y_val = d[i - 1][1];
-                         // Add a vertical line
+                         z = bisect(date_arr, x0, 1),
+                     y_val = d[z - 1][1];
+                     // Add a vertical line
                      d3.selectAll('.tooltip-line').attr('x1', mouse_x).attr('x2', mouse_x).attr('y1', 0).attr('y2', 100);
                      // Add the data label
-                     d3.selectAll('.tooltip-text').attr('x', mouse_x + 10).attr('y', 40).text(y_val + " data leaks");
-                 })
+                     d3.selectAll('svg .tooltip-text').attr('x', mouse_x + 10).attr('y', 40)
+                         .text(function(d, i) {
+                             var z = bisect(date_arr, x0, 1);
+                             var y_val = d[z - 1][1];
+                             return y_val + " data leaks";
+                         });
+
+                 }
 
                  d3.select('#chart-container').on('mouseover', function() {
                      d3.selectAll('.tooltip-container').attr('display', 'block');

@@ -1,4 +1,4 @@
-var width = 700,
+var width = window.innerWidth,
     height = 90;
 
 var numberOfCharts = 5;
@@ -110,9 +110,9 @@ function createCharts(thecharts) {
         var svg = d3.select("#chart-container").append("svg")
             .attr("width", width)
             .attr("height", height + 10)
+            .attr('class', 'svg' + n)
             .style('padding-top', paddingTop)
             .style("margin-top", marginTop);
-
 
         charts_arr.push(chart);
         svg_arr.push(svg);
