@@ -1,6 +1,4 @@
-
-function drawAll() {
-    var outter_width = document.getElementById('super-container').clientWidth;
+var outter_width = document.getElementById('super-container').clientWidth;
 console.log(outter_width);
 
 var width = outter_width,
@@ -11,6 +9,9 @@ var paddingTop = 5;
 
 var margin = { top: 0, right: 40, bottom: 20, left: 20 };
 
+function drawAll() {
+    outter_width = document.getElementById('super-container').clientWidth;
+    width = outter_width
     drawAxis();
     drawCharts(numberOfCharts);
     drawLegend();
@@ -21,7 +22,6 @@ drawAll();
 function drawAxis() {
         d3.select("#visual-container #long-axis").remove();
         d3.select("#visual-container").append("div").attr("id", "long-axis");
-
 
     // This is just for the full scale x-axis
     var axis_svg = d3.select('#long-axis').insert('svg')
