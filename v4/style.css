@@ -46,6 +46,7 @@
 
     #horizon-chart {
         position: absolute;
+        z-index: 9999;
     }
 
     #horizon-controls {

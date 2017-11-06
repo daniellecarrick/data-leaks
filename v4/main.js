@@ -11,17 +11,16 @@ var margin = { top: 0, right: 40, bottom: 20, left: 20 };
 
 function drawAll() {
     outter_width = document.getElementById('super-container').clientWidth;
-    width = outter_width
+    width = outter_width;
     drawAxis();
     drawCharts(numberOfCharts);
     drawLegend();
 }
 
-drawAll();
 
 function drawAxis() {
         d3.select("#visual-container #long-axis").remove();
-        d3.select("#visual-container").append("div").attr("id", "long-axis");
+        d3.select("#visual-container").insert("div").attr("id", "long-axis");
 
     // This is just for the full scale x-axis
     var axis_svg = d3.select('#long-axis').insert('svg')
@@ -81,8 +80,6 @@ function drawCharts(thecharts) {
         //****** TO DO: Animate area to horizon chart better
         d3.selectAll("#horizon-bands button").on("click", function() {
             (this.className === 'area') ? n = 1: n = 6;
-            // this.adilass('selected');
-
             for (var i = 0; i < numberOfCharts; i++) {
                 svg_arr[i].call(charts_arr[i].duration(2000).bands(n).height(height));
             }
@@ -104,6 +101,10 @@ function drawCharts(thecharts) {
             })(i);
         }
     });
+}
+
+function drawAnnotations() {
+    annotations_arr = []
 }
 
 function drawLegend() {
@@ -161,6 +162,8 @@ function drawLegend() {
         svg.call(chart.duration(2000).bands(n).height(height));
     });
 }
+
+drawAll();
 
  // Redraw based on the new size whenever the browser window is resized.
       window.addEventListener("resize", drawAll);
