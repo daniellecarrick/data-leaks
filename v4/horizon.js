@@ -182,7 +182,8 @@
                  var annotations = g.append('g').attr('transform', 'translate(' + (translate_x + 100) + ',' + translate_y + ')');
                 annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
                  annotations.append('text').attr('class', 'annotations').text(the_annotation).attr('transform', 'translate(' + translate_x + ',' + translate_y + ')');
-                
+
+
                  // since this gets redone on resize, need to reset counter 
                  counter++;
                  if (counter === 4) {
