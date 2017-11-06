@@ -133,6 +133,10 @@
         margin-top: 20px;
     }
 
+    .annotations {
+        font-size: 8px;
+    }
+
 @font-face {
     font-family: OTSolidLight;
     src: url(font/oxidesolidot-light-webfont.ttf);

@@ -103,13 +103,12 @@ function drawCharts(thecharts) {
     });
 }
 
-function drawAnnotations() {
-    annotations_arr = []
-}
 
 function drawLegend() {
+    
     d3.select("#legend-container").remove();
     d3.select("#legend-chart").append("div").attr("id", "legend-container");
+
     var chart = d3.horizon()
         .width(width * .75)
         .height(height)

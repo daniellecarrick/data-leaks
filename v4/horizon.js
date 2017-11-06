@@ -138,24 +138,61 @@
                      .call(yAxis);
 
                  /*******************
-                 Titles generated here
-                ********************/
+                  Titles generated here
+                 ********************/
 
                  var titles_arr = ['Hacking, Skimming, and Phishing', 'Insider Theft', 'Weak Corporate Internet Security', 'Data Breaches from Lost/Stolen Devices', 'Leak by Outside Vendor'];
                  var title_bg_width_arr = [160, 70, 160, 190, 120];
                  var title_bg_width = title_bg_width_arr[counter];
                  var the_title = titles_arr[counter];
-                 counter++;
-                 var titles = g.append('g').attr('transform', 'translate(25,70)');
+                 var titles = g.append('g').attr('transform', 'translate(26, 65)');
                  titles.append('rect').attr('class', 'title-bg').attr('width', title_bg_width); // go here for more info: https://github.com/d3/d3/issues/252
                  titles.append('text').attr('class', 'titles').text(the_title).attr('transform', 'translate(5,12)');
 
+                 /*******************
+                   Annotations generated here
+                 ********************/
+
+                 var annotations_arr = [{
+                         "text": "These attacks doubled from <br> 2015 to 2016",
+                         "coordinates": [10, 20]
+                     },
+                     {
+                         "text": "Sys Admins: Remember to revoke <br> privaleges from former employees.",
+                         "coordinates": [20, 10]
+                     },
+                     {
+                         "text": "Firms inadvertently released <br> personal data online 109 times in 2015.",
+                         "coordinates": [20, 20]
+                     },
+                     {
+                         "text": "Better security protocols mean that <br> stolen or lost devices stay locked.",
+                         "coordinates": [20, 20]
+                     }, {
+                         "text": "Any type of breach could expose the data <br> of thousands (or millions) of people.",
+                         "coordinates": [30, 30]
+                     }
+                 ];
+
+                 var the_annotation = annotations_arr[counter].text;
+                 var translate_x = annotations_arr[counter].coordinates[0];
+                    var translate_y = annotations_arr[counter].coordinates[1];
+
+
+                 var annotations = g.append('g').attr('transform', 'translate(' + (translate_x + 100) + ',' + translate_y + ')');
+                annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
+                 annotations.append('text').attr('class', 'annotations').text(the_annotation).attr('transform', 'translate(' + translate_x + ',' + translate_y + ')');
+                
+                 // since this gets redone on resize, need to reset counter 
+                 counter++;
+                 if (counter === 4) {
+                     counter = 0;
+                 }
 
                  /*******************
-                  Tooltip generated here
+                   Tooltip generated here
                  ********************/
                  var tooltip = g.append('g').attr('class', 'tooltip-container');
-                 // var tooltip = rect_container.append('g').attr('class', 'tooltip-container');
                  tooltip.append('line').attr('stroke', 'black').attr('class', 'tooltip-line');
                  tooltip.append('text').attr('class', 'tooltip-text').attr('fill', 'white');
 
@@ -163,14 +200,12 @@
 
                  var bisect = d3.bisector(function(date_arr) { return date_arr; }).left;
 
-                 // TO DO: Apply data value per chart
                  function mousemove() {
-                     // console.log(data);
                      // Find the x mouse position and use it to grab the y-value
                      var mouse_x = d3.mouse(this)[0],
                          x0 = x1.invert(d3.mouse(this)[0]);
-                        // z = bisect(date_arr, x0, 1),
-                    // y_val = d[z - 1][1];
+                     // z = bisect(date_arr, x0, 1),
+                     // y_val = d[z - 1][1];
                      // Add a vertical line
                      d3.selectAll('.tooltip-line').attr('x1', mouse_x).attr('x2', mouse_x).attr('y1', 0).attr('y2', 100);
                      // Add the data label
