@@ -4,126 +4,41 @@
 
 <head>
     <title>WIRED | Data Leaks</title>
-<style>
-    button {
-        padding: 10px;
-        background-color: white;
-        border: 1px solid lightgrey;
-        color: black;
-        border-radius: 2px;
-        font-family: OTSolidLight;
-        width: 80px;
-    }
-
-    button:hover {
-        background-color: #f7f7f7;
-    }
-
-    button.selected {
-        background-color: blue;
-        font-family: OTSolidLight;
-    }
-
-    body {
-        background-color: black;
-        font-family: OTSolidRegular;
-    }
-
-    #visual-container {
-        position: relative;
-        margin-top: 40px;
-    }
-
-    #long-axis {
-        position: absolute;
-        margin-top: -20px;
-    }
-
-    #horizon-chart {
-        position: absolute;
-    }
-
-    #horizon-controls {
-        width: 700px;
-        text-align: center;
-    }
-
-    .axis {
-        fill: white;
-        font-size: 8px;
-        shape-rendering: crispEdges;
-    }
-
-    .x-axis {
-        position: absolute;
-        font-family: OTSolidRegular;
-    }
-
-    .y-axis {
-        font-family: OTSolidLight;
-    }
-
-    .tick line {
-        stroke-width: 1;
-        stroke: white;
-        shape-rendering: crispEdges;
-    }
-
-    .domain {
-        display: none;
-    }
-
-    .title-bg {
-        /* height: 40px; */
-        fill: black;
-        /*display: inline-block;*/
-        /*stroke: red;*/
-        padding: 4px;
-       /* position: absolute;
-        top: 0;*/
-        width: 100px;
-        height: 15px;
-    }
-
-    text {
-        fill: white;
-        color: white;
-        font-size: 10px;
-        font-family: OTSolidLight;
-    }
-
-@font-face {
-    font-family: OTSolidLight;
-    src: url(font/oxidesolidot-light-webfont.ttf);
-    }
-
-@font-face {
-    font-family: OTSolidRegular;
-    src: url(font/oxidesolidot-webfont.ttf);
-    }
-
-</style>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-<script src="//d3js.org/d3.v3.min.js"></script>
-<script src="horizon.js?0.0.1"></script>
-
-    <div id="horizon-controls">
-        <span id="horizon-bands">
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="horizon.js?0.0.1"></script>
+    <div class="super-container">
+        <div class="legend">
+            <h3>How to read a horizon chart</h3>
+           <!-- <p>Horizon charts are created by dividing an area chart into bands and overlaying the bands. Lighter colors indicate lower bands and values and darker colors indicate higher bands and values. Play with the number of bands to see how you get from an area chart to a horizon chart.</p> -->
+            <div id="legend-controls">
+                <span id="legend-bands"><span id="horizon-bands-value">Horizon charts are created by dividing an area chart into bands and overlaying the bands.</span>
+               <!-- <button class="first">-</button>-->
+                <button class="last">Next</button>
+                </span>
+            </div>
+            <div id="legend-chart">
+                <!--  <div id="legend-container"></div> -->
+            </div>
+        </div>
+        <hr />
+        <div id="horizon-controls">
+            <span id="horizon-bands">
             <button class="horizon">Horizon</button>
             <button class="area">Area</button>
         </span>
-    </div>
-    <div id="visual-container">
-        <div id="long-axis"></div>
-        <div id="horizon-chart">
-           <!--  <div id="chart-container"></div> -->
+        </div>
+        <div id="visual-container">
+            <div id="long-axis"></div>
+            <div id="horizon-chart">
+                <!--  <div id="chart-container"></div> -->
+            </div>
         </div>
     </div>
-
-
-<script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
