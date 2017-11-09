@@ -3,7 +3,7 @@ var outter_width = document.getElementById('super-container').clientWidth;
 var numberOfCharts = 5;
 var paddingTop = 5;
 
-var margin = { top: 0, right: 40, bottom: 20, left: 20 };
+var margin = { top: -10, right: 40, bottom: 20, left: 20 };
 
 var width = outter_width - margin.right,
     height = 90;
@@ -14,14 +14,14 @@ function drawAll() {
     drawAxis();
     drawCharts(numberOfCharts);
     drawLegend();
-    drawAnnotations()
+  //  drawAnnotations()
 }
-
+/*
 function drawAnnotations() {
     d3.select("#horizon-chart .test-div").remove();
     d3.select('#horizon-chart').append('div').attr('class', 'test-div');
 }
-
+*/
 
 
 function drawAxis() {
@@ -32,7 +32,8 @@ function drawAxis() {
     var axis_svg = d3.select('#long-axis').insert('svg')
         .attr('class', 'axis x-axis')
         .attr('width', width)
-        .attr('height', ((height + margin.top + (paddingTop * 5)) * numberOfCharts));
+        .attr('height', ((height + margin.top + (paddingTop * 5)) * numberOfCharts))
+        .attr('xmlns', 'http://www.w3.org/2000/svg');
 
     var xScale = d3.scale.linear()
         .domain([2007, 2017])

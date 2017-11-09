@@ -41,7 +41,7 @@
 
     #long-axis {
         position: absolute;
-        margin-top: -20px;
+        margin-top: -30px;
     }
 
     #horizon-chart {
@@ -105,11 +105,11 @@
         color: white;
     }
 
-    .legend p, #legend-bands {
+    .legend p,
+    #legend-bands {
         font-family: Arial;
         text-align: left;
         font-size: 12px;
-
     }
 
     #legend-chart .tooltip-container {
@@ -135,31 +135,54 @@
 
     .annotations {
         font-size: 8px;
-        width: 100px;
-        height: 100px;
-        background-color: red;
+        text-align: center;
         z-index: 9999;
     }
 
-    .test-div {
+    .annotations a {
+        color: black;
+        text-decoration: none;
+    }
+
+     .annotations a:hover {
+        font-weight: bolder;
+    }
+
+
+  /*  .test-div {
         width: 100px;
         height: 100px;
         background-color: red;
         position: absolute;
+    }*/
+
+    foreignObject {
+        font: 9px sans-serif;
+        text-overflow: ellipsis;
+        text-align: left;
+        word-wrap: break-word;
+        height: 100px;
+        width: 220px;
+        position: absolute;
+        top: 0;
     }
 
-@font-face {
-    font-family: OTSolidLight;
-    src: url(font/oxidesolidot-light-webfont.ttf);
+    foreignObject body {
+        background-color: transparent;;
     }
 
-@font-face {
-    font-family: OTSolidRegular;
-    src: url(font/oxidesolidot-webfont.ttf);
+    @font-face {
+        font-family: OTSolidLight;
+        src: url(font/oxidesolidot-light-webfont.ttf);
     }
 
-@media (max-width: 650px) {
-    .legend {
-        display: none;
+    @font-face {
+        font-family: OTSolidRegular;
+        src: url(font/oxidesolidot-webfont.ttf);
     }
- }
+
+    @media (max-width: 650px) {
+        .legend {
+            display: none;
+        }
+    }
