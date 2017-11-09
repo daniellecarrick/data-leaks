@@ -1,17 +1,16 @@
 var outter_width = document.getElementById('super-container').clientWidth;
-console.log(outter_width);
-
-var width = outter_width,
-    height = 90;
 
 var numberOfCharts = 5;
 var paddingTop = 5;
 
 var margin = { top: 0, right: 40, bottom: 20, left: 20 };
 
+var width = outter_width - margin.right,
+    height = 90;
+
 function drawAll() {
     outter_width = document.getElementById('super-container').clientWidth;
-    width = outter_width;
+    width = outter_width - margin.right;
     drawAxis();
     drawCharts(numberOfCharts);
     drawLegend();
@@ -25,12 +24,12 @@ function drawAxis() {
     // This is just for the full scale x-axis
     var axis_svg = d3.select('#long-axis').insert('svg')
         .attr('class', 'axis x-axis')
-        .attr('width', width - margin.right)
+        .attr('width', width)
         .attr('height', ((height + margin.top + (paddingTop * 5)) * numberOfCharts));
 
     var xScale = d3.scale.linear()
         .domain([2007, 2017])
-        .range([20, width]);
+        .range([20, width - (margin.right/2)]);
 
     var xAxis = d3.svg.axis()
         .scale(xScale)

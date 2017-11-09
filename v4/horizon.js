@@ -72,11 +72,11 @@
                      .append('rect')
                      .attr('width', w)
                      .attr('height', (h + 10))
-                     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+                     .attr('transform', 'translate(0,' + margin.top + ')');
 
                  defs.select('rect').transition()
                      .duration(duration)
-                     .attr('width', w)
+                     .attr('width', w) //does nothing
                      .attr('height', h);
 
                  // We'll use a container to clip all horizon layers at once.
@@ -131,9 +131,10 @@
                      .tickPadding(10)
                      .scale(yScale);
 
+                     // falls out side the bounds
                  g.append('g')
                      .attr('class', 'axis y-axis')
-                     .attr('transform', 'translate(' + (w - 40) + ',0)')
+                     .attr('transform', 'translate(' + (w - margin.right) + ',0)')
                      .attr('display', 'none')
                      .call(yAxis);
 
@@ -155,31 +156,31 @@
 
                  var annotations_arr = [{
                          "text": "These attacks doubled from <br> 2015 to 2016",
-                         "coordinates": [10, 20]
+                         "coordinates": [2010, 30]
                      },
                      {
                          "text": "Sys Admins: Remember to revoke <br> privaleges from former employees.",
-                         "coordinates": [20, 10]
+                         "coordinates": [2016, 30]
                      },
                      {
                          "text": "Firms inadvertently released <br> personal data online 109 times in 2015.",
-                         "coordinates": [20, 20]
+                         "coordinates": [2015, 30]
                      },
                      {
                          "text": "Better security protocols mean that <br> stolen or lost devices stay locked.",
-                         "coordinates": [20, 20]
+                         "coordinates": [2011, 30]
                      }, {
                          "text": "Any type of breach could expose the data <br> of thousands (or millions) of people.",
-                         "coordinates": [30, 30]
+                         "coordinates": [2009, 30]
                      }
                  ];
 
                  var the_annotation = annotations_arr[counter].text;
-                 var translate_x = annotations_arr[counter].coordinates[0];
-                    var translate_y = annotations_arr[counter].coordinates[1];
+                 var translate_x = x1(annotations_arr[counter].coordinates[0]);
+                var translate_y = annotations_arr[counter].coordinates[1];
 
 
-                 var annotations = g.append('g').attr('transform', 'translate(' + (translate_x + 100) + ',' + translate_y + ')');
+                 var annotations = g.append('g').attr('transform', 'translate(' + translate_x + ',' + translate_y + ')');
                 annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
                  annotations.append('text').attr('class', 'annotations').text(the_annotation).attr('transform', 'translate(' + translate_x + ',' + translate_y + ')');
 
