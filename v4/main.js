@@ -14,7 +14,14 @@ function drawAll() {
     drawAxis();
     drawCharts(numberOfCharts);
     drawLegend();
+    drawAnnotations()
 }
+
+function drawAnnotations() {
+    d3.select("#horizon-chart .test-div").remove();
+    d3.select('#horizon-chart').append('div').attr('class', 'test-div');
+}
+
 
 
 function drawAxis() {
@@ -61,7 +68,7 @@ function drawCharts(thecharts) {
 
         var svg = d3.select("#chart-container").append("svg")
             .attr("width", width)
-            .attr("height", height)
+            .attr("height", height + 10)
             .style('padding-top', paddingTop)
             .style("margin-top", margin.top);
 

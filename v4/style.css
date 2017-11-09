@@ -135,6 +135,17 @@
 
     .annotations {
         font-size: 8px;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        z-index: 9999;
+    }
+
+    .test-div {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
     }
 
 @font-face {

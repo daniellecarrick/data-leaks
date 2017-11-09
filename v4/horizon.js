@@ -71,7 +71,7 @@
                      .attr('id', 'd3_horizon_clip' + id)
                      .append('rect')
                      .attr('width', w)
-                     .attr('height', (h + 10))
+                     .attr('height', h)
                      .attr('transform', 'translate(0,' + margin.top + ')');
 
                  defs.select('rect').transition()
@@ -128,13 +128,13 @@
                      .orient('right')
                      .tickValues([0, yMax / 2, yMax])
                      .tickSize(0)
-                     .tickPadding(10)
+                     .tickPadding(5)
                      .scale(yScale);
 
-                     // falls out side the bounds
+                 // falls out side the bounds
                  g.append('g')
                      .attr('class', 'axis y-axis')
-                     .attr('transform', 'translate(' + (w - margin.right) + ',0)')
+                     .attr('transform', 'translate(' + (w - margin.right) + ',-2)')
                      .attr('display', 'none')
                      .call(yAxis);
 
@@ -146,7 +146,7 @@
                  var title_bg_width_arr = [160, 70, 160, 190, 120];
                  var title_bg_width = title_bg_width_arr[counter];
                  var the_title = titles_arr[counter];
-                 var titles = g.append('g').attr('transform', 'translate(26, 65)');
+                 var titles = g.append('g').attr('transform', 'translate(10, 65)');
                  titles.append('rect').attr('class', 'title-bg').attr('width', title_bg_width); // go here for more info: https://github.com/d3/d3/issues/252
                  titles.append('text').attr('class', 'titles').text(the_title).attr('transform', 'translate(5,12)');
 
@@ -177,17 +177,31 @@
 
                  var the_annotation = annotations_arr[counter].text;
                  var translate_x = x1(annotations_arr[counter].coordinates[0]);
-                var translate_y = annotations_arr[counter].coordinates[1];
+                 var translate_y = annotations_arr[counter].coordinates[1];
 
 
-                 var annotations = g.append('g').attr('transform', 'translate(' + translate_x + ',' + translate_y + ')');
-                annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
+                 var annotations = g.append('g').attr('transform', 'translate(0,0)');
+                 /*annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
                  annotations.append('text').attr('class', 'annotations').text(the_annotation).attr('transform', 'translate(' + translate_x + ',' + translate_y + ')');
+*/
+                 annotations.append('foriegnObject')
+                    .attr({
+                            'x': 0,
+                            'y': 0,
+                            'width': 100,
+                            'height': 100,
+                            'class': 'svg-tooltip'
+                        })
+                    .attr('requiredExtensions', 'http://www.w3.org/1999/xhtml') // go here for more info: https://github.com/d3/d3/issues/252
+                   // .append('xhtml:body').attr('xmlns','http://www.w3.org/1999/xhtml')
+                    .append('xhtml:div')
+                    .attr('class', 'annotations')
+                    .append('xhtml:p').html(the_annotation);
 
 
                  // since this gets redone on resize, need to reset counter 
                  counter++;
-                 if (counter === 4) {
+                 if (counter === 5) {
                      counter = 0;
                  }
 
