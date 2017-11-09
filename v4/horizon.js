@@ -70,13 +70,13 @@
                  defs.enter().append('defs').append('clipPath')
                      .attr('id', 'd3_horizon_clip' + id)
                      .append('rect')
-                     .attr('width', (w - 40))
-                     .attr('height', (h + 10))
-                     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+                     .attr('width', w)
+                     .attr('height', h)
+                     .attr('transform', 'translate(0,' + margin.top + ')');
 
                  defs.select('rect').transition()
                      .duration(duration)
-                     .attr('width', w)
+                     .attr('width', w) //does nothing
                      .attr('height', h);
 
                  // We'll use a container to clip all horizon layers at once.
@@ -105,7 +105,8 @@
                  path.enter().append('path')
                      .style('fill', color)
                      .attr('transform', t0)
-                     .attr('d', d0);
+                     .attr('d', d0)
+                     .on('mousemove', mousemove);
 
                  path.transition()
                      .duration(duration)
@@ -120,68 +121,123 @@
                      .remove();
 
 
-                 /*************** 
+                 /***************
                        Y-axis
                   ***************/
                  var yAxis = d3.svg.axis()
                      .orient('right')
                      .tickValues([0, yMax / 2, yMax])
                      .tickSize(0)
-                     .tickPadding(10)
+                     .tickPadding(5)
                      .scale(yScale);
 
+                 // falls out side the bounds
                  g.append('g')
                      .attr('class', 'axis y-axis')
-                     .attr('transform', 'translate(' + (w - 40) + ',0)')
+                     .attr('transform', 'translate(' + (w - margin.right) + ',-2)')
                      .attr('display', 'none')
                      .call(yAxis);
 
-                 /******************* 
-                 Titles generated here
-                ********************/
+                 /*******************
+                  Titles generated here
+                 ********************/
 
                  var titles_arr = ['Hacking, Skimming, and Phishing', 'Insider Theft', 'Weak Corporate Internet Security', 'Data Breaches from Lost/Stolen Devices', 'Leak by Outside Vendor'];
                  var title_bg_width_arr = [160, 70, 160, 190, 120];
                  var title_bg_width = title_bg_width_arr[counter];
                  var the_title = titles_arr[counter];
-                 counter++;
-                 var titles = g.append('g').attr('transform', 'translate(25,70)');
+                 var titles = g.append('g').attr('transform', 'translate(10, 65)');
                  titles.append('rect').attr('class', 'title-bg').attr('width', title_bg_width); // go here for more info: https://github.com/d3/d3/issues/252
                  titles.append('text').attr('class', 'titles').text(the_title).attr('transform', 'translate(5,12)');
 
+                 /*******************
+                   Annotations generated here
+                 ********************/
 
-                 /******************* 
-                  Tooltip generated here
+                 var annotations_arr = [{
+                         "text": "<a href='https://www.wired.com/story/2017-biggest-hacks-so-far/'>These attacks doubled <br>from 2015 to 2016</a>",
+                         "coordinates": [2014, 30]
+                     },
+                     {
+                         "text": "<a href='https://www.wired.com/story/hbo-hacks-game-of-thrones/'>Sys Admins: Remember to revoke privaleges from former employees.</a>",
+                         "coordinates": [2008, 30]
+                     },
+                     {
+                         "text": "<a href='https://www.wired.com/2009/07/health-breaches/'>Firms inadvertently released personal data online 109 times in 2015.</a>",
+                         "coordinates": [2012, 30]
+                     },
+                     {
+                         "text": "<a href='https://www.wired.com/2010/04/iphone-finder/'>Better security protocols mean that stolen or lost devices stay locked.</a>",
+                         "coordinates": [2014, 30]
+                     }, {
+                         "text": "<a href='https://www.wired.com/2016/10/hack-brief-hackers-breach-buzzfeed-retaliation-expose/'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
+                         "coordinates": [2012, 30]
+                     }
+                 ];
+
+                 var the_annotation = annotations_arr[counter].text;
+                 var translate_x = x1(annotations_arr[counter].coordinates[0]);
+                 var translate_y = 50;
+
+
+                // var annotations = g.append('g').attr('transform', 'translate(0,0)');
+                 /*annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
+                 annotations.append('text').attr('class', 'annotations').text(the_annotation).attr('transform', 'translate(' + translate_x + ',' + translate_y + ')');
+*/
+                 g.append('foreignObject')
+                     .attr({
+                         'x': translate_x,
+                         'y': translate_y,
+                        
+                         'height': 100,
+                         'class': 'svg-tooltip'
+                     })
+                     .attr('xmlns', 'http://www.w3.org/1999/xhtml') // go here for more info: https://github.com/d3/d3/issues/252
+                     .append('xhtml:body').attr('xmlns', 'http://www.w3.org/1999/xhtml')
+                     .append('xhtml:div')
+                     .attr('class', 'annotations')
+                     .append('xhtml:p').html(the_annotation);
+
+
+                 // since this gets redone on resize, need to reset counter 
+                 counter++;
+                 if (counter === 5) {
+                     counter = 0;
+                 }
+
+                 /*******************
+                   Tooltip generated here
                  ********************/
                  var tooltip = g.append('g').attr('class', 'tooltip-container');
-                 // var tooltip = rect_container.append('g').attr('class', 'tooltip-container');
                  tooltip.append('line').attr('stroke', 'black').attr('class', 'tooltip-line');
                  tooltip.append('text').attr('class', 'tooltip-text').attr('fill', 'white');
 
-                 var date_arr = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016];
+                 var date_arr = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
 
                  var bisect = d3.bisector(function(date_arr) { return date_arr; }).left;
 
-                 // need to put this on path in order to pull the correct data
-                 path.on('mousemove', function() {
-                     //console.log('data', d); 
-                     var mouse_x = d3.mouse(this)[0];
-                     var mouse_y = d3.mouse(this)[1];
-                     console.log('data', d);
-                     // The Mike Bostock way
-                     var x0 = x1.invert(d3.mouse(this)[0]),
-                    i = bisect(date_arr, x0, 1);
-                     console.log(i); console.log(x0);
-                     var y_val = d[i-1][1];
-                     var hovered_date = Math.floor(x1.invert(d3.mouse(this)[0])) //this gets the hovered year
+                 function mousemove() {
+                     // Find the x mouse position and use it to grab the y-value
+                     var mouse_x = d3.mouse(this)[0],
+                         x0 = x1.invert(d3.mouse(this)[0]);
+                     // z = bisect(date_arr, x0, 1),
+                     // y_val = d[z - 1][1];
+                     // Add a vertical line
                      d3.selectAll('.tooltip-line').attr('x1', mouse_x).attr('x2', mouse_x).attr('y1', 0).attr('y2', 100);
-                     d3.selectAll('.tooltip-text').attr('x', mouse_x + 10).attr('y', 40).text(y_val + " data leaks");
-                 })
+                     // Add the data label
+                     d3.selectAll('svg .tooltip-text').attr('x', mouse_x + 10).attr('y', 40)
+                         .text(function(d, i) {
+                             var z = bisect(date_arr, x0, 1);
+                             var y_val = d[z - 1][1];
+                             return y_val + " data leaks";
+                         });
+
+                 }
 
                  d3.select('#chart-container').on('mouseover', function() {
-                    d3.selectAll('.tooltip-container').attr('display','block');
+                     d3.selectAll('.tooltip-container').attr('display', 'block');
                  }).on('mouseout', function() {
-                   d3.selectAll('.tooltip-container').attr('display','none');
+                     d3.selectAll('.tooltip-container').attr('display', 'none');
                      // add code to hide tooltip container here
                  });
 
