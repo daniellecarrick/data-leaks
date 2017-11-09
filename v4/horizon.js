@@ -44,7 +44,7 @@
                  });
 
                  // Compute the new x- and y-scales, and transform.
-                 var x1 = d3.scale.linear().domain([xMin, xMax]).range([0, w - margin.right]),
+                 var x1 = d3.scale.linear().domain([xMin, xMax]).range([0, w]),
                      y1 = d3.scale.linear().domain([0, yMax]).range([0, h * bands]),
                      yScale = d3.scale.linear().domain([0, yMax]).range([height, 0]),
                      t1 = d3_horizonTransform(bands, h, mode);
@@ -72,7 +72,7 @@
                      .append('rect')
                      .attr('width', w)
                      .attr('height', (h + 10))
-                     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+                     .attr('transform', 'translate(0,' + margin.top + ')');
 
                  defs.select('rect').transition()
                      .duration(duration)
@@ -155,38 +155,38 @@
 
                  var annotations_arr = [{
                          "text": "These attacks doubled from <br> 2015 to 2016",
-                         "coordinates": [10, 20]
+                         "coordinates": [2016, 20]
                      },
                      {
                          "text": "Sys Admins: Remember to revoke <br> privaleges from former employees.",
-                         "coordinates": [20, 10]
+                         "coordinates": [2008, 20]
                      },
                      {
                          "text": "Firms inadvertently released <br> personal data online 109 times in 2015.",
-                         "coordinates": [20, 20]
+                         "coordinates": [2014, 20]
                      },
                      {
                          "text": "Better security protocols mean that <br> stolen or lost devices stay locked.",
-                         "coordinates": [20, 20]
+                         "coordinates": [2015, 20]
                      }, {
                          "text": "Any type of breach could expose the data <br> of thousands (or millions) of people.",
-                         "coordinates": [30, 30]
+                         "coordinates": [2012, 20]
                      }
                  ];
 
                  var the_annotation = annotations_arr[counter].text;
-                 var translate_x = annotations_arr[counter].coordinates[0];
-                    var translate_y = annotations_arr[counter].coordinates[1];
+                 var translate_x = x1(annotations_arr[counter].coordinates[0]);
+                 var translate_y = annotations_arr[counter].coordinates[1];
 
-
-                 var annotations = g.append('g').attr('transform', 'translate(' + (translate_x + 100) + ',' + translate_y + ')');
-                annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
+                 console.log('x1', translate_x);
+                 var annotations = g.append('g').attr('transform', 'translate(' + (translate_x) + ',' + translate_y + ')');
+                 annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
                  annotations.append('text').attr('class', 'annotations').text(the_annotation).attr('transform', 'translate(' + translate_x + ',' + translate_y + ')');
 
 
-                 // since this gets redone on resize, need to reset counter 
+                 // since this gets redone on resize, need to reset counter
                  counter++;
-                 if (counter === 4) {
+                 if (counter === 5) {
                      counter = 0;
                  }
 
