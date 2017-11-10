@@ -13,7 +13,7 @@ function drawAll() {
     width = outter_width - margin.right;
     drawAxis();
     drawCharts(numberOfCharts);
-    drawLegend();
+    //drawLegend();
   //  drawAnnotations()
 }
 /*
