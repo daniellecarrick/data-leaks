@@ -1,11 +1,3 @@
-    #horizon-controls button {
-        padding: 10px;
-    }
-
-    #legend-controls button {
-        padding: 3px;
-    }
-
     hr {
         clear: both;
     }
@@ -16,7 +8,8 @@
         color: black;
         border-radius: 2px;
         font-family: OTSolidLight;
-        width: 80px;
+        width: 160px;
+        padding: 10px;
     }
 
     body {
@@ -105,6 +98,7 @@
     .legend {
         color: white;
         display: block;
+        padding: 20px;
     }
 
     .legend p,
@@ -119,15 +113,16 @@
     }
 
     #legend-chart {
-        float: left;
+        float: right;
+       margin-top: 40px;
     }
 
     #legend-controls {
         float: left;
-        width: 25%;
+        width: 50%;
         text-align: left;
         line-height: 1;
-        padding-left: 50px;
+        
     }
 
     .legend .annotations {

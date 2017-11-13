@@ -162,12 +162,12 @@
                  var annotations_arr = [{
                          "title": "Hacking, Skimming, Phishing",
                          "text": "<a href='https://www.wired.com/story/netflix-phishing-scam/'>These attacks doubled <br>from 2015 to 2016</a>",
-                         "coordinates": [2014, 30]
+                         "coordinates": [2014, 40]
                      },
                      {
                          "title": "Insider Theft",
                          "text": "<a href='https://www.wired.com/story/hbo-hacks-game-of-thrones/'>Sys Admins: Remember to revoke privileges from former employees.</a>",
-                         "coordinates": [2008, 30]
+                         "coordinates": [2008, 40]
                      },
                      {
                          "title": "Weak Corporate Internet Security",
@@ -187,7 +187,7 @@
 
                  var the_annotation = annotations_arr[counter].text;
                  var translate_x = x1(annotations_arr[counter].coordinates[0]);
-                 var translate_y = annotations_arr[counter].coordinates[1];
+                 var translate_y = 10;
                  var annotations = g.append('g').attr('transform', 'translate(' + (translate_x) + ',' + translate_y + ')');
 
                  g.append('foreignObject')
@@ -234,7 +234,7 @@
                      // Add a vertical line
                      d3.selectAll('.tooltip-line').attr('x1', mouse_x).attr('x2', mouse_x).attr('y1', 0).attr('y2', 100);
                      // Add the data label
-                     d3.selectAll('svg .tooltip-text').attr('x', mouse_x + 10).attr('y', 40)
+                     d3.selectAll('svg .tooltip-text').attr('x', mouse_x + 10).attr('y', 60)
                          .text(function(d, i) {
                              var z = bisect(date_arr, x0, 1);
                              var y_val = d[z - 1][1];
