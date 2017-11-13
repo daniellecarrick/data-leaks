@@ -1,10 +1,12 @@
 var outter_width = document.getElementById('super-container').clientWidth;
-console.log(outter_width);
 
 var numberOfCharts = 5;
 var paddingTop = 5;
 
-var margin = { top: 0, right: 40, bottom: 20, left: 20 };
+var margin = { top: -10, right: 40, bottom: 20, left: 20 };
+
+var width = outter_width - margin.right,
+    height = 90;
 
 var width = outter_width - margin.right,
     height = 90;
@@ -15,7 +17,15 @@ function drawAll() {
     drawAxis();
     drawCharts(numberOfCharts);
    // drawLegend();
+  //  drawAnnotations()
 }
+/*
+function drawAnnotations() {
+    d3.select("#horizon-chart .test-div").remove();
+    d3.select('#horizon-chart').append('div').attr('class', 'test-div');
+>>>>>>> 49a62f414c65573a9ea391b09dbfe2f53f665cf6
+}
+*/
 
 
 function drawAxis() {
@@ -26,11 +36,12 @@ function drawAxis() {
     var axis_svg = d3.select('#long-axis').insert('svg')
         .attr('class', 'axis x-axis')
         .attr('width', width)
-        .attr('height', ((height + margin.top + (paddingTop * 5)) * numberOfCharts));
+        .attr('height', ((height + margin.top + (paddingTop * 5)) * numberOfCharts))
+        .attr('xmlns', 'http://www.w3.org/2000/svg');
 
     var xScale = d3.scale.linear()
         .domain([2007, 2017])
-        .range([20, width]);
+        .range([20, width - (margin.right/2)]);
 
     var xAxis = d3.svg.axis()
         .scale(xScale)
@@ -62,7 +73,7 @@ function drawCharts(thecharts) {
 
         var svg = d3.select("#chart-container").append("svg")
             .attr("width", width)
-            .attr("height", height)
+            .attr("height", height + 10)
             .style('padding-top', paddingTop)
             .style("margin-top", margin.top);
 

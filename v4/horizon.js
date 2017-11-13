@@ -76,7 +76,7 @@
 
                  defs.select('rect').transition()
                      .duration(duration)
-                     .attr('width', w)
+                     .attr('width', w) //does nothing
                      .attr('height', h);
 
                  // We'll use a container to clip all horizon layers at once.
@@ -128,12 +128,13 @@
                      .orient('right')
                      .tickValues([0, yMax / 2, yMax])
                      .tickSize(0)
-                     .tickPadding(10)
+                     .tickPadding(5)
                      .scale(yScale);
 
+                 // falls out side the bounds
                  g.append('g')
                      .attr('class', 'axis y-axis')
-                     .attr('transform', 'translate(' + (w - 40) + ',0)')
+                     .attr('transform', 'translate(' + (w + margin.right) + ',-2)')
                      .attr('display', 'none')
                      .call(yAxis);
 
@@ -145,7 +146,7 @@
                  var title_bg_width_arr = [160, 70, 160, 190, 120];
                  var title_bg_width = title_bg_width_arr[counter];
                  var the_title = titles_arr[counter];
-                 var titles = g.append('g').attr('transform', 'translate(26, 65)');
+                 var titles = g.append('g').attr('transform', 'translate(10, 65)');
                  titles.append('rect').attr('class', 'title-bg').attr('width', title_bg_width); // go here for more info: https://github.com/d3/d3/issues/252
                  titles.append('text').attr('class', 'titles').text(the_title).attr('transform', 'translate(5,12)');
 
@@ -154,23 +155,23 @@
                  ********************/
 
                  var annotations_arr = [{
-                         "text": "These attacks doubled from <br> 2015 to 2016",
-                         "coordinates": [2016, 20]
+                         "text": "<a href='https://www.wired.com/story/2017-biggest-hacks-so-far/'>These attacks doubled <br>from 2015 to 2016</a>",
+                         "coordinates": [2014, 30]
                      },
                      {
-                         "text": "Sys Admins: Remember to revoke <br> privaleges from former employees.",
-                         "coordinates": [2008, 20]
+                         "text": "<a href='https://www.wired.com/story/hbo-hacks-game-of-thrones/'>Sys Admins: Remember to revoke privaleges from former employees.</a>",
+                         "coordinates": [2008, 30]
                      },
                      {
-                         "text": "Firms inadvertently released <br> personal data online 109 times in 2015.",
-                         "coordinates": [2014, 20]
+                         "text": "<a href='https://www.wired.com/2009/07/health-breaches/'>Firms inadvertently released personal data online 109 times in 2015.</a>",
+                         "coordinates": [2012, 30]
                      },
                      {
-                         "text": "Better security protocols mean that <br> stolen or lost devices stay locked.",
-                         "coordinates": [2015, 20]
+                         "text": "<a href='https://www.wired.com/2010/04/iphone-finder/'>Better security protocols mean that stolen or lost devices stay locked.</a>",
+                         "coordinates": [2014, 30]
                      }, {
-                         "text": "Any type of breach could expose the data <br> of thousands (or millions) of people.",
-                         "coordinates": [2012, 20]
+                         "text": "<a href='https://www.wired.com/2016/10/hack-brief-hackers-breach-buzzfeed-retaliation-expose/'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
+                         "coordinates": [2012, 30]
                      }
                  ];
 
@@ -181,7 +182,25 @@
                  console.log('x1', translate_x);
                  var annotations = g.append('g').attr('transform', 'translate(' + (translate_x) + ',' + translate_y + ')');
                  annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
+
+                // var annotations = g.append('g').attr('transform', 'translate(0,0)');
+                 /*annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
+>>>>>>> 49a62f414c65573a9ea391b09dbfe2f53f665cf6
                  annotations.append('text').attr('class', 'annotations').text(the_annotation).attr('transform', 'translate(' + translate_x + ',' + translate_y + ')');
+*/
+                 g.append('foreignObject')
+                     .attr({
+                         'x': translate_x,
+                         'y': translate_y,
+
+                         'height': 100,
+                         'class': 'svg-tooltip'
+                     })
+                     .attr('xmlns', 'http://www.w3.org/1999/xhtml') // go here for more info: https://github.com/d3/d3/issues/252
+                     .append('xhtml:body').attr('xmlns', 'http://www.w3.org/1999/xhtml')
+                     .append('xhtml:div')
+                     .attr('class', 'annotations')
+                     .append('xhtml:p').html(the_annotation);
 
 
                  // since this gets redone on resize, need to reset counter
