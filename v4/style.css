@@ -113,16 +113,15 @@
     }
 
     #legend-chart {
-        float: right;
-       margin-top: 40px;
+      /*  float: right; */
+        margin-top: 80px;
     }
 
     #legend-controls {
-        float: left;
-        width: 50%;
+       /* float: left;
+        width: 50%; */
         text-align: left;
         line-height: 1;
-        
     }
 
     .legend .annotations {
@@ -171,8 +170,7 @@
     path:first-child {
         fill: none !important;
     }
-
-   /* #legend-container path {
+    /* #legend-container path {
         fill: url(#pathGradient) !important;
     }*/
 
@@ -188,6 +186,18 @@
         stop-color: yellow;
     }
 
+/* USING CSS GRID */
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+}
+
+.col-md-6 {
+    grid-column: span 6;
+}
+
     @font-face {
         font-family: OTSolidLight;
         src: url(font/oxidesolidot-light-webfont.ttf);
@@ -201,5 +211,10 @@
     @media (max-width: 650px) {
         .legend {
             display: none;
+        }
+
+        foreignObject {
+            height: 100px;
+            width: 120px;
         }
     }
