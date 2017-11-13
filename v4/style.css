@@ -130,6 +130,14 @@
         padding-left: 50px;
     }
 
+    .legend .annotations {
+        display: none;
+    }
+
+    .legend .title-container {
+        display: none;
+    }
+
     .last {
         display: block;
         margin-top: 20px;

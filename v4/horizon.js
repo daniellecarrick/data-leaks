@@ -145,7 +145,7 @@
                  var title_bg_width_arr = [160, 70, 160, 190, 120];
                  var title_bg_width = title_bg_width_arr[counter];
                  var the_title = titles_arr[counter];
-                 var titles = g.append('g').attr('transform', 'translate(6, 65)');
+                 var titles = g.append('g').attr('transform', 'translate(6, 65)').attr('class', 'title-container');
                  titles.append('rect').attr('class', 'title-bg').attr('width', title_bg_width); // go here for more info: https://github.com/d3/d3/issues/252
                  titles.append('text').attr('class', 'titles').text(the_title).attr('transform', 'translate(5,12)');
 
