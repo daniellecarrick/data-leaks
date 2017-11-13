@@ -176,6 +176,10 @@
                          "title": "Leak by Outside Vendor",
                          "text": "<a href='#'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
                          "coordinates": [2012, 30]
+                     }, {
+                         "title": "Fake",
+                         "text": "<a href='#'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
+                         "coordinates": [0, 00]
                      }
                  ];
 
@@ -188,7 +192,6 @@
                      .attr({
                          'x': translate_x,
                          'y': translate_y,
-
                          'height': 100,
                          'class': 'svg-tooltip'
                      })
@@ -201,7 +204,7 @@
 
                  // since this gets redone on resize, need to reset counter
                  counter++;
-                 if (counter === 5) {
+                 if (counter === 6) {
                      counter = 0;
                  }
 
