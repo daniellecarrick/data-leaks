@@ -23,7 +23,6 @@ function drawAll() {
 function drawAnnotations() {
     d3.select("#horizon-chart .test-div").remove();
     d3.select('#horizon-chart').append('div').attr('class', 'test-div');
->>>>>>> 49a62f414c65573a9ea391b09dbfe2f53f665cf6
 }
 */
 
