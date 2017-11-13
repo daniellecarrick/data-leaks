@@ -1,5 +1,4 @@
  var counter = 0;
- var coordinates = [0, 0];
  (function() {
      d3.horizon = function() {
 
@@ -181,11 +180,10 @@
 
                  console.log('x1', translate_x);
                  var annotations = g.append('g').attr('transform', 'translate(' + (translate_x) + ',' + translate_y + ')');
-                 annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
+                // annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
 
                 // var annotations = g.append('g').attr('transform', 'translate(0,0)');
                  /*annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
->>>>>>> 49a62f414c65573a9ea391b09dbfe2f53f665cf6
                  annotations.append('text').attr('class', 'annotations').text(the_annotation).attr('transform', 'translate(' + translate_x + ',' + translate_y + ')');
 */
                  g.append('foreignObject')
