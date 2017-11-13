@@ -144,12 +144,10 @@
         text-decoration: none;
     }
 
-     .annotations a:hover {
-        font-weight: bolder;
+    .annotations a:hover {
+        text-decoration: underline;
     }
-
-
-  /*  .test-div {
+    /*  .test-div {
         width: 100px;
         height: 100px;
         background-color: red;
@@ -168,7 +166,8 @@
     }
 
     foreignObject body {
-        background-color: transparent;;
+        background-color: transparent;
+        ;
     }
 
     @font-face {

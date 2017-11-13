@@ -1,3 +1,8 @@
+/***************
+Author: Danielle Carrick
+www.daniellecarrick.com
+****************/
+
 var outter_width = document.getElementById('super-container').clientWidth;
 
 var numberOfCharts = 5;
@@ -13,16 +18,9 @@ function drawAll() {
     width = outter_width - margin.right;
     drawAxis();
     drawCharts(numberOfCharts);
-    drawLegend();
+   // drawLegend();
   //  drawAnnotations()
 }
-/*
-function drawAnnotations() {
-    d3.select("#horizon-chart .test-div").remove();
-    d3.select('#horizon-chart').append('div').attr('class', 'test-div');
-}
-*/
-
 
 function drawAxis() {
         d3.select("#visual-container #long-axis").remove();
@@ -112,7 +110,7 @@ function drawCharts(thecharts) {
 
 
 function drawLegend() {
-    
+
     d3.select("#legend-container").remove();
     d3.select("#legend-chart").append("div").attr("id", "legend-container");
 
