@@ -18,13 +18,12 @@ function drawAll() {
     width = outter_width - margin.right;
     drawAxis();
     drawCharts(numberOfCharts);
-   // drawLegend();
-  //  drawAnnotations()
+    drawLegend();
 }
 
 function drawAxis() {
-        d3.select("#visual-container #long-axis").remove();
-        d3.select("#visual-container").insert("div").attr("id", "long-axis");
+    d3.select("#visual-container #long-axis").remove();
+    d3.select("#visual-container").insert("div").attr("id", "long-axis");
 
     // This is just for the full scale x-axis
     var axis_svg = d3.select('#long-axis').insert('svg')
@@ -35,7 +34,7 @@ function drawAxis() {
 
     var xScale = d3.scale.linear()
         .domain([2007, 2017])
-        .range([20, width - (margin.right/2)]);
+        .range([20, width - (margin.right / 2)]);
 
     var xAxis = d3.svg.axis()
         .scale(xScale)
@@ -169,5 +168,5 @@ function drawLegend() {
 
 drawAll();
 
- // Redraw based on the new size whenever the browser window is resized.
-      window.addEventListener("resize", drawAll);
+// Redraw based on the new size whenever the browser window is resized.
+window.addEventListener("resize", drawAll);

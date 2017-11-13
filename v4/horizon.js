@@ -182,15 +182,8 @@
                  var the_annotation = annotations_arr[counter].text;
                  var translate_x = x1(annotations_arr[counter].coordinates[0]);
                  var translate_y = annotations_arr[counter].coordinates[1];
-
-                 console.log('x1', translate_x);
                  var annotations = g.append('g').attr('transform', 'translate(' + (translate_x) + ',' + translate_y + ')');
-                 // annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
 
-                 // var annotations = g.append('g').attr('transform', 'translate(0,0)');
-                 /*annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
-                 annotations.append('text').attr('class', 'annotations').text(the_annotation).attr('transform', 'translate(' + translate_x + ',' + translate_y + ')');
-*/
                  g.append('foreignObject')
                      .attr({
                          'x': translate_x,
