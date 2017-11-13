@@ -43,7 +43,7 @@
                  });
 
                  // Compute the new x- and y-scales, and transform.
-                 var x1 = d3.scale.linear().domain([xMin, xMax]).range([0, w]),
+                 var x1 = d3.scale.linear().domain([xMin, xMax]).range([0, w - margin.right]),
                      y1 = d3.scale.linear().domain([0, yMax]).range([0, h * bands]),
                      yScale = d3.scale.linear().domain([0, yMax]).range([height, 0]),
                      t1 = d3_horizonTransform(bands, h, mode);
@@ -70,7 +70,7 @@
                      .attr('id', 'd3_horizon_clip' + id)
                      .append('rect')
                      .attr('width', w)
-                     .attr('height', (h + 10))
+                     .attr('height', h)
                      .attr('transform', 'translate(0,' + margin.top + ')');
 
                  defs.select('rect').transition()
@@ -133,7 +133,7 @@
                  // falls out side the bounds
                  g.append('g')
                      .attr('class', 'axis y-axis')
-                     .attr('transform', 'translate(' + (w + margin.right) + ',-2)')
+                     .attr('transform', 'translate(' + (w - margin.right) + ',0)')
                      .attr('display', 'none')
                      .call(yAxis);
 
@@ -145,7 +145,7 @@
                  var title_bg_width_arr = [160, 70, 160, 190, 120];
                  var title_bg_width = title_bg_width_arr[counter];
                  var the_title = titles_arr[counter];
-                 var titles = g.append('g').attr('transform', 'translate(10, 65)');
+                 var titles = g.append('g').attr('transform', 'translate(26, 65)');
                  titles.append('rect').attr('class', 'title-bg').attr('width', title_bg_width); // go here for more info: https://github.com/d3/d3/issues/252
                  titles.append('text').attr('class', 'titles').text(the_title).attr('transform', 'translate(5,12)');
 
@@ -154,21 +154,26 @@
                  ********************/
 
                  var annotations_arr = [{
+                         "title": "Hacking, Skimming, Phishing",
                          "text": "<a href='https://www.wired.com/story/netflix-phishing-scam/'>These attacks doubled <br>from 2015 to 2016</a>",
                          "coordinates": [2014, 30]
                      },
                      {
+                         "title": "Insider Theft",
                          "text": "<a href='https://www.wired.com/story/hbo-hacks-game-of-thrones/'>Sys Admins: Remember to revoke privileges from former employees.</a>",
                          "coordinates": [2008, 30]
                      },
                      {
+                         "title": "Weak Corporate Internet Security",
                          "text": "<a href='https://www.wired.com/2009/07/health-breaches/'>Firms inadvertently released personal data online 109 times in 2015.</a>",
                          "coordinates": [2012, 30]
                      },
                      {
+                         "title": "Lost Stolen Devices",
                          "text": "<a href='https://www.wired.com/2010/04/iphone-finder/'>Better security protocols mean that stolen or lost devices stay locked.</a>",
                          "coordinates": [2014, 30]
                      }, {
+                         "title": "Leak by Outside Vendor",
                          "text": "<a href='#'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
                          "coordinates": [2012, 30]
                      }
@@ -180,9 +185,9 @@
 
                  console.log('x1', translate_x);
                  var annotations = g.append('g').attr('transform', 'translate(' + (translate_x) + ',' + translate_y + ')');
-                // annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
+                 // annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
 
-                // var annotations = g.append('g').attr('transform', 'translate(0,0)');
+                 // var annotations = g.append('g').attr('transform', 'translate(0,0)');
                  /*annotations.append('circle').attr('class', 'circle').attr('r', 5); // go here for more info: https://github.com/d3/d3/issues/252
                  annotations.append('text').attr('class', 'annotations').text(the_annotation).attr('transform', 'translate(' + translate_x + ',' + translate_y + ')');
 */

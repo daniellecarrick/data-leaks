@@ -13,9 +13,6 @@ var margin = { top: -10, right: 40, bottom: 20, left: 20 };
 var width = outter_width - margin.right,
     height = 90;
 
-var width = outter_width - margin.right,
-    height = 90;
-
 function drawAll() {
     outter_width = document.getElementById('super-container').clientWidth;
     width = outter_width - margin.right;
@@ -24,13 +21,6 @@ function drawAll() {
    // drawLegend();
   //  drawAnnotations()
 }
-/*
-function drawAnnotations() {
-    d3.select("#horizon-chart .test-div").remove();
-    d3.select('#horizon-chart').append('div').attr('class', 'test-div');
-}
-*/
-
 
 function drawAxis() {
         d3.select("#visual-container #long-axis").remove();
