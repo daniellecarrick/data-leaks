@@ -141,6 +141,12 @@
                   Titles generated here
                  ********************/
 
+                var parentClass = this.parentNode.id;
+
+                // THESE THINGS ONLY HAPPEN TO THE CHARTS NOT TO THE LEGEND
+                if (parentClass === 'chart-container') {
+
+
                  var titles_arr = ['Hacking, Skimming, and Phishing', 'Insider Theft', 'Weak Corporate Internet Security', 'Data Breaches from Lost/Stolen Devices', 'Leak by Outside Vendor'];
                  var title_bg_width_arr = [160, 70, 160, 190, 120];
                  var title_bg_width = title_bg_width_arr[counter];
@@ -176,10 +182,6 @@
                          "title": "Leak by Outside Vendor",
                          "text": "<a href='#'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
                          "coordinates": [2012, 30]
-                     }, {
-                         "title": "Fake",
-                         "text": "<a href='#'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
-                         "coordinates": [0, 00]
                      }
                  ];
 
@@ -204,9 +206,13 @@
 
                  // since this gets redone on resize, need to reset counter
                  counter++;
-                 if (counter === 6) {
+                 if (counter === 5) {
                      counter = 0;
                  }
+
+
+                    console.log(parentClass);
+                }
 
                  /*******************
                    Tooltip generated here

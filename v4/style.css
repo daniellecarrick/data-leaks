@@ -150,19 +150,13 @@
     }
 
     .annotations a {
-        color: black;
+        color: white;
         text-decoration: none;
     }
 
     .annotations a:hover {
         text-decoration: underline;
     }
-    /*  .test-div {
-        width: 100px;
-        height: 100px;
-        background-color: red;
-        position: absolute;
-    }*/
 
     foreignObject {
         font: 9px sans-serif;
@@ -177,7 +171,26 @@
 
     foreignObject body {
         background-color: transparent;
-        ;
+    }
+
+    path:first-child {
+        fill: none !important;
+    }
+
+   /* #legend-container path {
+        fill: url(#pathGradient) !important;
+    }*/
+
+    .stop1 {
+        stop-color: green;
+    }
+
+    .stop2 {
+        stop-color: black;
+    }
+
+    .stop3 {
+        stop-color: yellow;
     }
 
     @font-face {

@@ -114,17 +114,32 @@ function drawLegend() {
     d3.select("#legend-chart").append("div").attr("id", "legend-container");
 
     var chart = d3.horizon()
-        .width(width * .75)
-        .height(height)
+        .width(width * 0.5)
+        .height(height * 0.75)
         .bands(1)
         .mode("offset")
         .interpolate("cardinal");
 
     var svg = d3.select("#legend-container").append("svg")
-        .attr("width", width * .75)
-        .attr("height", height + 10)
+        .attr("width", width * .5)
+        .attr("height", height * 0.75)
         .style('padding-top', paddingTop)
         .style("margin-top", margin.top);
+
+        // messing with the defs in the horizon.js
+   svg.append('linearGradient')
+        .attr('id', 'pathGradient')
+        .attr("x1", 0).attr("y1", 1)
+        .attr("x2", 0).attr("y2", 0)
+        .selectAll('stop')
+        .data([
+            { offset: "0%", class: "stop1" },
+            { offset: "5%", class: "stop2" },
+            { offset: "10%", class: "stop3" }
+        ])
+        .enter().append('stop')
+        .attr("offset", function(d) { return d.offset; })
+        .attr("class", function(d) { return d.class; });
 
     d3.json("data.json", function(dataOrig) {
         for (var i = 0; i < 1; i++) {
@@ -140,6 +155,7 @@ function drawLegend() {
             })(i);
         }
     });
+    d3.select('#legend-container path').attr('fill', 'url(#pathGradient) !important');
     var click_counter = 0;
     // Enable bands buttons.
     d3.selectAll("#legend-bands button").data([-1, 1]).on("click", function(d) {
@@ -152,6 +168,7 @@ function drawLegend() {
         } else if (click_counter === 1) {
             var legend_text = "The area chart is now a horizon chart with 3 bands. Click next to add a few more bands.";
             var button_text = "Next";
+            d3.select('#legend-container path').attr('fill', 'inherit');
             n = 3
         } else if (click_counter === 2) {
             var legend_text = "Now we have a horizon chart with 6 bands.";
@@ -162,7 +179,7 @@ function drawLegend() {
 
         d3.select("#horizon-bands-value").text(legend_text);
         d3.select(".last").text(button_text);
-        svg.call(chart.duration(2000).bands(n).height(height));
+        svg.call(chart.duration(2000).bands(n).height(height * 0.75));
     });
 }
 
