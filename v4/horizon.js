@@ -154,11 +154,11 @@
                  ********************/
 
                  var annotations_arr = [{
-                         "text": "<a href='https://www.wired.com/story/2017-biggest-hacks-so-far/'>These attacks doubled <br>from 2015 to 2016</a>",
+                         "text": "<a href='https://www.wired.com/story/netflix-phishing-scam/'>These attacks doubled <br>from 2015 to 2016</a>",
                          "coordinates": [2014, 30]
                      },
                      {
-                         "text": "<a href='https://www.wired.com/story/hbo-hacks-game-of-thrones/'>Sys Admins: Remember to revoke privaleges from former employees.</a>",
+                         "text": "<a href='https://www.wired.com/story/hbo-hacks-game-of-thrones/'>Sys Admins: Remember to revoke privileges from former employees.</a>",
                          "coordinates": [2008, 30]
                      },
                      {
@@ -169,7 +169,7 @@
                          "text": "<a href='https://www.wired.com/2010/04/iphone-finder/'>Better security protocols mean that stolen or lost devices stay locked.</a>",
                          "coordinates": [2014, 30]
                      }, {
-                         "text": "<a href='https://www.wired.com/2016/10/hack-brief-hackers-breach-buzzfeed-retaliation-expose/'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
+                         "text": "<a href='#'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
                          "coordinates": [2012, 30]
                      }
                  ];

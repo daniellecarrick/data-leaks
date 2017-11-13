@@ -1,3 +1,8 @@
+/***************
+Author: Danielle Carrick
+www.daniellecarrick.com
+****************/
+
 var outter_width = document.getElementById('super-container').clientWidth;
 
 var numberOfCharts = 5;
