@@ -1,11 +1,3 @@
-    #horizon-controls button {
-        padding: 10px;
-    }
-
-    #legend-controls button {
-        padding: 3px;
-    }
-
     hr {
         clear: both;
     }
@@ -16,12 +8,23 @@
         color: black;
         border-radius: 2px;
         font-family: OTSolidLight;
-        width: 80px;
+        width: 160px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: lightgrey;
+    }
+
+    .selected {
+        background-color: lightgrey;
     }
 
     body {
         background-color: black;
         font-family: OTSolidRegular;
+        max-height: 900px;
     }
 
     #super-container {
@@ -36,7 +39,8 @@
 
     #visual-container {
         position: relative;
-        margin-top: 40px;
+        margin-top: 70px;
+        height: 500px;
     }
 
     #long-axis {
@@ -51,6 +55,7 @@
 
     #horizon-controls {
         text-align: center;
+        margin-top: 30px;
     }
 
     .axis {
@@ -103,6 +108,8 @@
 
     .legend {
         color: white;
+        display: block;
+        padding: 20px;
     }
 
     .legend p,
@@ -117,15 +124,49 @@
     }
 
     #legend-chart {
-        float: left;
+      /*  float: right; 
+        margin-top: 55px;*/
     }
 
     #legend-controls {
-        float: left;
-        width: 25%;
+       /* float: left;
+        width: 50%; */
         text-align: left;
         line-height: 1;
-        padding-left: 50px;
+    }
+
+    #legend-container {
+        margin-right: -70px;
+        margin-top: 87px;
+    }
+
+    .legend .annotations {
+        display: none;
+    }
+
+    .legend .title-container {
+        display: none;
+    }
+
+    .legend img {
+        float: right;
+        margin-right: 40px;
+        margin-bottom: 10px;
+    }
+
+    #headline-text {
+        font-family: Arial;
+        font-weight: bold;
+    }
+
+/*    #headline-text span {
+        font-size: 10px;
+        font-weight: 
+        font-family: Arial;
+    }*/
+
+    p.legend-title {
+        font-family: OTSolidRegular;
     }
 
     .last {
@@ -140,19 +181,13 @@
     }
 
     .annotations a {
-        color: black;
+        color: white;
         text-decoration: none;
     }
 
     .annotations a:hover {
         text-decoration: underline;
     }
-    /*  .test-div {
-        width: 100px;
-        height: 100px;
-        background-color: red;
-        position: absolute;
-    }*/
 
     foreignObject {
         font: 9px sans-serif;
@@ -167,8 +202,59 @@
 
     foreignObject body {
         background-color: transparent;
-        ;
     }
+
+    path:first-child {
+        fill: none !important;
+    }
+
+    #legend-container .add-gradient path:nth-child(2) {
+        fill: url(#pathGradient) !important;
+    }
+
+    .stop1 {
+        stop-color: #DAE8F3;
+    }
+
+    .stop2 {
+        stop-color: #B4D2E6;
+    }
+
+    .stop3 {
+        stop-color: #8FBBDA;
+    }
+
+   .stop4 {
+        stop-color: #6AA4CD;
+    }
+
+    .stop5 {
+        stop-color: #448EC1;
+    }
+
+    .stop6 {
+        stop-color: #1F77B4;
+    }
+
+/* USING CSS GRID */
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+}
+
+.col-md-7 {
+    grid-column: span 7;
+}
+
+.col-md-6 {
+    grid-column: span 6;
+}
+
+.col-md-5 {
+    grid-column: span 5;
+}
 
     @font-face {
         font-family: OTSolidLight;
@@ -182,6 +268,35 @@
 
     @media (max-width: 650px) {
         .legend {
-            display: none;
+         display: none; 
+        }
+
+        button {
+            width: 100px;
+        }
+
+        foreignObject {
+            height: 100px;
+            width: 120px;
+        }
+    }
+
+
+    @media (max-width: 400px) {
+        .legend {
+          display: none; 
+        }
+
+        img {
+            width: 100px;
+        }
+
+        button {
+            width: 100px;
+        }
+
+        foreignObject {
+            height: 100px;
+            width: 120px;
         }
     }
