@@ -189,11 +189,11 @@ function drawLegend() {
             var legend_text = "To turn an area chart into a horizon chart, divide it into bands.";
             var button_text = "Next";
             d3.select('.legend svg').attr('class', 'add-gradient');
-
             n = 1;
         } else if (click_counter === 2) {
             var legend_text = "By stacking those bands on top of each other, we get a Horizon chart.";
             var button_text = "Reset";
+            d3.select('.legend svg').classed('add-gradient', false);
             n = 6;
             click_counter = -1;
         }
