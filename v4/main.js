@@ -84,6 +84,10 @@ function drawCharts(thecharts) {
         //****** TO DO: Animate area to horizon chart better
         d3.selectAll("#horizon-bands button").on("click", function() {
             (this.className === 'area') ? n = 1: n = 6;
+            var activeClass = "selected";
+            d3.select('button.selected').classed('selected', false);
+            var alreadyIsActive = d3.select(this).classed(activeClass);
+            d3.select(this).classed(activeClass, !alreadyIsActive);
             // remove elements otherwise they'll redraw on top of themselves
             function removeElements() {
                 d3.selectAll('.svg-tooltip').remove();
@@ -95,18 +99,17 @@ function drawCharts(thecharts) {
             removeElements();
             for (var i = 0; i < numberOfCharts; i++) {
                 //svg_arr[i].call(charts_arr[i].duration(2000).bands(n));
-                 if (n === 1) {
-                     svg_arr[i].call(charts_arr[i].duration(2000).bands(n).height(height));
-                 }
-                 else  {
-                     //setTimeout(svg_arr[i].call(charts_arr[i].duration(1000).bands(2).height(height)), 10);
-                              //   removeElements();
+                if (n === 1) {
+                    svg_arr[i].call(charts_arr[i].duration(2000).bands(n).height(height));
+                } else {
+                    //setTimeout(svg_arr[i].call(charts_arr[i].duration(1000).bands(2).height(height)), 10);
+                    //   removeElements();
 
-                 //   setTimeout(svg_arr[i].call(charts_arr[i].duration(1000).bands(4).height(height)), 20);
+                    //   setTimeout(svg_arr[i].call(charts_arr[i].duration(1000).bands(4).height(height)), 20);
 
                     setTimeout(svg_arr[i].call(charts_arr[i].duration(2000).bands(6).height(height)), 30);
 
-                 }
+                }
 
             }
         });
@@ -228,11 +231,18 @@ function drawLegend() {
 
 drawAll();
 
-d3.select('#horizon-bands').on('click', function() {
+/*d3.selectAll("#horizon-bands button").on("click", function () {
+  var activeClass = "selected";
+   d3.select('button.selected').classed('selected', false);
+  var alreadyIsActive = d3.select(this).classed(activeClass);
+  d3.select(this).classed(activeClass, !alreadyIsActive);
+});*/
+
+/*d3.select('#horizon-bands button').on('click', function() {
     d3.select('button.selected').classed('selected', false);
     d3.select(this).classed('selected', true);
     
-});
+});*/
 
 // Redraw based on the new size whenever the browser window is resized.
 window.addEventListener("resize", drawAll);
