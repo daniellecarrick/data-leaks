@@ -262,6 +262,10 @@
          /*   display: none; */
         }
 
+        button {
+            width: 100px;
+        }
+
         foreignObject {
             height: 100px;
             width: 120px;

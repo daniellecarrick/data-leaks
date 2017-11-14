@@ -162,26 +162,26 @@
 
                  var annotations_arr = [{
                          "title": "Hacking, Skimming, Phishing",
-                         "text": "<a href='https://www.wired.com/story/netflix-phishing-scam/?mbid=graphic_cybersecurity'>These attacks doubled <br>from 2015 to 2016</a>",
+                         "text": "<a top.window.location.href='https://www.wired.com/story/netflix-phishing-scam/?mbid=graphic_cybersecurity' target='_parent'>These attacks doubled <br>from 2015 to 2016</a>",
                          "coordinates": [2014, 40]
                      },
                      {
                          "title": "Insider Theft",
-                         "text": "<a href='https://www.wired.com/story/hbo-hacks-game-of-thrones/?mbid=graphic_cybersecurity'>Sys Admins: Remember to revoke privileges from former employees.</a>",
+                         "text": "<a href='https://www.wired.com/story/hbo-hacks-game-of-thrones/?mbid=graphic_cybersecurity'  target='_parent'>Sys Admins: Remember to revoke privileges from former employees.</a>",
                          "coordinates": [2008, 40]
                      },
                      {
                          "title": "Weak Corporate Internet Security",
-                         "text": "<a href='https://www.wired.com/2009/07/health-breaches/?mbid=graphic_cybersecurity'>Firms inadvertently released personal data online 109 times in 2015.</a>",
+                         "text": "<a href='https://www.wired.com/2009/07/health-breaches/?mbid=graphic_cybersecurity'  target='_parent'>Firms inadvertently released personal data online 109 times in 2015.</a>",
                          "coordinates": [2012, 30]
                      },
                      {
                          "title": "Lost Stolen Devices",
-                         "text": "<a href='https://www.wired.com/2010/04/iphone-finder/?mbid=graphic_cybersecurity'>Better security protocols mean that stolen or lost devices stay locked.</a>",
+                         "text": "<a href='https://www.wired.com/2010/04/iphone-finder/?mbid=graphic_cybersecurity'  target='_parent'>Better security protocols mean that stolen or lost devices stay locked.</a>",
                          "coordinates": [2013, 30]
                      }, {
                          "title": "Leak by Outside Vendor",
-                         "text": "<a href='https://www.wired.com/2017/03/protect-icloud-account-juuuuust-case/?mbid=graphic_cybersecurity'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
+                         "text": "<a href='https://www.wired.com/2017/03/protect-icloud-account-juuuuust-case/?mbid=graphic_cybersecurity'  target='_parent'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
                          "coordinates": [2012, 30]
                      }
                  ];
