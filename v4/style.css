@@ -30,7 +30,7 @@
 
     #visual-container {
         position: relative;
-        margin-top: 40px;
+        margin-top: 70px;
         height: 500px;
     }
 
@@ -46,6 +46,7 @@
 
     #horizon-controls {
         text-align: center;
+        margin-top: 30px;
     }
 
     .axis {
@@ -127,6 +128,7 @@
 
     #legend-container {
         margin-right: -60px;
+        margin-top: 87px;
     }
 
     .legend .annotations {
@@ -142,6 +144,17 @@
         margin-right: 40px;
         margin-bottom: 10px;
     }
+
+    #headline-text {
+        font-family: Arial;
+        font-weight: bold;
+    }
+
+/*    #headline-text span {
+        font-size: 10px;
+        font-weight: 
+        font-family: Arial;
+    }*/
 
     p.legend-title {
         font-family: OTSolidRegular;
@@ -246,7 +259,7 @@
 
     @media (max-width: 650px) {
         .legend {
-            display: none;
+         /*   display: none; */
         }
 
         foreignObject {

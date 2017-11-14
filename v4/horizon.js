@@ -13,9 +13,10 @@
 
 
          var color = d3.scale.linear()
-             .domain([0, 1])
-             .range(['#DAE8F3', '#1F77B4']);
-         //.range(['#DAE8F3', '#B4D2E6', '#8FBBDA', '#6AA4CD', '#448EC1', '#1F77B4']);
+             .domain([-1, 0, 0, 1])
+            // .range(['#DAE8F3', '#1F77B4']);
+         .range(['#000000', '#DAE8F3', '#DAE8F3', '#1F77B4']);
+
 
          var margin = { top: 0, right: 40, bottom: 20, left: 20 };
 
@@ -161,26 +162,26 @@
 
                  var annotations_arr = [{
                          "title": "Hacking, Skimming, Phishing",
-                         "text": "<a href='https://www.wired.com/story/netflix-phishing-scam/'>These attacks doubled <br>from 2015 to 2016</a>",
+                         "text": "<a href='https://www.wired.com/story/netflix-phishing-scam/?mbid=graphic_cybersecurity'>These attacks doubled <br>from 2015 to 2016</a>",
                          "coordinates": [2014, 40]
                      },
                      {
                          "title": "Insider Theft",
-                         "text": "<a href='https://www.wired.com/story/hbo-hacks-game-of-thrones/'>Sys Admins: Remember to revoke privileges from former employees.</a>",
+                         "text": "<a href='https://www.wired.com/story/hbo-hacks-game-of-thrones/?mbid=graphic_cybersecurity'>Sys Admins: Remember to revoke privileges from former employees.</a>",
                          "coordinates": [2008, 40]
                      },
                      {
                          "title": "Weak Corporate Internet Security",
-                         "text": "<a href='https://www.wired.com/2009/07/health-breaches/'>Firms inadvertently released personal data online 109 times in 2015.</a>",
+                         "text": "<a href='https://www.wired.com/2009/07/health-breaches/?mbid=graphic_cybersecurity'>Firms inadvertently released personal data online 109 times in 2015.</a>",
                          "coordinates": [2012, 30]
                      },
                      {
                          "title": "Lost Stolen Devices",
-                         "text": "<a href='https://www.wired.com/2010/04/iphone-finder/'>Better security protocols mean that stolen or lost devices stay locked.</a>",
+                         "text": "<a href='https://www.wired.com/2010/04/iphone-finder/?mbid=graphic_cybersecurity'>Better security protocols mean that stolen or lost devices stay locked.</a>",
                          "coordinates": [2013, 30]
                      }, {
                          "title": "Leak by Outside Vendor",
-                         "text": "<a href='#'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
+                         "text": "<a href='https://www.wired.com/2017/03/protect-icloud-account-juuuuust-case/?mbid=graphic_cybersecurity'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
                          "coordinates": [2012, 30]
                      }
                  ];
@@ -211,8 +212,6 @@
                      counter = 0;
                  }
 
-
-                    console.log(parentClass);
                 }
 
                  /*******************
@@ -230,8 +229,6 @@
                      // Find the x mouse position and use it to grab the y-value
                      var mouse_x = d3.mouse(this)[0],
                          x0 = x1.invert(d3.mouse(this)[0]);
-                     // z = bisect(date_arr, x0, 1),
-                     // y_val = d[z - 1][1];
                      // Add a vertical line
                      d3.selectAll('.tooltip-line').attr('x1', mouse_x).attr('x2', mouse_x).attr('y1', 0).attr('y2', 100);
                      // Add the data label
@@ -263,20 +260,20 @@
              return horizon;
          };
 
-         /* horizon.bands = function(x) {
+       horizon.bands = function(x) {
       if (!arguments.length) return bands;
       bands = +x;
       color.domain([ -bands, 0, 0, bands]);
       return horizon;
     };
-*/
+
          // when there are no negatives, this function works better with the colors
-         horizon.bands = function(x) {
+       /*  horizon.bands = function(x) {
              if (!arguments.length) return bands;
              bands = +x;
              color.domain([0, bands]);
              return horizon;
-         };
+         };*/
 
          horizon.mode = function(x) {
              if (!arguments.length) return mode;

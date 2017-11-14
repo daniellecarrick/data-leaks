@@ -85,13 +85,29 @@ function drawCharts(thecharts) {
         d3.selectAll("#horizon-bands button").on("click", function() {
             (this.className === 'area') ? n = 1: n = 6;
             // remove elements otherwise they'll redraw on top of themselves
-            d3.selectAll('.svg-tooltip').remove();
-            d3.selectAll('.y-axis').remove();
-            d3.selectAll('.tooltip-container').remove();
-            d3.selectAll('.title-container').remove();
-
+            function removeElements() {
+                d3.selectAll('.svg-tooltip').remove();
+                d3.selectAll('.y-axis').remove();
+                d3.selectAll('.tooltip-container').remove();
+                d3.selectAll('.title-container').remove();
+                console.log('removed elements');
+            };
+            removeElements();
             for (var i = 0; i < numberOfCharts; i++) {
-                svg_arr[i].call(charts_arr[i].duration(2000).bands(n).height(height));
+                //svg_arr[i].call(charts_arr[i].duration(2000).bands(n));
+                 if (n === 1) {
+                     svg_arr[i].call(charts_arr[i].duration(2000).bands(n).height(height));
+                 }
+                 else  {
+                     //setTimeout(svg_arr[i].call(charts_arr[i].duration(1000).bands(2).height(height)), 10);
+                              //   removeElements();
+
+                 //   setTimeout(svg_arr[i].call(charts_arr[i].duration(1000).bands(4).height(height)), 20);
+
+                    setTimeout(svg_arr[i].call(charts_arr[i].duration(2000).bands(6).height(height)), 30);
+
+                 }
+
             }
         });
 
@@ -175,23 +191,26 @@ function drawLegend() {
             })(i);
         }
     });
-   
+
     var click_counter = 0;
     // Enable bands buttons.
     d3.selectAll("#legend-controls button").data([-1, 1]).on("click", function(d) {
         click_counter++;
         var n = Math.max(1, chart.bands() + d);
         if (click_counter === 0) {
-            var legend_text = "Horizon charts are a twist on a common chart called an Area chart.";
-            var button_text = "Next";
+            var headline_text = " Step 1 / 3. tart with an area chart.";
+            var legend_text = "Horizon charts are a twist on the classic area chart.The first step to turning an area chart into a horizon chart is to divide the space into horizontal bands.";
+            var button_text = "Add bands";
             n = 1;
         } else if (click_counter === 1) {
-            var legend_text = "To turn an area chart into a horizon chart, divide it into bands.";
-            var button_text = "Next";
+            var headline_text = "Step 2 / 3. Add Bands.";
+            var legend_text = "The bands at the top are darker than the bands at the bottom. Collapsing the bands on top of each other creates the horizon chart.";
+            var button_text = "Collapse bands";
             d3.select('.legend svg').attr('class', 'add-gradient');
             n = 1;
         } else if (click_counter === 2) {
-            var legend_text = "By stacking those bands on top of each other, we get a Horizon chart.";
+            var headline_text = "Step 3 / 3. Collapse Bands.";
+            var legend_text = "By stacking those bands on top of each other, we get a Horizon chart. The darker sections represents higher values.";
             var button_text = "Reset";
             d3.select('.legend svg').classed('add-gradient', false);
             n = 6;
@@ -199,6 +218,7 @@ function drawLegend() {
         }
 
         d3.select("#horizon-bands-text").text(legend_text);
+        d3.select("#headline-text").text(headline_text);
         d3.select(".last").text(button_text);
         svg.call(chart.duration(2000).bands(n).height(height * 0.75));
         d3.select('#legend-container path:nth-child(2)').attr('style', 'fill: url(#pathGradient) !important');
