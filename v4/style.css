@@ -30,7 +30,7 @@
     #super-container {
         position: relative;
         max-width: 800px;
-        min-width: 400px;
+       
         height: 900px;
         overflow: hidden;
         text-align: center;
