@@ -13,9 +13,18 @@
         cursor: pointer;
     }
 
+    button:hover {
+        background-color: lightgrey;
+    }
+
+    .selected {
+        background-color: lightgrey;
+    }
+
     body {
         background-color: black;
         font-family: OTSolidRegular;
+        max-height: 900px;
     }
 
     #super-container {
@@ -127,7 +136,7 @@
     }
 
     #legend-container {
-        margin-right: -60px;
+        margin-right: -70px;
         margin-top: 87px;
     }
 
@@ -259,7 +268,27 @@
 
     @media (max-width: 650px) {
         .legend {
-         /*   display: none; */
+         display: none; 
+        }
+
+        button {
+            width: 100px;
+        }
+
+        foreignObject {
+            height: 100px;
+            width: 120px;
+        }
+    }
+
+
+    @media (max-width: 400px) {
+        .legend {
+          display: none; 
+        }
+
+        img {
+            width: 100px;
         }
 
         button {

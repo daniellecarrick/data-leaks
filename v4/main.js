@@ -136,14 +136,14 @@ function drawLegend() {
     d3.select("#legend-chart").append("div").attr("id", "legend-container");
 
     var chart = d3.horizon()
-        .width(width * 0.5)
+        .width(width * 0.4)
         .height(height * 0.75)
         .bands(1)
         .mode("offset")
         .interpolate("cardinal");
 
     var svg = d3.select("#legend-container").append("svg")
-        .attr("width", width * .5)
+        .attr("width", width * .4)
         .attr("height", height * 0.75)
         .style('padding-top', paddingTop)
         .style("margin-top", margin.top);
@@ -227,6 +227,12 @@ function drawLegend() {
 }
 
 drawAll();
+
+d3.select('#horizon-bands').on('click', function() {
+    d3.select('button.selected').classed('selected', false);
+    d3.select(this).classed('selected', true);
+    
+});
 
 // Redraw based on the new size whenever the browser window is resized.
 window.addEventListener("resize", drawAll);
