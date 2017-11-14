@@ -107,7 +107,7 @@ function drawCharts(thecharts) {
 
                     //   setTimeout(svg_arr[i].call(charts_arr[i].duration(1000).bands(4).height(height)), 20);
 
-                    setTimeout(svg_arr[i].call(charts_arr[i].duration(2000).bands(6).height(height)), 30);
+                    svg_arr[i].call(charts_arr[i].duration(2000).bands(6).height(height));
 
                 }
 
