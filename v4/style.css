@@ -114,8 +114,8 @@
     }
 
     #legend-chart {
-      /*  float: right; */
-        margin-top: 80px;
+      /*  float: right; 
+        margin-top: 55px;*/
     }
 
     #legend-controls {
@@ -125,12 +125,26 @@
         line-height: 1;
     }
 
+    #legend-container {
+        margin-right: -60px;
+    }
+
     .legend .annotations {
         display: none;
     }
 
     .legend .title-container {
         display: none;
+    }
+
+    .legend img {
+        float: right;
+        margin-right: 40px;
+        margin-bottom: 10px;
+    }
+
+    p.legend-title {
+        font-family: OTSolidRegular;
     }
 
     .last {

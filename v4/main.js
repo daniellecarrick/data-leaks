@@ -178,7 +178,7 @@ function drawLegend() {
    
     var click_counter = 0;
     // Enable bands buttons.
-    d3.selectAll("#legend-bands button").data([-1, 1]).on("click", function(d) {
+    d3.selectAll("#legend-controls button").data([-1, 1]).on("click", function(d) {
         click_counter++;
         var n = Math.max(1, chart.bands() + d);
         if (click_counter === 0) {
@@ -198,7 +198,7 @@ function drawLegend() {
             click_counter = -1;
         }
 
-        d3.select("#horizon-bands-value").text(legend_text);
+        d3.select("#horizon-bands-text").text(legend_text);
         d3.select(".last").text(button_text);
         svg.call(chart.duration(2000).bands(n).height(height * 0.75));
         d3.select('#legend-container path:nth-child(2)').attr('style', 'fill: url(#pathGradient) !important');

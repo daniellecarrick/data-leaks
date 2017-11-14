@@ -177,7 +177,7 @@
                      {
                          "title": "Lost Stolen Devices",
                          "text": "<a href='https://www.wired.com/2010/04/iphone-finder/'>Better security protocols mean that stolen or lost devices stay locked.</a>",
-                         "coordinates": [2014, 30]
+                         "coordinates": [2013, 30]
                      }, {
                          "title": "Leak by Outside Vendor",
                          "text": "<a href='#'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
