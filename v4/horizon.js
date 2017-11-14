@@ -195,6 +195,7 @@
                          'x': translate_x,
                          'y': translate_y,
                          'height': 100,
+                         'width':120,
                          'class': 'svg-tooltip'
                      })
                      .attr('xmlns', 'http://www.w3.org/1999/xhtml') // go here for more info: https://github.com/d3/d3/issues/252

@@ -84,6 +84,12 @@ function drawCharts(thecharts) {
         //****** TO DO: Animate area to horizon chart better
         d3.selectAll("#horizon-bands button").on("click", function() {
             (this.className === 'area') ? n = 1: n = 6;
+            // remove elements otherwise they'll redraw on top of themselves
+            d3.selectAll('.svg-tooltip').remove();
+            d3.selectAll('.y-axis').remove();
+            d3.selectAll('.tooltip-container').remove();
+            d3.selectAll('.title-container').remove();
+
             for (var i = 0; i < numberOfCharts; i++) {
                 svg_arr[i].call(charts_arr[i].duration(2000).bands(n).height(height));
             }
@@ -126,16 +132,30 @@ function drawLegend() {
         .style('padding-top', paddingTop)
         .style("margin-top", margin.top);
 
-        // messing with the defs in the horizon.js
-   svg.append('linearGradient')
+    // messing with the defs in the horizon.js
+    svg.append('linearGradient')
         .attr('id', 'pathGradient')
         .attr("x1", 0).attr("y1", 1)
         .attr("x2", 0).attr("y2", 0)
         .selectAll('stop')
         .data([
-            { offset: "0%", class: "stop1" },
-            { offset: "5%", class: "stop2" },
-            { offset: "10%", class: "stop3" }
+            { offset: "10%", class: "stop1" },
+            { offset: "16%", class: "stop1" },
+
+            { offset: "17%", class: "stop2" },
+            { offset: "33%", class: "stop2" },
+
+            { offset: "34%", class: "stop3" },
+            { offset: "48%", class: "stop3" },
+
+            { offset: "49%", class: "stop4" },
+            { offset: "64%", class: "stop4" },
+
+            { offset: "65%", class: "stop5" },
+            { offset: "80%", class: "stop5" },
+
+            { offset: "81%", class: "stop6" },
+            { offset: "100%", class: "stop6" }
         ])
         .enter().append('stop')
         .attr("offset", function(d) { return d.offset; })
@@ -155,31 +175,34 @@ function drawLegend() {
             })(i);
         }
     });
-    d3.select('#legend-container path').attr('fill', 'url(#pathGradient) !important');
+   
     var click_counter = 0;
     // Enable bands buttons.
     d3.selectAll("#legend-bands button").data([-1, 1]).on("click", function(d) {
         click_counter++;
         var n = Math.max(1, chart.bands() + d);
         if (click_counter === 0) {
-            var legend_text = "Horizon charts are created by dividing an area chart into bands and overlaying the bands. Press next to add bands.";
+            var legend_text = "Horizon charts are a twist on a common chart called an Area chart.";
             var button_text = "Next";
-            n = 1
+            n = 1;
         } else if (click_counter === 1) {
-            var legend_text = "The area chart is now a horizon chart with 3 bands. Click next to add a few more bands.";
+            var legend_text = "To turn an area chart into a horizon chart, divide it into bands.";
             var button_text = "Next";
-            d3.select('#legend-container path').attr('fill', 'inherit');
-            n = 3
+            d3.select('.legend svg').attr('class', 'add-gradient');
+
+            n = 1;
         } else if (click_counter === 2) {
-            var legend_text = "Now we have a horizon chart with 6 bands.";
+            var legend_text = "By stacking those bands on top of each other, we get a Horizon chart.";
             var button_text = "Reset";
-            n = 6
+            n = 6;
             click_counter = -1;
         }
 
         d3.select("#horizon-bands-value").text(legend_text);
         d3.select(".last").text(button_text);
         svg.call(chart.duration(2000).bands(n).height(height * 0.75));
+        d3.select('#legend-container path:nth-child(2)').attr('style', 'fill: url(#pathGradient) !important');
+
     });
 }
 

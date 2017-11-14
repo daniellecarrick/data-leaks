@@ -10,6 +10,7 @@
         font-family: OTSolidLight;
         width: 160px;
         padding: 10px;
+        cursor: pointer;
     }
 
     body {
@@ -170,20 +171,33 @@
     path:first-child {
         fill: none !important;
     }
-    /* #legend-container path {
+
+    #legend-container .add-gradient path:nth-child(2) {
         fill: url(#pathGradient) !important;
-    }*/
+    }
 
     .stop1 {
-        stop-color: green;
+        stop-color: #DAE8F3;
     }
 
     .stop2 {
-        stop-color: black;
+        stop-color: #B4D2E6;
     }
 
     .stop3 {
-        stop-color: yellow;
+        stop-color: #8FBBDA;
+    }
+
+   .stop4 {
+        stop-color: #6AA4CD;
+    }
+
+    .stop5 {
+        stop-color: #448EC1;
+    }
+
+    .stop6 {
+        stop-color: #1F77B4;
     }
 
 /* USING CSS GRID */
