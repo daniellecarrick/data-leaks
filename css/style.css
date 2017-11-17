@@ -106,14 +106,9 @@
         shape-rendering: crispEdges;
     }
 
-    .legend {
+    .legend {}
 
-    }
-
-    .legend p
-   {
-
-    }
+    .legend p {}
 
     #legend-chart .tooltip-container {
         display: none;
@@ -142,9 +137,21 @@
         margin-top: 20px;
     }
 
-    .annotations a:hover {
+    .annotation a:hover {
         text-decoration: underline;
     }
+
+    .annotation {
+        text-align: left;
+    }
+
+    .annotation a {
+        font-size: 12px;
+        text-decoration: none;
+        color: white;
+        font-family: Arial;
+    }
+
 
     foreignObject {
         font: 9px sans-serif;
@@ -181,7 +188,7 @@
         stop-color: #8FBBDA;
     }
 
-   .stop4 {
+    .stop4 {
         stop-color: #6AA4CD;
     }
 
@@ -203,37 +210,36 @@
         src: url(/font/oxidesolidot-webfont.ttf);
     }
 
-    @media (max-width: 650px) {
-        .legend {
-         display: none;
-        }
+    /* Classes for 5 column grid */
 
-        button {
-            width: 100px;
-        }
-
-        foreignObject {
-            height: 100px;
-            width: 120px;
-        }
+    .col-5x {
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
     }
 
+    @media (min-width: 768px) {
+       .col-5x {
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+    }
 
-    @media (max-width: 400px) {
-        .legend {
-          display: none;
-        }
+    @media (min-width: 992px) {
+        .col-5x {
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
 
-        img {
-            width: 100px;
-        }
+    }
 
-        button {
-            width: 100px;
-        }
+    @media (min-width: 1200px) {
+        .col-5x {
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
 
-        foreignObject {
-            height: 100px;
-            width: 120px;
-        }
     }
