@@ -30,7 +30,7 @@
     #super-container {
         position: relative;
         max-width: 800px;
-       
+
         height: 900px;
         overflow: hidden;
         text-align: center;
@@ -107,32 +107,16 @@
     }
 
     .legend {
-        color: white;
-        display: block;
-        padding: 20px;
+
     }
 
-    .legend p,
-    #legend-bands {
-        font-family: Arial;
-        text-align: left;
-        font-size: 12px;
+    .legend p
+   {
+
     }
 
     #legend-chart .tooltip-container {
         display: none;
-    }
-
-    #legend-chart {
-      /*  float: right; 
-        margin-top: 55px;*/
-    }
-
-    #legend-controls {
-       /* float: left;
-        width: 50%; */
-        text-align: left;
-        line-height: 1;
     }
 
     #legend-container {
@@ -140,30 +124,14 @@
         margin-top: 87px;
     }
 
-    .legend .annotations {
-        display: none;
-    }
-
     .legend .title-container {
         display: none;
-    }
-
-    .legend img {
-        float: right;
-        margin-right: 40px;
-        margin-bottom: 10px;
     }
 
     #headline-text {
         font-family: Arial;
         font-weight: bold;
     }
-
-/*    #headline-text span {
-        font-size: 10px;
-        font-weight: 
-        font-family: Arial;
-    }*/
 
     p.legend-title {
         font-family: OTSolidRegular;
@@ -172,17 +140,6 @@
     .last {
         display: block;
         margin-top: 20px;
-    }
-
-    .annotations {
-        font-size: 8px;
-        text-align: center;
-        z-index: 9999;
-    }
-
-    .annotations a {
-        color: white;
-        text-decoration: none;
     }
 
     .annotations a:hover {
@@ -236,39 +193,19 @@
         stop-color: #1F77B4;
     }
 
-/* USING CSS GRID */
-
-.row {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-gap: 20px;
-}
-
-.col-md-7 {
-    grid-column: span 7;
-}
-
-.col-md-6 {
-    grid-column: span 6;
-}
-
-.col-md-5 {
-    grid-column: span 5;
-}
-
     @font-face {
         font-family: OTSolidLight;
-        src: url(font/oxidesolidot-light-webfont.ttf);
+        src: url(/font/oxidesolidot-light-webfont.ttf);
     }
 
     @font-face {
         font-family: OTSolidRegular;
-        src: url(font/oxidesolidot-webfont.ttf);
+        src: url(/font/oxidesolidot-webfont.ttf);
     }
 
     @media (max-width: 650px) {
         .legend {
-         display: none; 
+         display: none;
         }
 
         button {
@@ -284,7 +221,7 @@
 
     @media (max-width: 400px) {
         .legend {
-          display: none; 
+          display: none;
         }
 
         img {

@@ -131,7 +131,7 @@
                      .tickPadding(5)
                      .scale(yScale);
 
-                 // falls out side the bounds
+
                  g.append('g')
                      .attr('class', 'axis y-axis')
                      .attr('transform', 'translate(' + (w - margin.right) + ',0)')
@@ -162,7 +162,7 @@
 
                  var annotations_arr = [{
                          "title": "Hacking, Skimming, Phishing",
-                         "text": "<a top.window.location.href='https://www.wired.com/story/netflix-phishing-scam/?mbid=graphic_cybersecurity' target='_parent'>These attacks doubled <br>from 2015 to 2016</a>",
+                         "text": "<a href='https://www.wired.com/story/netflix-phishing-scam/?mbid=graphic_cybersecurity' target='_parent'>These attacks doubled <br>from 2015 to 2016</a>",
                          "coordinates": [2014, 40]
                      },
                      {
@@ -186,24 +186,10 @@
                      }
                  ];
 
-                 var the_annotation = annotations_arr[counter].text;
+                // var the_annotation = annotations_arr[counter].text;
                  var translate_x = x1(annotations_arr[counter].coordinates[0]);
                  var translate_y = 10;
-                 var annotations = g.append('g').attr('transform', 'translate(' + (translate_x) + ',' + translate_y + ')');
-
-                 g.append('foreignObject')
-                     .attr({
-                         'x': translate_x,
-                         'y': translate_y,
-                         'height': 100,
-                         'width':120,
-                         'class': 'svg-tooltip'
-                     })
-                     .attr('xmlns', 'http://www.w3.org/1999/xhtml') // go here for more info: https://github.com/d3/d3/issues/252
-                     .append('xhtml:body').attr('xmlns', 'http://www.w3.org/1999/xhtml')
-                     .append('xhtml:div')
-                     .attr('class', 'annotations')
-                     .append('xhtml:p').html(the_annotation);
+                 var annotations = g.append('circle').attr('transform', 'translate(' + (translate_x) + ',' + translate_y + ')');
 
 
                  // since this gets redone on resize, need to reset counter
