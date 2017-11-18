@@ -18,7 +18,6 @@ function drawAll() {
     width = outter_width - margin.right;
     drawAxis();
     drawCharts(numberOfCharts);
-    drawLegend();
 }
 
 function drawAxis() {
@@ -133,117 +132,8 @@ function drawCharts(thecharts) {
     });
 }
 
-
-function drawLegend() {
-
-    d3.select("#legend-container").remove();
-    d3.select("#legend-chart").append("div").attr("id", "legend-container");
-
-    var chart = d3.horizon()
-        .width(width * 0.4)
-        .height(height * 0.75)
-        .bands(1)
-        .mode("offset")
-        .interpolate("cardinal");
-
-    var svg = d3.select("#legend-container").append("svg")
-        .attr("width", width * .4)
-        .attr("height", height * 0.75)
-        .style('padding-top', paddingTop)
-        .style("margin-top", margin.top);
-
-    // messing with the defs in the horizon.js
-    svg.append('linearGradient')
-        .attr('id', 'pathGradient')
-        .attr("x1", 0).attr("y1", 1)
-        .attr("x2", 0).attr("y2", 0)
-        .selectAll('stop')
-        .data([
-            { offset: "10%", class: "stop1" },
-            { offset: "16%", class: "stop1" },
-
-            { offset: "17%", class: "stop2" },
-            { offset: "33%", class: "stop2" },
-
-            { offset: "34%", class: "stop3" },
-            { offset: "48%", class: "stop3" },
-
-            { offset: "49%", class: "stop4" },
-            { offset: "64%", class: "stop4" },
-
-            { offset: "65%", class: "stop5" },
-            { offset: "80%", class: "stop5" },
-
-            { offset: "81%", class: "stop6" },
-            { offset: "100%", class: "stop6" }
-        ])
-        .enter().append('stop')
-        .attr("offset", function(d) { return d.offset; })
-        .attr("class", function(d) { return d.class; });
-
-    d3.json("data.json", function(dataOrig) {
-        for (var i = 0; i < 1; i++) {
-            (function(i) {
-                var data = dataOrig;
-                var formattedData = data.data[i];
-                var orig_data = formattedData;
-                data = formattedData.map(function(val, i) {
-                    return [data.year[i], val];
-                });
-
-                svg.data([data]).call(chart);
-            })(i);
-        }
-    });
-
-    var click_counter = 0;
-    // Enable bands buttons.
-    d3.selectAll("#legend-controls button").data([-1, 1]).on("click", function(d) {
-        click_counter++;
-        var n = Math.max(1, chart.bands() + d);
-        if (click_counter === 0) {
-            var headline_text = " Step 1 / 3. tart with an area chart.";
-            var legend_text = "Horizon charts are a twist on the classic area chart.The first step to turning an area chart into a horizon chart is to divide the space into horizontal bands.";
-            var button_text = "Add bands";
-            n = 1;
-        } else if (click_counter === 1) {
-            var headline_text = "Step 2 / 3. Add Bands.";
-            var legend_text = "The bands at the top are darker than the bands at the bottom. Collapsing the bands on top of each other creates the horizon chart.";
-            var button_text = "Collapse bands";
-            d3.select('.legend svg').attr('class', 'add-gradient');
-            n = 1;
-        } else if (click_counter === 2) {
-            var headline_text = "Step 3 / 3. Collapse Bands.";
-            var legend_text = "By stacking those bands on top of each other, we get a Horizon chart. The darker sections represents higher values.";
-            var button_text = "Reset";
-            d3.select('.legend svg').classed('add-gradient', false);
-            n = 6;
-            click_counter = -1;
-        }
-
-        d3.select("#horizon-bands-text").text(legend_text);
-        d3.select("#headline-text").text(headline_text);
-        d3.select(".last").text(button_text);
-        svg.call(chart.duration(2000).bands(n).height(height * 0.75));
-        d3.select('#legend-container path:nth-child(2)').attr('style', 'fill: url(#pathGradient) !important');
-
-    });
-}
-
 drawAll();
 
-/*d3.selectAll("#horizon-bands button").on("click", function () {
-  var activeClass = "selected";
-   d3.select('button.selected').classed('selected', false);
-  var alreadyIsActive = d3.select(this).classed(activeClass);
-  d3.select(this).classed(activeClass, !alreadyIsActive);
-});*/
-
-/*d3.select('#horizon-bands button').on('click', function() {
-    d3.select('button.selected').classed('selected', false);
-    d3.select(this).classed('selected', true);
-
-});*/
 
 // Redraw based on the new size whenever the browser window is resized.
 window.addEventListener("resize", drawAll);

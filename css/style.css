@@ -6,10 +6,8 @@
         background-color: white;
         border: 1px solid lightgrey;
         color: black;
-        border-radius: 2px;
-        font-family: OTSolidLight;
-        width: 160px;
-        padding: 10px;
+        font-family: OTSolidBold;
+        width: 140px;
         cursor: pointer;
     }
 
@@ -25,13 +23,13 @@
         background-color: black;
         font-family: OTSolidRegular;
         max-height: 900px;
+        color: white;
     }
 
     #super-container {
         position: relative;
         max-width: 800px;
-
-        height: 900px;
+        height: 1000px;
         overflow: hidden;
         text-align: center;
         margin: 0 auto;
@@ -53,9 +51,8 @@
         z-index: 9999;
     }
 
-    #horizon-controls {
+    #horizon-controls button {
         text-align: center;
-        margin-top: 30px;
     }
 
     .axis {
@@ -108,9 +105,11 @@
         font-family: OTSolidBold;
     }
 
-    .legend {}
-
-    .legend p {}
+    .legend {
+        font-family: Arial;
+        text-align: left;
+        color: white;
+    }
 
     #legend-chart .tooltip-container {
         display: none;
@@ -135,21 +134,47 @@
         margin-top: 20px;
     }
 
+    .annotations-container, .legend-container {
+        margin: 10px 40px 10px 20px;
+    }
+
+    .annotations-container .col-5x {
+        padding: 0 10px 0 0;
+    }
+
     .annotation a:hover {
         text-decoration: underline;
     }
 
     .annotation {
         text-align: left;
+        line-height: 0.85;
     }
 
-    .annotation a {
+    .annotation span {
+        display: block;
+        text-align: center;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        background-color: white;
+        padding-top: 6px;
+        font-size: 10px;
+        color: black;
+    }
+
+
+    .annotation a, .legend-container {
         font-size: 12px;
         text-decoration: none;
         color: white;
         font-family: Arial;
+        text-align: left;
     }
 
+    .annotation p {
+        margin-top: 10px;
+    }
 
     foreignObject {
         font: 9px sans-serif;
@@ -166,38 +191,6 @@
         background-color: transparent;
     }
 
-    path:first-child {
-        fill: none !important;
-    }
-
-    #legend-container .add-gradient path:nth-child(2) {
-        fill: url(#pathGradient) !important;
-    }
-
-    .stop1 {
-        stop-color: #DAE8F3;
-    }
-
-    .stop2 {
-        stop-color: #B4D2E6;
-    }
-
-    .stop3 {
-        stop-color: #8FBBDA;
-    }
-
-    .stop4 {
-        stop-color: #6AA4CD;
-    }
-
-    .stop5 {
-        stop-color: #448EC1;
-    }
-
-    .stop6 {
-        stop-color: #1F77B4;
-    }
-
     @font-face {
         font-family: OTSolidLight;
         src: url(/font/oxidesolidot-light-webfont.ttf);
@@ -212,7 +205,6 @@
         font-family: OTSolidBold;
         src: url(/font/oxidesolidot-bold-webfont.ttf);
     }
-
     /* Classes for 5 column grid */
 
     .col-5x {
@@ -221,28 +213,32 @@
         max-width: 20%;
     }
 
-    @media (min-width: 768px) {
-       .col-5x {
-        -ms-flex: 0 0 20%;
-        flex: 0 0 20%;
-        max-width: 20%;
+    .col-5x-2 {
+        -ms-flex: 0 0 40%;
+        flex: 0 0 40%;
+        max-width: 40%;
     }
+
+    @media (min-width: 768px) {
+        .col-5x {
+            -ms-flex: 0 0 20%;
+            flex: 0 0 20%;
+            max-width: 20%;
+        }
     }
 
     @media (min-width: 992px) {
         .col-5x {
-        -ms-flex: 0 0 20%;
-        flex: 0 0 20%;
-        max-width: 20%;
-    }
-
+            -ms-flex: 0 0 20%;
+            flex: 0 0 20%;
+            max-width: 20%;
+        }
     }
 
     @media (min-width: 1200px) {
         .col-5x {
-        -ms-flex: 0 0 20%;
-        flex: 0 0 20%;
-        max-width: 20%;
-    }
-
+            -ms-flex: 0 0 20%;
+            flex: 0 0 20%;
+            max-width: 20%;
+        }
     }
