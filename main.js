@@ -29,7 +29,7 @@ function drawAxis() {
     var axis_svg = d3.select('#long-axis').insert('svg')
         .attr('class', 'axis x-axis')
         .attr('width', width)
-        .attr('height', ((height + margin.top + (paddingTop * 5)) * numberOfCharts))
+        .attr('height', ((height + margin.top + (paddingTop * numberOfCharts)) * numberOfCharts))
         .attr('xmlns', 'http://www.w3.org/2000/svg');
 
     var xScale = d3.scale.linear()
@@ -47,6 +47,7 @@ function drawAxis() {
     axis_svg.append('g')
         .attr("transform", "translate(0, 680)")
         .call(xAxis);
+
 }
 
 function drawCharts(thecharts) {
@@ -241,7 +242,7 @@ drawAll();
 /*d3.select('#horizon-bands button').on('click', function() {
     d3.select('button.selected').classed('selected', false);
     d3.select(this).classed('selected', true);
-    
+
 });*/
 
 // Redraw based on the new size whenever the browser window is resized.

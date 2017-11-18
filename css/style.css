@@ -93,6 +93,7 @@
         fill: white;
         color: white;
         font-size: 10px;
+        font-weight: bold;
         font-family: Arial;
     }
 
@@ -104,6 +105,7 @@
     .tooltip-text {
         font-size: 9px;
         shape-rendering: crispEdges;
+        font-family: OTSolidBold;
     }
 
     .legend {}
@@ -117,10 +119,6 @@
     #legend-container {
         margin-right: -70px;
         margin-top: 87px;
-    }
-
-    .legend .title-container {
-        display: none;
     }
 
     #headline-text {
@@ -208,6 +206,11 @@
     @font-face {
         font-family: OTSolidRegular;
         src: url(/font/oxidesolidot-webfont.ttf);
+    }
+
+    @font-face {
+        font-family: OTSolidBold;
+        src: url(/font/oxidesolidot-bold-webfont.ttf);
     }
 
     /* Classes for 5 column grid */

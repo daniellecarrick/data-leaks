@@ -144,21 +144,27 @@
 
                  var parentClass = this.parentNode.id;
 
-                 // THESE THINGS ONLY HAPPEN TO THE CHARTS NOT TO THE LEGEND
-                 if (parentClass === 'chart-container') {
-
-
                      var titles_arr = ['Hacking, Skimming, and Phishing', 'Insider Theft', 'Weak Corporate Internet Security', 'Data Breaches from Lost/Stolen Devices', 'Leak by Outside Vendor'];
-                     var title_bg_width_arr = [160, 70, 160, 190, 120];
+                     var title_bg_width_arr = [170, 70, 168, 200, 125];
                      var title_bg_width = title_bg_width_arr[counter];
                      var the_title = titles_arr[counter];
-                     var titles = g.append('g').attr('transform', 'translate(6, 65)').attr('class', 'title-container');
-                     titles.append('rect').attr('class', 'title-bg').attr('width', title_bg_width); // go here for more info: https://github.com/d3/d3/issues/252
-                     titles.append('text').attr('class', 'titles').text(the_title).attr('transform', 'translate(5,12)');
+
+                     var titles = g.append('g')
+                        .attr('transform', 'translate(6, 65)')
+                        .attr('class', 'title-container');
+
+                     titles.append('rect')
+                         .attr('class', 'title-bg')
+                         .attr('width', title_bg_width); // go here for more info: https://github.com/d3/d3/issues/252
+
+                     titles.append('text')
+                         .attr('class', 'titles')
+                         .text(the_title)
+                         .attr('transform', 'translate(5,12)');
 
                      /*******************
                        Annotations generated here
-                     ********************/
+                ********************/
 
                      var annotations_arr = [{
                              "title": "Hacking, Skimming, Phishing",
@@ -198,15 +204,32 @@
                          counter = 0;
                      }
 
-                 }
 
                  /*******************
                    Tooltip generated here
                  ********************/
-                 var tooltip = g.append('g').attr('class', 'tooltip-container');
-                 tooltip.append('line').attr('stroke', 'black').attr('class', 'tooltip-line-top');
-                 tooltip.append('line').attr('stroke', 'black').attr('class', 'tooltip-line-bottom');
-                 tooltip.append('text').attr('class', 'tooltip-text').attr('fill', 'black');
+                 var tooltip = g.append('g')
+                     .attr('class', 'tooltip-container');
+
+                 tooltip.append('line')
+                     .attr('stroke', 'black')
+                     .attr('class', 'tooltip-line-top');
+
+                 tooltip.append('line')
+                     .attr('stroke', 'black')
+                     .attr('class', 'tooltip-line-bottom');
+
+                 tooltip.append('line')
+                     .attr('stroke', 'black')
+                     .attr('class', 'line-nub-top');
+
+                 tooltip.append('line')
+                     .attr('stroke', 'black')
+                     .attr('class', 'line-nub-bottom');
+
+                 tooltip.append('text')
+                     .attr('class', 'tooltip-text')
+                     .attr('fill', 'black');
 
                  var date_arr = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
 
@@ -216,9 +239,31 @@
                      // Find the x mouse position and use it to grab the y-value
                      var mouse_x = d3.mouse(this)[0],
                          x0 = x1.invert(d3.mouse(this)[0]);
-                     // Add a vertical line
-                     d3.selectAll('.tooltip-line-top').attr('x1', mouse_x).attr('x2', mouse_x).attr('y1', 0).attr('y2', 40);
-                      d3.selectAll('.tooltip-line-bottom').attr('x1', mouse_x).attr('x2', mouse_x).attr('y1', 55).attr('y2', 100);
+
+                     // Add vertical lines, one on top of the text and one onthe bottom
+                     d3.selectAll('.tooltip-line-top')
+                         .attr('x1', mouse_x)
+                         .attr('x2', mouse_x)
+                         .attr('y1', 0)
+                         .attr('y2', 40);
+
+                     d3.selectAll('.line-nub-top')
+                         .attr('x1', mouse_x + 1)
+                         .attr('x2', mouse_x - 1)
+                         .attr('y1', 40)
+                         .attr('y2', 40);
+
+                     d3.selectAll('.line-nub-bottom')
+                         .attr('x1', mouse_x + 1)
+                         .attr('x2', mouse_x - 1)
+                         .attr('y1', 55)
+                         .attr('y2', 55);
+
+                     d3.selectAll('.tooltip-line-bottom')
+                         .attr('x1', mouse_x)
+                         .attr('x2', mouse_x)
+                         .attr('y1', 55)
+                         .attr('y2', 100);
 
                      // Add the data label
                      d3.selectAll('svg .tooltip-text').attr('x', mouse_x - 35).attr('y', 50)
@@ -227,7 +272,6 @@
                              var y_val = d[z - 1][1];
                              return y_val + " data leaks";
                          });
-
                  }
 
                  d3.select('#chart-container').on('mouseover', function() {
