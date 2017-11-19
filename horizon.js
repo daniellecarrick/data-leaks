@@ -144,65 +144,77 @@
 
                  var parentClass = this.parentNode.id;
 
-                     var titles_arr = ['Hacking, Skimming, and Phishing', 'Insider Theft', 'Weak Corporate Internet Security', 'Data Breaches from Lost/Stolen Devices', 'Leak by Outside Vendor'];
-                     var title_bg_width_arr = [170, 70, 168, 200, 125];
-                     var title_bg_width = title_bg_width_arr[counter];
-                     var the_title = titles_arr[counter];
+                 var titles_arr = ['Hacking, Skimming, and Phishing', 'Insider Theft', 'Weak Corporate Internet Security', 'Data Breaches from Lost/Stolen Devices', 'Leak by Outside Vendor'];
+                 var title_bg_width_arr = [170, 70, 168, 200, 125];
+                 var title_bg_width = title_bg_width_arr[counter];
+                 var the_title = titles_arr[counter];
 
-                     var titles = g.append('g')
-                        .attr('transform', 'translate(6, 65)')
-                        .attr('class', 'title-container');
+                 var titles = g.append('g')
+                     .attr('transform', 'translate(6, 65)')
+                     .attr('class', 'title-container');
 
-                     titles.append('rect')
-                         .attr('class', 'title-bg')
-                         .attr('width', title_bg_width); // go here for more info: https://github.com/d3/d3/issues/252
+                 titles.append('rect')
+                     .attr('class', 'title-bg')
+                     .attr('width', title_bg_width); // go here for more info: https://github.com/d3/d3/issues/252
 
-                     titles.append('text')
-                         .attr('class', 'titles')
-                         .text(the_title)
-                         .attr('transform', 'translate(5,12)');
+                 titles.append('text')
+                     .attr('class', 'titles')
+                     .text(the_title)
+                     .attr('transform', 'translate(5,12)');
 
-                     /*******************
+                 /*******************
                        Annotations generated here
                 ********************/
 
-                     var annotations_arr = [{
-                             "title": "Hacking, Skimming, Phishing",
-                             "text": "<a href='https://www.wired.com/story/netflix-phishing-scam/?mbid=graphic_cybersecurity' target='_parent'>These attacks doubled <br>from 2015 to 2016</a>",
-                             "coordinates": [2014, 40]
-                         },
-                         {
-                             "title": "Insider Theft",
-                             "text": "<a href='https://www.wired.com/story/hbo-hacks-game-of-thrones/?mbid=graphic_cybersecurity'  target='_parent'>Sys Admins: Remember to revoke privileges from former employees.</a>",
-                             "coordinates": [2008, 40]
-                         },
-                         {
-                             "title": "Weak Corporate Internet Security",
-                             "text": "<a href='https://www.wired.com/2009/07/health-breaches/?mbid=graphic_cybersecurity'  target='_parent'>Firms inadvertently released personal data online 109 times in 2015.</a>",
-                             "coordinates": [2012, 30]
-                         },
-                         {
-                             "title": "Lost Stolen Devices",
-                             "text": "<a href='https://www.wired.com/2010/04/iphone-finder/?mbid=graphic_cybersecurity'  target='_parent'>Better security protocols mean that stolen or lost devices stay locked.</a>",
-                             "coordinates": [2013, 30]
-                         }, {
-                             "title": "Leak by Outside Vendor",
-                             "text": "<a href='https://www.wired.com/2017/03/protect-icloud-account-juuuuust-case/?mbid=graphic_cybersecurity'  target='_parent'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
-                             "coordinates": [2012, 30]
-                         }
-                     ];
-
-                     // var the_annotation = annotations_arr[counter].text;
-                     var translate_x = x1(annotations_arr[counter].coordinates[0]);
-                     var translate_y = 10;
-                     var annotations = g.append('circle').attr('transform', 'translate(' + (translate_x) + ',' + translate_y + ')');
-
-
-                     // since this gets redone on resize, need to reset counter
-                     counter++;
-                     if (counter === 5) {
-                         counter = 0;
+                // @caprice --> the only part of this array being used is the year to position the circle. I moved the annotation to the html. I'm leaving it in case you decide to use it later.
+                 var annotations_arr = [{
+                         "title": "Hacking, Skimming, Phishing",
+                         "text": "<a href='https://www.wired.com/story/netflix-phishing-scam/?mbid=graphic_cybersecurity' target='_parent'>These attacks doubled <br>from 2015 to 2016</a>",
+                         "year": 2015.5
+                     },
+                     {
+                         "title": "Insider Theft",
+                         "text": "<a href='https://www.wired.com/story/hbo-hacks-game-of-thrones/?mbid=graphic_cybersecurity'  target='_parent'>Sys Admins: Remember to revoke privileges from former employees.</a>",
+                         "year": 2009
+                     },
+                     {
+                         "title": "Weak Corporate Internet Security",
+                         "text": "<a href='https://www.wired.com/2009/07/health-breaches/?mbid=graphic_cybersecurity'  target='_parent'>Firms inadvertently released personal data online 109 times in 2015.</a>",
+                         "year": 2013.5
+                     },
+                     {
+                         "title": "Lost Stolen Devices",
+                         "text": "<a href='https://www.wired.com/2010/04/iphone-finder/?mbid=graphic_cybersecurity'  target='_parent'>Better security protocols mean that stolen or lost devices stay locked.</a>",
+                         "year": 2015
+                     }, {
+                         "title": "Leak by Outside Vendor",
+                         "text": "<a href='https://www.wired.com/2017/03/protect-icloud-account-juuuuust-case/?mbid=graphic_cybersecurity'  target='_parent'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
+                         "year": 2013.5
                      }
+                 ];
+
+                 var translate_x = x1(annotations_arr[counter].year);
+                 var translate_y = 50;
+
+                 var annotations = g.append('g')
+                     .attr('class', 'annotation-circles')
+                     .attr('transform', 'translate(' + (translate_x) + ',' + translate_y + ')');
+
+                 annotations.append('circle')
+                     .attr('r', 9)
+                     .attr('fill', 'white');
+
+                 annotations.append('text')
+                     .attr('transform', 'translate(-4,3)')
+                    // .style('font-size', '10px')
+                     .text(counter+1);
+
+
+                 // since this gets redone on resize, need to reset counter
+                 counter++;
+                 if (counter === 5) {
+                     counter = 0;
+                 }
 
 
                  /*******************
@@ -248,14 +260,14 @@
                          .attr('y2', 40);
 
                      d3.selectAll('.line-nub-top')
-                         .attr('x1', mouse_x + 1)
-                         .attr('x2', mouse_x - 1)
+                         .attr('x1', mouse_x + 2)
+                         .attr('x2', mouse_x - 2)
                          .attr('y1', 40)
                          .attr('y2', 40);
 
                      d3.selectAll('.line-nub-bottom')
-                         .attr('x1', mouse_x + 1)
-                         .attr('x2', mouse_x - 1)
+                         .attr('x1', mouse_x + 2)
+                         .attr('x2', mouse_x - 2)
                          .attr('y1', 55)
                          .attr('y2', 55);
 

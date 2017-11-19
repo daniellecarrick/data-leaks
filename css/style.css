@@ -76,6 +76,10 @@
         shape-rendering: crispEdges;
     }
 
+    #long-axis .tick text {
+        font-size: 12px;
+    }
+
     .domain {
         display: none;
     }
@@ -176,19 +180,8 @@
         margin-top: 10px;
     }
 
-    foreignObject {
-        font: 9px sans-serif;
-        text-overflow: ellipsis;
-        text-align: left;
-        word-wrap: break-word;
-        height: 100px;
-        width: 220px;
-        position: absolute;
-        top: 0;
-    }
-
-    foreignObject body {
-        background-color: transparent;
+    .annotation-circles text {
+        font-size: 10px;
     }
 
     @font-face {
