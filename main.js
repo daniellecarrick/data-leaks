@@ -3,7 +3,7 @@ Author: Danielle Carrick
 www.daniellecarrick.com
 ****************/
 
-var outter_width = document.getElementById('super-container').clientWidth;
+var outter_width = document.getElementById('wrapper').clientWidth;
 
 var numberOfCharts = 5;
 var paddingTop = 5;
@@ -14,7 +14,7 @@ var width = outter_width - margin.right,
     height = 90;
 
 function drawAll() {
-    outter_width = document.getElementById('super-container').clientWidth;
+    outter_width = document.getElementById('wrapper').clientWidth;
     width = outter_width - margin.right;
     drawAxis();
     drawCharts(numberOfCharts);
