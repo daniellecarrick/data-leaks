@@ -145,12 +145,12 @@
                  var parentClass = this.parentNode.id;
 
                  var titles_arr = ['Hacking, Skimming, and Phishing', 'Insider Theft', 'Weak Corporate Internet Security', 'Data Breaches from Lost/Stolen Devices', 'Leak by Outside Vendor'];
-                 var title_bg_width_arr = [170, 70, 168, 200, 125];
+                 var title_bg_width_arr = [190, 90, 188, 220, 145];
                  var title_bg_width = title_bg_width_arr[counter];
                  var the_title = titles_arr[counter];
 
                  var titles = g.append('g')
-                     .attr('transform', 'translate(6, 65)')
+                     .attr('transform', 'translate(6, 95)')
                      .attr('class', 'title-container');
 
                  titles.append('rect')
@@ -257,28 +257,28 @@
                          .attr('x1', mouse_x)
                          .attr('x2', mouse_x)
                          .attr('y1', 0)
-                         .attr('y2', 40);
+                         .attr('y2', 50);
 
                      d3.selectAll('.line-nub-top')
                          .attr('x1', mouse_x + 2)
                          .attr('x2', mouse_x - 2)
-                         .attr('y1', 40)
-                         .attr('y2', 40);
+                         .attr('y1', 50)
+                         .attr('y2', 50);
 
                      d3.selectAll('.line-nub-bottom')
                          .attr('x1', mouse_x + 2)
                          .attr('x2', mouse_x - 2)
-                         .attr('y1', 55)
-                         .attr('y2', 55);
+                         .attr('y1', 65)
+                         .attr('y2', 65);
 
                      d3.selectAll('.tooltip-line-bottom')
                          .attr('x1', mouse_x)
                          .attr('x2', mouse_x)
-                         .attr('y1', 55)
-                         .attr('y2', 100);
+                         .attr('y1', 65)
+                         .attr('y2', 120);
 
                      // Add the data label
-                     d3.selectAll('svg .tooltip-text').attr('x', mouse_x - 35).attr('y', 50)
+                     d3.selectAll('svg .tooltip-text').attr('x', mouse_x - 35).attr('y', 60)
                          .text(function(d, i) {
                              var z = bisect(date_arr, x0, 1);
                              var y_val = d[z - 1][1];
