@@ -145,12 +145,19 @@
                  var parentClass = this.parentNode.id;
 
                  var titles_arr = ['Hacking, Skimming, and Phishing', 'Insider Theft', 'Weak Corporate Internet Security', 'Data Breaches from Lost/Stolen Devices', 'Leak by Outside Vendor'];
-                 var title_bg_width_arr = [190, 90, 188, 220, 145];
+                 var title_bg_width_arr = [187, 77, 184, 222, 136];
                  var title_bg_width = title_bg_width_arr[counter];
                  var the_title = titles_arr[counter];
 
                  var titles = g.append('g')
-                     .attr('transform', 'translate(6, 95)')
+                     .attr('transform', function(){
+                       if(h == 120){
+                        return 'translate(6, 95)';
+                       }else{
+                         return 'translate(6, 65)';
+                       }
+
+                     })
                      .attr('class', 'title-container');
 
                  titles.append('rect')
@@ -205,7 +212,14 @@
                      .attr('fill', 'white');
 
                  annotations.append('text')
-                     .attr('transform', 'translate(-4,3)')
+                     .attr('transform', function(){
+                       if(counter +1 == 1){
+                         return 'translate(-2,3)';
+                       } else{
+                         return 'translate(-4,3)';
+                       }
+
+                     })
                     // .style('font-size', '10px')
                      .text(counter+1);
 
@@ -278,7 +292,7 @@
                          .attr('y2', 120);
 
                      // Add the data label
-                     d3.selectAll('svg .tooltip-text').attr('x', mouse_x - 35).attr('y', 60)
+                     d3.selectAll('svg .tooltip-text').attr('x', mouse_x - 43).attr('y', 61)
                          .text(function(d, i) {
                              var z = bisect(date_arr, x0, 1);
                              var y_val = d[z - 1][1];
