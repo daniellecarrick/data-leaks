@@ -5,10 +5,12 @@
     .top-section {
         font-size: 12px;
         text-align: left;
+        margin-right: 42px;
         line-height: 1;
+        margin-left: 0;
+        margin-top: 10px;
         border-bottom: 1px solid grey;
         border-top: 1px solid grey;
-        margin: 20px 40px 0px 0px;
     }
 
     .top-underlying {
@@ -22,14 +24,6 @@
         padding: 0px;
     }
 
-    .remove-padding {
-        padding: 0px;
-    }
-
-    #horizon-bands {
-        float: right;
-    }
-
     button {
         background-color: grey;
         border: 1px solid grey;
@@ -39,8 +33,12 @@
         cursor: pointer;
         border-radius: 0px;
         float: left;
+        height: 22px;
         padding: 3px;
-        margin: 0px 0px 0px 10px;
+        width: calc(50% - 25px);
+        margin: 0px 10px;
+        margin-top: 0px;
+        padding-top: 5px;
     }
 
     button:hover {
@@ -61,7 +59,7 @@
 
     h3 {
         font-family: OTSolidRegular;
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .rightBorder {
@@ -77,7 +75,6 @@
     .legendNum {
         position: absolute;
         top: 35px;
-        left: 15px;
         font-family: OTSolidRegular;
     }
 
@@ -112,13 +109,17 @@
 
     .axis {
         fill: white;
-        font-size: 8px;
+        font-size: 11px;
         shape-rendering: crispEdges;
     }
 
     .x-axis {
         position: absolute;
         font-family: OTSolidRegular;
+    }
+
+    g.annotation-circles {
+        pointer-events: none;
     }
 
     .y-axis {
@@ -162,6 +163,7 @@
         font-size: 10px;
         shape-rendering: crispEdges;
         font-family: OTSolidBold;
+        pointer-events: none;
     }
 
     .legend {
@@ -195,7 +197,7 @@
 
     .annotations-container,
     .legend-container {
-        margin: 10px 40px 10px 20px;
+        margin: 10px 60px 10px 20px;
     }
 
     .annotations-container .col-5x {
@@ -212,6 +214,8 @@
         line-height: 1;
     }
 
+
+
     .annotation span {
         display: block;
         text-align: center;
@@ -219,7 +223,7 @@
         width: 18px;
         height: 18px;
         background-color: white;
-        padding-top: 6px;
+        padding-top: 4px;
         font-size: 10px;
         color: black;
     }
@@ -232,8 +236,9 @@
         color: white;
         font-family: Arial;
         text-align: left;
-        margin: 0;
-        margin-right: 20px;
+        /* margin: 0; */
+        /* margin-right: 20px; */
+        margin-top: -20px;
     }
 
     .annotation p {
@@ -243,6 +248,35 @@
     .annotation-circles text {
         font-size: 10px;
     }
+
+    @font-face {
+        font-family: OTSolidLight;
+        src: url(/font/oxidesolidot-light-webfont.ttf);
+    }
+
+    @font-face {
+        font-family: OTSolidRegular;
+        src: url(/font/oxidesolidot-webfont.ttf);
+    }
+
+    @font-face {
+        font-family: OTSolidBold;
+        src: url(/font/oxidesolidot-bold-webfont.ttf);
+    }
+    /*  @font-face {
+        font-family: OTSolidLight;
+        src: url(/Documents/Visualizations/data-leaks/font/oxidesolidot-light-webfont.ttf);
+    }
+
+    @font-face {
+        font-family: OTSolidRegular;
+        src: url(/Documents/Visualizations/data-leaks/font/oxidesolidot-webfont.ttf);
+    }
+
+    @font-face {
+        font-family: OTSolidBold;
+        src: url(/Documents/Visualizations/data-leaks/font/oxidesolidot-bold-webfont.ttf);
+    }*/
 
     /* Classes for 5 column grid */
 
@@ -254,7 +288,7 @@
     .col-sm-legend {
         width: 19.444444444%;
         float: left;
-        padding: 10px 10px 10px 0px;
+        padding: 8px;
     }
 
     .col-5x-2 {
@@ -262,23 +296,43 @@
         float: left;
     }
 
+    img {
+        position: absolute;
+        right: 15px;
+        top: 2px;
+    }
+
+    @media (max-width: 770px) {
+        .rightBorder {
+            border-right: 0px solid grey;
+            margin-bottom: -10px;
+        }
+
+        .col-sm-legend2 {
+            display: none;
+        }
+
+        .mobile--padding0 {
+            padding-left: 0px;
+        }
+    }
+
     @media (max-width: 500px) {
+
+        img {
+            width: 110px;
+        }
 
         button {
             margin: 0;
+            width: 50%;
         }
         .top-section {
             margin-right: 0px;
             margin-left: 0px;
         }
 
-        .rightBorder {
-            border-right: 0px solid grey;
-        }
 
-        .col-sm-legend2 {
-            display: none;
-        }
 
         #visual-container,
         #horizon-chart {
@@ -297,7 +351,7 @@
         }
 
         .legend-container {
-            margin-top: -30px;
+            margin-top: -40px;
         }
 
         .annotation p {
@@ -311,19 +365,8 @@
             float: left;
             padding: 0px;
         }
-    }
 
-    @font-face {
-        font-family: OTSolidLight;
-        src: url(/font/oxidesolidot-light-webfont.ttf);
-    }
-
-    @font-face {
-        font-family: OTSolidRegular;
-        src: url(/font/oxidesolidot-webfont.ttf);
-    }
-
-    @font-face {
-        font-family: OTSolidBold;
-        src: url(/font/oxidesolidot-bold-webfont.ttf);
+        h3 {
+            font-size: 14px;
+        }
     }
