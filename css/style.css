@@ -10,32 +10,31 @@
         margin-top: 20px;
         border-bottom: 1px solid grey;
         border-top: 1px solid grey;
-
     }
 
-    .top-underlying{
+    .top-underlying {
         padding: 0;
         padding-top: 15px;
         padding-bottom: 5px;
     }
 
-    .col-sm-legend2{
-      width: 19.4444444444%;
-      padding: 0px;
+    .col-sm-legend2 {
+        width: 19.4444444444%;
+        padding: 0px;
     }
 
     button {
-      background-color: grey;
-      border: 1px solid grey;
-      color: black;
-      font-family: OTSolidRegular;
-      width: 120px;
-      cursor: pointer;
-      border-radius: 0px;
-      float: left;
-      padding: 3px;
-      width: 45%;
-      margin: 0px 5px;
+        background-color: grey;
+        border: 1px solid grey;
+        color: black;
+        font-family: OTSolidRegular;
+        width: 120px;
+        cursor: pointer;
+        border-radius: 0px;
+        float: left;
+        padding: 3px;
+        width: 45%;
+        margin: 0px 5px;
     }
 
     button:hover {
@@ -54,27 +53,27 @@
         color: white;
     }
 
-    h3{
-      font-family: OTSolidRegular;
-      font-size: 20px;
+    h3 {
+        font-family: OTSolidRegular;
+        font-size: 20px;
     }
 
-    .rightBorder{
-      border-right: 1px solid grey;
+    .rightBorder {
+        border-right: 1px solid grey;
     }
 
     img.legendPic {
-    width: 100%;
-    margin-top: 20px;
-    padding: 10px;
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
     }
 
     .legendNum {
-      position: absolute;
-      top: 35px;
-      left: 15px;
-    font-family: OTSolidRegular;
-   }
+        position: absolute;
+        top: 35px;
+        left: 15px;
+        font-family: OTSolidRegular;
+    }
 
     #wrapper {
         position: relative;
@@ -240,21 +239,6 @@
     .annotation-circles text {
         font-size: 10px;
     }
-
-    @font-face {
-        font-family: OTSolidLight;
-        src: url(/projects/data-leaks/font/oxidesolidot-light-webfont.ttf);
-    }
-
-    @font-face {
-        font-family: OTSolidRegular;
-        src: url(/projects/data-leaks/font/oxidesolidot-webfont.ttf);
-    }
-
-    @font-face {
-        font-family: OTSolidBold;
-        src: url(/projects/data-leaks/font/oxidesolidot-bold-webfont.ttf);
-    }
     /* Classes for 5 column grid */
 
     .col-5x {
@@ -275,44 +259,46 @@
 
     @media (max-width: 500px) {
 
-      button{
-        margin:0;
-      }
+        button {
+            margin: 0;
+        }
         .top-section {
-          margin-right: 0px;
-          margin-left: 0px;
+            margin-right: 0px;
+            margin-left: 0px;
         }
 
-        .rightBorder{
-          border-right: 0px solid grey;
+        .rightBorder {
+            border-right: 0px solid grey;
         }
 
-        .col-sm-legend2{
-          display: none;
+        .col-sm-legend2 {
+            display: none;
         }
 
-        #visual-container, #horizon-chart{
-          margin-left: 20px;
+        #visual-container,
+        #horizon-chart {
+            margin-left: 20px;
         }
 
         #visual-container {
-        margin-top: 50px;
+            margin-top: 50px;
         }
 
-        .annotations-container, .legend-container{
-          margin: 20px;
-          margin-top: 0;
-          margin-left: 30px;
+        .annotations-container,
+        .legend-container {
+            margin: 20px;
+            margin-top: 0;
+            margin-left: 30px;
         }
 
-        .legend-container{
-          margin-top: -30px;
+        .legend-container {
+            margin-top: -30px;
         }
 
         .annotation p {
-          margin-top: -20px;
-          margin-left: 25px;
-          margin-bottom: 20px;
+            margin-top: -20px;
+            margin-left: 25px;
+            margin-bottom: 20px;
         }
 
         .col-sm-legend {
@@ -320,4 +306,19 @@
             float: left;
             padding: 0px;
         }
+    }
+
+    @font-face {
+        font-family: OTSolidLight;
+        src: url(/font/oxidesolidot-light-webfont.ttf);
+    }
+
+    @font-face {
+        font-family: OTSolidRegular;
+        src: url(/font/oxidesolidot-webfont.ttf);
+    }
+
+    @font-face {
+        font-family: OTSolidBold;
+        src: url(/font/oxidesolidot-bold-webfont.ttf);
     }
