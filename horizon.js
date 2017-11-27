@@ -237,12 +237,18 @@
                      .attr('fill', 'none')
                      .attr('width', function() {
                          if (mobile) {
-                             return 90;
+                             return 95;
                          } else {
                              return 120;
                          }
                      })
-                     .attr('height', 17)
+                     .attr('height', function() {
+                         if (mobile) {
+                             return 15;
+                         } else {
+                             return 17;
+                         }
+                     })
                      .attr('class', 'tooltip-bg');
 
                  tooltip.append('text')
@@ -269,10 +275,16 @@
 
                      d3.selectAll('.tooltip-bg')
                          .attr('fill', 'black')
-                         .attr('x', mouse_x - 60)
+                         .attr('x', function() {
+                             if (mobile) {
+                                 return mouse_x - 47;
+                             } else {
+                                 return mouse_x - 60;
+                             }
+                         })
                          .attr('y', function() {
                              if (mobile) {
-                                 return 40;
+                                 return 39;
                              } else {
                                  return 48;
                              }
@@ -280,19 +292,19 @@
 
                      d3.selectAll('svg .tooltip-text')
                          .attr('x', function() {
-                        if (mobile) {
-                            return mouse_x - 43;
-                        } else {
-                            return mouse_x - 53;
-                        }
-                     })
+                             if (mobile) {
+                                 return mouse_x - 43;
+                             } else {
+                                 return mouse_x - 53;
+                             }
+                         })
                          .attr('y', function() {
-                        if (mobile) {
-                            return 50;
-                        } else {
-                            return 61;
-                        }
-                     })
+                             if (mobile) {
+                                 return 50;
+                             } else {
+                                 return 61;
+                             }
+                         })
                          .text(function(d, i) {
                              var z = bisect(date_arr, x0, 1);
                              var y_val = d[z - 1][1];

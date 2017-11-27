@@ -15,9 +15,10 @@ var width = outter_width - margin.right;
 
 if( width < 500){
   height = 90;
-  var mobile = true;
+  mobile = true;
 } else{
   height = 120;
+  mobile = false;
 }
 
 function drawAll() {
@@ -25,9 +26,11 @@ function drawAll() {
     width = outter_width - margin.right;
     if( width < 500){
       height = 90;
+      mobile = true;
       document.getElementById("visual-container").style.height = "500px";
     } else{
       height = 120;
+      mobile = false;
       document.getElementById("visual-container").style.height = "650px";
     }
 

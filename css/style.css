@@ -317,7 +317,8 @@
     }
     /** MEDIA STYLES ***/
 
-    @media (max-width: 770px) {
+    @media (max-width: 760px) { /* Ipad */
+        
         .rightBorder {
             border-right: 0px solid grey;
             margin-bottom: -10px;
