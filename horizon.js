@@ -235,7 +235,7 @@
 
                  tooltip.append('rect')
                      .attr('fill', 'none')
-                     .attr('width', 115)
+                     .attr('width', 120)
                      .attr('height', 17)
                      .attr('class', 'tooltip-bg');
 
