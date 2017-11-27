@@ -48,9 +48,7 @@
         margin-left: 15px;
     }
 
-    button.horion {
-
-    }
+    button.horion {}
 
     button:hover {
         background-color: white;
@@ -82,7 +80,7 @@
     }
 
     .container-fluid h3 {
-         margin-left: 5px;
+        margin-left: 5px;
     }
 
     .rightBorder {
@@ -221,9 +219,12 @@
         margin-top: 20px;
     }
 
-    .annotations-container,
     .legend-container {
         margin: 10px 58px 10px 20px;
+    }
+
+    .annotations-container {
+        margin: 10px 43px 17px 5px;
     }
 
     .annotations-container .col-5x {
@@ -304,7 +305,8 @@
 
     .col-sm-legend {
         width: 20%;
-        padding: 8px 8px 8px 0px;
+       padding-left: 15px;
+       padding-right: 15px;
     }
 
     .col-5x,
@@ -334,7 +336,8 @@
             border-right: 0px solid grey;
             margin-bottom: -10px;
         }
-        .col-5x-2, .col-5x-3 {
+        .col-5x-2,
+        .col-5x-3 {
             width: 100%;
         }
 
