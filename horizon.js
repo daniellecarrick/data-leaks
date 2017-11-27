@@ -150,12 +150,12 @@
                  var the_title = titles_arr[counter];
 
                  var titles = g.append('g')
-                     .attr('transform', function(){
-                       if(h == 120){
-                        return 'translate(6, 95)';
-                       }else{
-                         return 'translate(6, 65)';
-                       }
+                     .attr('transform', function() {
+                         if (h == 120) {
+                             return 'translate(6, 95)';
+                         } else {
+                             return 'translate(6, 65)';
+                         }
 
                      })
                      .attr('class', 'title-container');
@@ -206,16 +206,14 @@
                      .attr('fill', 'white');
 
                  annotations.append('text')
-                     .attr('transform', function(){
-                       if(counter +1 == 1){
-                         return 'translate(-2,3)';
-                       } else{
-                         return 'translate(-4,3)';
-                       }
-
+                     .attr('transform', function() {
+                         if (counter + 1 == 1) {
+                             return 'translate(-2,3)';
+                         } else {
+                             return 'translate(-4,3)';
+                         }
                      })
-                    // .style('font-size', '10px')
-                     .text(counter+1);
+                     .text(counter + 1);
 
 
                  // since this gets redone on resize, need to reset counter
@@ -233,23 +231,17 @@
 
                  tooltip.append('line')
                      .attr('stroke', 'black')
-                     .attr('class', 'tooltip-line-top');
+                     .attr('class', 'tooltip-line');
 
-                 tooltip.append('line')
-                     .attr('stroke', 'black')
-                     .attr('class', 'tooltip-line-bottom');
-
-                 tooltip.append('line')
-                     .attr('stroke', 'black')
-                     .attr('class', 'line-nub-top');
-
-                 tooltip.append('line')
-                     .attr('stroke', 'black')
-                     .attr('class', 'line-nub-bottom');
+                 tooltip.append('rect')
+                     .attr('fill', 'none')
+                     .attr('width', 115)
+                     .attr('height', 17)
+                     .attr('class', 'tooltip-bg');
 
                  tooltip.append('text')
                      .attr('class', 'tooltip-text')
-                     .attr('fill', 'black');
+                     .attr('fill', 'white');
 
                  var date_arr = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
 
@@ -261,32 +253,20 @@
                          x0 = x1.invert(d3.mouse(this)[0]);
 
                      // Add vertical lines, one on top of the text and one onthe bottom
-                     d3.selectAll('.tooltip-line-top')
+                     d3.selectAll('.tooltip-line')
                          .attr('x1', mouse_x)
                          .attr('x2', mouse_x)
                          .attr('y1', 0)
-                         .attr('y2', 50);
-
-                     d3.selectAll('.line-nub-top')
-                         .attr('x1', mouse_x + 2)
-                         .attr('x2', mouse_x - 2)
-                         .attr('y1', 50)
-                         .attr('y2', 50);
-
-                     d3.selectAll('.line-nub-bottom')
-                         .attr('x1', mouse_x + 2)
-                         .attr('x2', mouse_x - 2)
-                         .attr('y1', 65)
-                         .attr('y2', 65);
-
-                     d3.selectAll('.tooltip-line-bottom')
-                         .attr('x1', mouse_x)
-                         .attr('x2', mouse_x)
-                         .attr('y1', 65)
                          .attr('y2', 120);
 
                      // Add the data label
-                     d3.selectAll('svg .tooltip-text').attr('x', mouse_x - 43).attr('y', 61)
+
+                     d3.selectAll('.tooltip-bg')
+                         .attr('fill', 'black')
+                         .attr('x', mouse_x - 60)
+                         .attr('y', 48);
+
+                     d3.selectAll('svg .tooltip-text').attr('x', mouse_x - 53).attr('y', 61)
                          .text(function(d, i) {
                              var z = bisect(date_arr, x0, 1);
                              var y_val = d[z - 1][1];

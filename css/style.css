@@ -170,7 +170,7 @@
     }
 
     .tooltip-text {
-        font-size: 10px;
+        font-size: 12px;
         shape-rendering: crispEdges;
         font-family: OTSolidBold;
         pointer-events: none;
