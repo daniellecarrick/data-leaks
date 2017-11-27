@@ -173,29 +173,23 @@
                        Annotations generated here
                 ********************/
 
-                // @caprice --> the only part of this array being used is the year to position the circle. I moved the annotation to the html. I'm leaving it in case you decide to use it later.
                  var annotations_arr = [{
                          "title": "Hacking, Skimming, Phishing",
-                         "text": "<a href='https://www.wired.com/story/netflix-phishing-scam/?mbid=graphic_cybersecurity' target='_parent'>These attacks doubled <br>from 2015 to 2016</a>",
                          "year": 2015.5
                      },
                      {
                          "title": "Insider Theft",
-                         "text": "<a href='https://www.wired.com/story/hbo-hacks-game-of-thrones/?mbid=graphic_cybersecurity'  target='_parent'>Sys Admins: Remember to revoke privileges from former employees.</a>",
                          "year": 2009
                      },
                      {
                          "title": "Weak Corporate Internet Security",
-                         "text": "<a href='https://www.wired.com/2009/07/health-breaches/?mbid=graphic_cybersecurity'  target='_parent'>Firms inadvertently released personal data online 109 times in 2015.</a>",
                          "year": 2013.5
                      },
                      {
                          "title": "Lost Stolen Devices",
-                         "text": "<a href='https://www.wired.com/2010/04/iphone-finder/?mbid=graphic_cybersecurity'  target='_parent'>Better security protocols mean that stolen or lost devices stay locked.</a>",
                          "year": 2015
                      }, {
                          "title": "Leak by Outside Vendor",
-                         "text": "<a href='https://www.wired.com/2017/03/protect-icloud-account-juuuuust-case/?mbid=graphic_cybersecurity'  target='_parent'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
                          "year": 2013.5
                      }
                  ];
