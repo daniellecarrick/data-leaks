@@ -9,10 +9,8 @@
     .top-section {
         font-size: 12px;
         text-align: left;
-        margin-right: 42px;
+        margin: 10px 42px 0px 5px;
         line-height: 1;
-        margin-left: 0;
-        margin-top: 10px;
         border-bottom: 1px solid grey;
         border-top: 1px solid grey;
     }
@@ -42,9 +40,16 @@
         float: right;
         height: 22px;
         padding: 3px;
-        width: calc(50% - 25px);
-        margin: 0px 0px 0px 10px;
+        width: 45%;
         padding-top: 5px;
+    }
+
+    button.area {
+        margin-left: 15px;
+    }
+
+    button.horion {
+
     }
 
     button:hover {
@@ -74,6 +79,10 @@
     h3 {
         font-family: BrandonBold;
         font-size: 18px;
+    }
+
+    .container-fluid h3 {
+         margin-left: 5px;
     }
 
     .rightBorder {
@@ -306,8 +315,10 @@
 
     .col-5x-2 {
         width: 40%;
-        padding-left: 15px;
-        padding-right: 15px;
+    }
+
+    .col-5x-3 {
+        width: 60%;
     }
 
     .top-section img {
@@ -317,16 +328,14 @@
     }
     /** MEDIA STYLES ***/
 
-    @media (max-width: 760px) { /* Ipad */
-        
+    @media (max-width: 760px) {
+        /* Ipad */
         .rightBorder {
             border-right: 0px solid grey;
             margin-bottom: -10px;
         }
-        .col-5x-2 {
+        .col-5x-2, .col-5x-3 {
             width: 100%;
-            padding-left: 15px;
-            padding-right: 15px;
         }
 
         .mobile--hide {
@@ -348,7 +357,8 @@
 
     @media (max-width: 500px) {
 
-        #long-axis .tick text, .axis {
+        #long-axis .tick text,
+        .axis {
             font-size: 9px;
         }
 
@@ -361,13 +371,15 @@
         }
 
         button {
-            margin: 0;
-            width: 50%;
+            margin-left: 10px;
+            width: 40%;
         }
+
         .top-section {
             margin-right: 0px;
             margin-left: 0px;
             font-size: 10px;
+            padding-bottom: 0px;
         }
 
         #visual-container,
