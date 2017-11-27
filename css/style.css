@@ -32,7 +32,7 @@
         background-color: grey;
         border: 1px solid grey;
         color: black;
-        font-family: OTSolidRegular;
+        font-family: OTSolidBold;
         cursor: pointer;
         border-radius: 0px;
         float: right;
@@ -69,7 +69,7 @@
 
     h3 {
         font-family: BrandonBold;
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .rightBorder {
