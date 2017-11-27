@@ -2,6 +2,10 @@
         clear: both;
     }
 
+    p {
+        line-height: 1;
+    }
+
     .top-section {
         font-size: 12px;
         text-align: left;
@@ -25,7 +29,7 @@
     }
 
     #horizon-bands {
-       /* float: right;*/
+        /* float: right;*/
     }
 
     button {
@@ -80,12 +84,14 @@
         width: 100%;
         margin-top: 20px;
         padding: 10px;
+        position: absolute;
+        top: 2px;
     }
 
     .legendNum {
         position: absolute;
         top: 30px;
-        left: -5px;
+        left: 25px;
         font-family: OTSolidRegular;
     }
 
@@ -222,10 +228,7 @@
 
     .annotation {
         text-align: left;
-        line-height: 1;
     }
-
-
 
     .annotation span {
         display: block;
@@ -247,8 +250,6 @@
         color: white;
         font-family: ProximaNova;
         text-align: left;
-        /* margin: 0; */
-        /* margin-right: 20px; */
         margin-top: -20px;
     }
 
@@ -274,57 +275,74 @@
         font-family: OTSolidBold;
         src: url(/font/oxidesolidot-bold-webfont.ttf);
     }
- 
+
     @font-face {
         font-family: BrandonBold;
         src: url(/font/brandontext-bold-webfont.ttf);
     }
 
-     @font-face {
+    @font-face {
         font-family: ProximaNova;
         src: url(/font/ProximaNova-Regular.otf);
     }
-
     /* Classes for 5 column grid */
 
     .col-5x {
         width: 20%;
-        float: left;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .col-sm-legend {
         width: 20%;
-        float: left;
         padding: 8px 8px 8px 0px;
+    }
+
+    .col-5x,
+    .col-sm-legend,
+    .col-5x-2 {
+        float: left;
     }
 
     .col-5x-2 {
         width: 40%;
-        float: left;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
-    img {
+    .top-section img {
         position: absolute;
         right: 15px;
         top: 2px;
     }
+    /** MEDIA STYLES ***/
 
     @media (max-width: 770px) {
         .rightBorder {
             border-right: 0px solid grey;
             margin-bottom: -10px;
         }
+        .col-5x-2 {
+            width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
 
-        .col-sm-legend2 {
+        .mobile--hide {
             display: none;
         }
 
         .mobile--padding0 {
             padding-left: 0px;
         }
+
+        .top-section img {
+            right: 0px;
+        }
     }
 
     @media (max-width: 500px) {
+
 
         img {
             width: 110px;
