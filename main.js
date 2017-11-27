@@ -10,12 +10,26 @@ var paddingTop = 5;
 
 var margin = { top: -10, right: 40, bottom: 20, left: 20 };
 
-var width = outter_width - margin.right,
-    height = 90;
+var width = outter_width - margin.right;
+
+
+if( width < 500){
+  height = 90;
+} else{
+  height = 120;
+}
 
 function drawAll() {
     outter_width = document.getElementById('wrapper').clientWidth;
     width = outter_width - margin.right;
+    if( width < 500){
+      height = 90;
+      document.getElementById("visual-container").style.height = "500px";
+    } else{
+      height = 120;
+      document.getElementById("visual-container").style.height = "650px";
+    }
+
     drawAxis();
     drawCharts(numberOfCharts);
 }
@@ -28,7 +42,7 @@ function drawAxis() {
     var axis_svg = d3.select('#long-axis').insert('svg')
         .attr('class', 'axis x-axis')
         .attr('width', width)
-        .attr('height', ((height + margin.top + (paddingTop * numberOfCharts)) * numberOfCharts))
+        .attr('height', ((height + margin.top + (paddingTop * numberOfCharts)) * numberOfCharts) - 20)
         .attr('xmlns', 'http://www.w3.org/2000/svg');
 
     var xScale = d3.scale.linear()
@@ -37,7 +51,13 @@ function drawAxis() {
 
     var xAxis = d3.svg.axis()
         .scale(xScale)
-        .tickValues([2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017])
+        .tickValues(function(){
+          if(width < 500){
+            return [ 2007, 2009, 2011, 2013,  2015, 2017];
+          } else{
+            return [ 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016];
+          }
+        })
         .tickSize(660)
         .tickFormat(d3.format('d'))
         .tickPadding(10)
@@ -99,15 +119,37 @@ function drawCharts(thecharts) {
             removeElements();
             for (var i = 0; i < numberOfCharts; i++) {
                 //svg_arr[i].call(charts_arr[i].duration(2000).bands(n));
-                if (n === 1) {
+                if (n == 1) {
+                  console.log("firstchoice");
                     svg_arr[i].call(charts_arr[i].duration(2000).bands(n).height(height));
                 } else {
-                    //setTimeout(svg_arr[i].call(charts_arr[i].duration(1000).bands(2).height(height)), 10);
+
+
+                    var time = 1000;
+                      svg_arr[0].call(charts_arr[0].duration(time*8).bands(2).height(height));
+                      svg_arr[1].call(charts_arr[1].duration(time*8).bands(2).height(height));
+                      svg_arr[2].call(charts_arr[2].duration(time*8).bands(2).height(height));
+                      svg_arr[3].call(charts_arr[3].duration(time*8).bands(2).height(height));
+                      svg_arr[4].call(charts_arr[4].duration(time*8).bands(2).height(height));
+
                     //   removeElements();
 
-                    //   setTimeout(svg_arr[i].call(charts_arr[i].duration(1000).bands(4).height(height)), 20);
+                      setTimeout(function(thisChart){
+                         svg_arr[0].call(charts_arr[0].duration(time*2).bands(4).height(height));
+                         svg_arr[1].call(charts_arr[1].duration(time*2).bands(4).height(height));
+                         svg_arr[2].call(charts_arr[2].duration(time*2).bands(4).height(height));
+                         svg_arr[3].call(charts_arr[3].duration(time*2).bands(4).height(height));
+                         svg_arr[4].call(charts_arr[4].duration(time*2).bands(4).height(height));
+                       }, 200);
 
-                    svg_arr[i].call(charts_arr[i].duration(2000).bands(6).height(height));
+                        setTimeout(function(thisChart){
+                          svg_arr[0].call(charts_arr[0].duration(time * 2).bands(6).height(height));
+                          svg_arr[1].call(charts_arr[1].duration(time * 2).bands(6).height(height));
+                          svg_arr[2].call(charts_arr[2].duration(time*2).bands(6).height(height));
+                          svg_arr[3].call(charts_arr[3].duration(time*2).bands(6).height(height));
+                          svg_arr[4].call(charts_arr[4].duration(time*2).bands(6).height(height));
+                        }, time /2);
+                    //svg_arr[i].call(charts_arr[i].duration(2000).bands(6).height(height));
 
                 }
 

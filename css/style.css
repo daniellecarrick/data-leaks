@@ -5,45 +5,93 @@
     .top-section {
         font-size: 12px;
         text-align: left;
-        margin-right: 40px;
+        margin-right: 42px;
         line-height: 1;
-        margin-top: 20px;
-        border-bottom: 1px solid white;
-        border-top: 1px solid white;
-        padding: 15px 0;
+        margin-left: 0;
+        margin-top: 10px;
+        border-bottom: 1px solid grey;
+        border-top: 1px solid grey;
+    }
+
+    .top-underlying {
+        padding: 0;
+        padding-top: 15px;
+        padding-bottom: 5px;
+    }
+
+    .col-sm-legend2 {
+        width: 19.4444444444%;
+        padding: 0px;
+    }
+
+    #horizon-bands {
+       /* float: right;*/
     }
 
     button {
-        background-color: white;
-        border: 1px solid lightgrey;
+        background-color: grey;
+        border: 1px solid grey;
         color: black;
         font-family: OTSolidRegular;
-        width: 120px;
         cursor: pointer;
-        float: left;
-        width: 45%;
-        margin: 0px 5px;
+        border-radius: 0px;
+        float: right;
+        height: 22px;
+        padding: 3px;
+        width: calc(50% - 25px);
+        margin: 0px 0px 0px 10px;
+        padding-top: 5px;
     }
 
     button:hover {
-        background-color: lightgrey;
+        background-color: white;
+    }
+
+    .remove-padding {
+        padding: 0px;
+    }
+
+    .remove-padding-right {
+        padding-right: 0px;
     }
 
     .selected {
-        background-color: lightgrey;
+        background-color: white;
+        outline: none
     }
 
     body {
         background-color: black;
         font-family: OTSolidRegular;
-        max-height: 900px;
+        max-height: 1200px;
         color: white;
+    }
+
+    h3 {
+        font-family: OTSolidRegular;
+        font-size: 16px;
+    }
+
+    .rightBorder {
+        border-right: 1px solid grey;
+    }
+
+    img.legendPic {
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .legendNum {
+        position: absolute;
+        top: 35px;
+        font-family: OTSolidRegular;
     }
 
     #wrapper {
         position: relative;
         max-width: 800px;
-        height: 1000px;
+        height: 1150px;
         overflow: hidden;
         text-align: center;
         margin: 0 auto;
@@ -52,7 +100,7 @@
     #visual-container {
         position: relative;
         margin-top: 70px;
-        height: 500px;
+        height: 650px;
     }
 
     #long-axis {
@@ -71,7 +119,7 @@
 
     .axis {
         fill: white;
-        font-size: 8px;
+        font-size: 11px;
         shape-rendering: crispEdges;
     }
 
@@ -80,13 +128,17 @@
         font-family: OTSolidRegular;
     }
 
+    g.annotation-circles {
+        pointer-events: none;
+    }
+
     .y-axis {
         font-family: OTSolidLight;
     }
 
     .tick line {
         stroke-width: 1;
-        stroke: white;
+        stroke: grey;
         shape-rendering: crispEdges;
     }
 
@@ -107,7 +159,7 @@
     .titles {
         fill: white;
         color: white;
-        font-size: 10px;
+        font-size: 11px;
         font-weight: bold;
         font-family: Arial;
     }
@@ -118,9 +170,10 @@
     }
 
     .tooltip-text {
-        font-size: 9px;
+        font-size: 12px;
         shape-rendering: crispEdges;
         font-family: OTSolidBold;
+        pointer-events: none;
     }
 
     .legend {
@@ -154,11 +207,12 @@
 
     .annotations-container,
     .legend-container {
-        margin: 10px 40px 10px 20px;
+        margin: 10px 58px 10px 20px;
     }
 
     .annotations-container .col-5x {
         padding: 0 10px 0 0;
+        margin-bottom: 15px;
     }
 
     .annotation a:hover {
@@ -167,8 +221,10 @@
 
     .annotation {
         text-align: left;
-        line-height: 0.85;
+        line-height: 1;
     }
+
+
 
     .annotation span {
         display: block;
@@ -177,7 +233,7 @@
         width: 18px;
         height: 18px;
         background-color: white;
-        padding-top: 6px;
+        padding-top: 4px;
         font-size: 10px;
         color: black;
     }
@@ -190,6 +246,9 @@
         color: white;
         font-family: Arial;
         text-align: left;
+        /* margin: 0; */
+        /* margin-right: 20px; */
+        margin-top: -20px;
     }
 
     .annotation p {
@@ -214,6 +273,21 @@
         font-family: OTSolidBold;
         src: url(/font/oxidesolidot-bold-webfont.ttf);
     }
+    /*  @font-face {
+        font-family: OTSolidLight;
+        src: url(/Documents/Visualizations/data-leaks/font/oxidesolidot-light-webfont.ttf);
+    }
+
+    @font-face {
+        font-family: OTSolidRegular;
+        src: url(/Documents/Visualizations/data-leaks/font/oxidesolidot-webfont.ttf);
+    }
+
+    @font-face {
+        font-family: OTSolidBold;
+        src: url(/Documents/Visualizations/data-leaks/font/oxidesolidot-bold-webfont.ttf);
+    }*/
+
     /* Classes for 5 column grid */
 
     .col-5x {
@@ -221,7 +295,86 @@
         float: left;
     }
 
+    .col-sm-legend {
+        width: 20%;
+        float: left;
+        padding: 8px 8px 8px 0px;
+    }
+
     .col-5x-2 {
         width: 40%;
         float: left;
+    }
+
+    img {
+        position: absolute;
+        right: 15px;
+        top: 2px;
+    }
+
+    @media (max-width: 770px) {
+        .rightBorder {
+            border-right: 0px solid grey;
+            margin-bottom: -10px;
+        }
+
+        .col-sm-legend2 {
+            display: none;
+        }
+
+        .mobile--padding0 {
+            padding-left: 0px;
+        }
+    }
+
+    @media (max-width: 500px) {
+
+        img {
+            width: 110px;
+        }
+
+        button {
+            margin: 0;
+            width: 50%;
+        }
+        .top-section {
+            margin-right: 0px;
+            margin-left: 0px;
+        }
+
+        #visual-container,
+        #horizon-chart {
+            margin-left: 20px;
+        }
+
+        #visual-container {
+            margin-top: 50px;
+        }
+
+        .annotations-container,
+        .legend-container {
+            margin: 20px;
+            margin-top: 0;
+            margin-left: 36px;
+        }
+
+        .legend-container {
+            margin-top: -40px;
+        }
+
+        .annotation p {
+            margin-top: -20px;
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        .col-sm-legend {
+            width: 100%;
+            float: left;
+            padding: 0px;
+        }
+
+        h3 {
+            font-size: 14px;
+        }
     }

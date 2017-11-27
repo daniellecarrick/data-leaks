@@ -145,12 +145,19 @@
                  var parentClass = this.parentNode.id;
 
                  var titles_arr = ['Hacking, Skimming, and Phishing', 'Insider Theft', 'Weak Corporate Internet Security', 'Data Breaches from Lost/Stolen Devices', 'Leak by Outside Vendor'];
-                 var title_bg_width_arr = [170, 70, 168, 200, 125];
+                 var title_bg_width_arr = [187, 77, 184, 222, 136];
                  var title_bg_width = title_bg_width_arr[counter];
                  var the_title = titles_arr[counter];
 
                  var titles = g.append('g')
-                     .attr('transform', 'translate(6, 65)')
+                     .attr('transform', function() {
+                         if (h == 120) {
+                             return 'translate(6, 95)';
+                         } else {
+                             return 'translate(6, 65)';
+                         }
+
+                     })
                      .attr('class', 'title-container');
 
                  titles.append('rect')
@@ -166,29 +173,23 @@
                        Annotations generated here
                 ********************/
 
-                // @caprice --> the only part of this array being used is the year to position the circle. I moved the annotation to the html. I'm leaving it in case you decide to use it later.
                  var annotations_arr = [{
                          "title": "Hacking, Skimming, Phishing",
-                         "text": "<a href='https://www.wired.com/story/netflix-phishing-scam/?mbid=graphic_cybersecurity' target='_parent'>These attacks doubled <br>from 2015 to 2016</a>",
                          "year": 2015.5
                      },
                      {
                          "title": "Insider Theft",
-                         "text": "<a href='https://www.wired.com/story/hbo-hacks-game-of-thrones/?mbid=graphic_cybersecurity'  target='_parent'>Sys Admins: Remember to revoke privileges from former employees.</a>",
                          "year": 2009
                      },
                      {
                          "title": "Weak Corporate Internet Security",
-                         "text": "<a href='https://www.wired.com/2009/07/health-breaches/?mbid=graphic_cybersecurity'  target='_parent'>Firms inadvertently released personal data online 109 times in 2015.</a>",
                          "year": 2013.5
                      },
                      {
                          "title": "Lost Stolen Devices",
-                         "text": "<a href='https://www.wired.com/2010/04/iphone-finder/?mbid=graphic_cybersecurity'  target='_parent'>Better security protocols mean that stolen or lost devices stay locked.</a>",
                          "year": 2015
                      }, {
                          "title": "Leak by Outside Vendor",
-                         "text": "<a href='https://www.wired.com/2017/03/protect-icloud-account-juuuuust-case/?mbid=graphic_cybersecurity'  target='_parent'>Any type of breach could expose the data of thousands (or millions) of people.</a>",
                          "year": 2013.5
                      }
                  ];
@@ -205,9 +206,14 @@
                      .attr('fill', 'white');
 
                  annotations.append('text')
-                     .attr('transform', 'translate(-4,3)')
-                    // .style('font-size', '10px')
-                     .text(counter+1);
+                     .attr('transform', function() {
+                         if (counter + 1 == 1) {
+                             return 'translate(-2,3)';
+                         } else {
+                             return 'translate(-4,3)';
+                         }
+                     })
+                     .text(counter + 1);
 
 
                  // since this gets redone on resize, need to reset counter
@@ -225,23 +231,17 @@
 
                  tooltip.append('line')
                      .attr('stroke', 'black')
-                     .attr('class', 'tooltip-line-top');
+                     .attr('class', 'tooltip-line');
 
-                 tooltip.append('line')
-                     .attr('stroke', 'black')
-                     .attr('class', 'tooltip-line-bottom');
-
-                 tooltip.append('line')
-                     .attr('stroke', 'black')
-                     .attr('class', 'line-nub-top');
-
-                 tooltip.append('line')
-                     .attr('stroke', 'black')
-                     .attr('class', 'line-nub-bottom');
+                 tooltip.append('rect')
+                     .attr('fill', 'none')
+                     .attr('width', 115)
+                     .attr('height', 17)
+                     .attr('class', 'tooltip-bg');
 
                  tooltip.append('text')
                      .attr('class', 'tooltip-text')
-                     .attr('fill', 'black');
+                     .attr('fill', 'white');
 
                  var date_arr = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
 
@@ -253,32 +253,20 @@
                          x0 = x1.invert(d3.mouse(this)[0]);
 
                      // Add vertical lines, one on top of the text and one onthe bottom
-                     d3.selectAll('.tooltip-line-top')
+                     d3.selectAll('.tooltip-line')
                          .attr('x1', mouse_x)
                          .attr('x2', mouse_x)
                          .attr('y1', 0)
-                         .attr('y2', 40);
-
-                     d3.selectAll('.line-nub-top')
-                         .attr('x1', mouse_x + 2)
-                         .attr('x2', mouse_x - 2)
-                         .attr('y1', 40)
-                         .attr('y2', 40);
-
-                     d3.selectAll('.line-nub-bottom')
-                         .attr('x1', mouse_x + 2)
-                         .attr('x2', mouse_x - 2)
-                         .attr('y1', 55)
-                         .attr('y2', 55);
-
-                     d3.selectAll('.tooltip-line-bottom')
-                         .attr('x1', mouse_x)
-                         .attr('x2', mouse_x)
-                         .attr('y1', 55)
-                         .attr('y2', 100);
+                         .attr('y2', 120);
 
                      // Add the data label
-                     d3.selectAll('svg .tooltip-text').attr('x', mouse_x - 35).attr('y', 50)
+
+                     d3.selectAll('.tooltip-bg')
+                         .attr('fill', 'black')
+                         .attr('x', mouse_x - 60)
+                         .attr('y', 48);
+
+                     d3.selectAll('svg .tooltip-text').attr('x', mouse_x - 53).attr('y', 61)
                          .text(function(d, i) {
                              var z = bisect(date_arr, x0, 1);
                              var y_val = d[z - 1][1];

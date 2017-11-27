@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
+<!-- TODO: Ask about lowercase fonts -->
 <head>
     <title>WIRED | Data Leaks</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -15,24 +15,29 @@
     <script src="horizon.js?0.0.1"></script>
     <div id="wrapper">
         <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3 style="text-align: left;">How Data Leaks Change Over Time</h3>
+                </div>
+            </div>
             <div class="row top-section">
-                <div class="col-xs-5">
-                    <div class="col-xs-7">
-                        <p>Relative data
-                            <br> breach volume</p>
+                <div class="col-sm-5 col-xs-12 rightBorder top-underlying">
+                    <div class="col-sm-6 col-xs-8" style="padding-left: 0;">
+                        <p>Relative data breach volume &#9656;</p>
                     </div>
-                    <div class="col-xs-5">
-                        <img src="img/legend.png" width="100px">
+                    <div class="col-sm-6 col-xs-4">
+                        <img src="img/legend.png" width="120px">
                     </div>
                 </div>
-                <div class="col-xs-7">
-                    <div class="col-xs-3">
-                        <p>Toggle instructTK</p>
+                <div class="col-sm-7 col-xs-12 top-underlying">
+                    <div class="col-xs-4 mobile--padding0 remove-padding-right">
+                        <p>Click for alternate view &#9656;</p>
                     </div>
-                    <div class="col-xs-9">
+                    <div class="col-xs-8 remove-padding">
                         <span id="horizon-bands">
-                    <button class="horizon selected">Horizon</button>
                     <button class="area">Area</button>
+                    <button class="horizon selected">Horizon</button>
+
                 </span>
                     </div>
                 </div>
@@ -45,31 +50,31 @@
             </div>
         </div>
         <div class="row annotations-container">
-            <div class="col-5x">
+            <div class="col-sm-legend col-xs-legend">
                 <div class="annotation">
-                    <span>1</span>
+                    <span> 1</span>
                     <p><a href='https://www.wired.com/story/netflix-phishing-scam/?mbid=graphic_cybersecurity' target='_parent'>These attacks doubled <br>from 2015 to 2016</a></p>
                 </div>
             </div>
-            <div class="col-5x">
+            <div class="col-sm-legend col-xs-legend">
                 <div class="annotation">
                     <span>2</span>
                     <p><a href='https://www.wired.com/story/hbo-hacks-game-of-thrones/?mbid=graphic_cybersecurity' target='_parent'>Sys Admins: Remember to revoke privileges from former employees.</a></p>
                 </div>
             </div>
-            <div class="col-5x">
+            <div class="col-sm-legend col-xs-legend">
                 <div class="annotation">
                     <span>3</span>
                     <p><a href='https://www.wired.com/2009/07/health-breaches/?mbid=graphic_cybersecurity' target='_parent'>Firms inadvertently released personal data online 109 times in 2015.</a></p>
                 </div>
             </div>
-            <div class="col-5x">
+            <div class="col-sm-legend col-xs-legend">
                 <div class="annotation">
                     <span>4</span>
                     <p><a href='https://www.wired.com/2010/04/iphone-finder/?mbid=graphic_cybersecurity' target='_parent'>Better security protocols mean that stolen or lost devices stay locked.</a></p>
                 </div>
             </div>
-            <div class="col-5x">
+            <div class="col-sm-legend col-xs-legend">
                 <div class="annotation">
                     <span>5</span>
                     <p><a href='https://www.wired.com/2017/03/protect-icloud-account-juuuuust-case/?mbid=graphic_cybersecurity' target='_parent'>Any type of breach could expose the data of thousands (or millions) of people.</a></p>
@@ -78,14 +83,28 @@
             <hr class="col-12">
         </div>
         <div class="row legend-container">
-            <div class="col-5x-2">
-                <h3>CHART TITLE TK</h3>
-                <p><strong>Step 1</strong> Start with an area chart. <strong>Step 2</strong> The first step to turning an area chart into a horizon chart is to divide the space into horizontal bands
-                    <strong>Step 3</strong> By stacking those bands on top of each other, we get a Horizon chart. The darker sections represents higher values.</p>
+            <div class="col-sm-5 col-xs-12 " style="padding-left: 0;">
+                <h3>HOW TO READ A HORIZON CHART</h3>
+                <p style="margin: 0px;
+                            margin-top: 9px;
+                            padding-right: 10px;
+                            vertical-align: bottom;
+                            position: absolute;">
+                    <strong style="font-family: OTSolidRegular;">Step 1</strong> Start with an area chart. <strong style="font-family: OTSolidRegular;">Step 2</strong> Divide the area chart into horizontal bands colored light to dark.
+                    <strong style="font-family: OTSolidRegular;">Step 3</strong> Stack those bands on top of each other and you have a Horizon chart. The darker sections represent higher values.</p>
             </div>
-            <div class="col-5x">Image</div>
-            <div class="col-5x">Image</div>
-            <div class="col-5x">Image</div>
+            <div class="col-sm-legend2 col-xs-4">
+                <img class="legendPic" src="img/Legend_Step1.png">
+                <div class="legendNum">1</div>
+            </div>
+            <div class="col-sm-legend2 col-xs-4">
+                <img class="legendPic" src="img/Legend_Step2.png">
+                <div class="legendNum">2</div>
+            </div>
+            <div class="col-sm-legend2 col-xs-4">
+                <img class="legendPic" src="img/Legend_Step3.png">
+                <div class="legendNum">3</div>
+            </div>
         </div>
     </div>
     <script src="main.js"></script>
