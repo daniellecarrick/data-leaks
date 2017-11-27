@@ -237,9 +237,9 @@
                      .attr('fill', 'none')
                      .attr('width', function() {
                          if (mobile) {
-                             return 95;
+                             return 96;
                          } else {
-                             return 120;
+                             return 110;
                          }
                      })
                      .attr('height', function() {
@@ -277,7 +277,7 @@
                          .attr('fill', 'black')
                          .attr('x', function() {
                              if (mobile) {
-                                 return mouse_x - 47;
+                                 return mouse_x - 45;
                              } else {
                                  return mouse_x - 60;
                              }
@@ -293,7 +293,7 @@
                      d3.selectAll('svg .tooltip-text')
                          .attr('x', function() {
                              if (mobile) {
-                                 return mouse_x - 43;
+                                 return mouse_x - 40;
                              } else {
                                  return mouse_x - 53;
                              }

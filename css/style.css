@@ -184,7 +184,7 @@
     }
 
     .tooltip-text {
-        font-size: 12px;
+        font-size: 11px;
         shape-rendering: crispEdges;
         font-family: OTSolidBold;
         pointer-events: none;
