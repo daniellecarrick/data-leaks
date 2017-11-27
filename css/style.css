@@ -273,6 +273,33 @@
 
     @font-face {
         font-family: OTSolidLight;
+        src: url(/projects/data-leaks/font/oxidesolidot-light-webfont.ttf);
+    }
+
+    @font-face {
+        font-family: OTSolidRegular;
+        src: url(/projects/data-leaks/font/oxidesolidot-webfont.ttf);
+    }
+
+    @font-face {
+        font-family: OTSolidBold;
+        src: url(/projects/data-leaks/font/oxidesolidot-bold-webfont.ttf);
+    }
+
+    @font-face {
+        font-family: BrandonBold;
+        src: url(/projects/data-leaks/font/brandontext-bold-webfont.ttf);
+    }
+
+    @font-face {
+        font-family: ProximaNova;
+        src: url(/projects/data-leaks/font/ProximaNova-Regular.otf);
+    }
+    
+    /* for dev*/
+
+/*    @font-face {
+        font-family: OTSolidLight;
         src: url(/font/oxidesolidot-light-webfont.ttf);
     }
 
@@ -294,7 +321,7 @@
     @font-face {
         font-family: ProximaNova;
         src: url(/font/ProximaNova-Regular.otf);
-    }
+    }*/
     /* Classes for 5 column grid */
 
     .col-5x {
@@ -305,8 +332,8 @@
 
     .col-sm-legend {
         width: 20%;
-       padding-left: 15px;
-       padding-right: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .col-5x,
