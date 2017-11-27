@@ -151,10 +151,10 @@
 
                  var titles = g.append('g')
                      .attr('transform', function() {
-                         if (h == 120) {
-                             return 'translate(6, 95)';
-                         } else {
+                         if (mobile) {
                              return 'translate(6, 65)';
+                         } else {
+                             return 'translate(6, 95)';
                          }
 
                      })
@@ -235,7 +235,13 @@
 
                  tooltip.append('rect')
                      .attr('fill', 'none')
-                     .attr('width', 120)
+                     .attr('width', function() {
+                         if (mobile) {
+                             return 90;
+                         } else {
+                             return 120;
+                         }
+                     })
                      .attr('height', 17)
                      .attr('class', 'tooltip-bg');
 
@@ -264,9 +270,29 @@
                      d3.selectAll('.tooltip-bg')
                          .attr('fill', 'black')
                          .attr('x', mouse_x - 60)
-                         .attr('y', 48);
+                         .attr('y', function() {
+                             if (mobile) {
+                                 return 40;
+                             } else {
+                                 return 48;
+                             }
+                         });
 
-                     d3.selectAll('svg .tooltip-text').attr('x', mouse_x - 53).attr('y', 61)
+                     d3.selectAll('svg .tooltip-text')
+                         .attr('x', function() {
+                        if (mobile) {
+                            return mouse_x - 43;
+                        } else {
+                            return mouse_x - 53;
+                        }
+                     })
+                         .attr('y', function() {
+                        if (mobile) {
+                            return 50;
+                        } else {
+                            return 61;
+                        }
+                     })
                          .text(function(d, i) {
                              var z = bisect(date_arr, x0, 1);
                              var y_val = d[z - 1][1];

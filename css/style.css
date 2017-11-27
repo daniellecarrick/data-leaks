@@ -339,10 +339,21 @@
         .top-section img {
             right: 0px;
         }
+
+        .top-section {
+            padding-bottom: 10px;
+        }
     }
 
     @media (max-width: 500px) {
 
+        #long-axis .tick text, .axis {
+            font-size: 9px;
+        }
+
+        .tooltip-text {
+            font-size: 10px;
+        }
 
         img {
             width: 110px;
@@ -355,6 +366,7 @@
         .top-section {
             margin-right: 0px;
             margin-left: 0px;
+            font-size: 10px;
         }
 
         #visual-container,

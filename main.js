@@ -11,10 +11,11 @@ var paddingTop = 5;
 var margin = { top: -10, right: 40, bottom: 20, left: 20 };
 
 var width = outter_width - margin.right;
-
+ var mobile = false;
 
 if( width < 500){
   height = 90;
+  var mobile = true;
 } else{
   height = 120;
 }
