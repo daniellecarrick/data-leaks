@@ -162,6 +162,8 @@
 
                  titles.append('rect')
                      .attr('class', 'title-bg')
+                     .attr('fill', 'black')
+                     .attr('height', 18)
                      .attr('width', title_bg_width); // go here for more info: https://github.com/d3/d3/issues/252
 
                  titles.append('text')

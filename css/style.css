@@ -174,7 +174,6 @@
         fill: white;
         color: white;
         font-size: 11px;
-        font-weight: bold;
         font-family: ProximaNova;
     }
 
@@ -270,8 +269,7 @@
     .annotation-circles text {
         font-size: 10px;
     }
-
-    @font-face {
+    /*    @font-face {
         font-family: OTSolidLight;
         src: url(/projects/data-leaks/font/oxidesolidot-light-webfont.ttf);
     }
@@ -294,11 +292,10 @@
     @font-face {
         font-family: ProximaNova;
         src: url(/projects/data-leaks/font/ProximaNova-Regular.otf);
-    }
-    
+    }*/
     /* for dev*/
 
-/*    @font-face {
+    @font-face {
         font-family: OTSolidLight;
         src: url(/font/oxidesolidot-light-webfont.ttf);
     }
@@ -321,7 +318,7 @@
     @font-face {
         font-family: ProximaNova;
         src: url(/font/ProximaNova-Regular.otf);
-    }*/
+    }
     /* Classes for 5 column grid */
 
     .col-5x {
@@ -446,5 +443,12 @@
 
         h3 {
             font-size: 14px;
+        }
+    }
+
+    @-moz-document url-prefix() {
+        #chart-container svg {
+            padding-top: 5px;
+            margin-top: -10px;
         }
     }
