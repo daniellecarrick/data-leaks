@@ -11,27 +11,27 @@ var paddingTop = 5;
 var margin = { top: -10, right: 40, bottom: 20, left: 20 };
 
 var width = outter_width - margin.right;
- var mobile = false;
+var mobile = false;
 
-if( width < 500){
-  height = 90;
-  mobile = true;
-} else{
-  height = 120;
-  mobile = false;
+if (width < 500) {
+    height = 90;
+    mobile = true;
+} else {
+    height = 120;
+    mobile = false;
 }
 
 function drawAll() {
     outter_width = document.getElementById('wrapper').clientWidth;
     width = outter_width - margin.right;
-    if( width < 500){
-      height = 90;
-      mobile = true;
-      document.getElementById("visual-container").style.height = "500px";
-    } else{
-      height = 120;
-      mobile = false;
-      document.getElementById("visual-container").style.height = "650px";
+    if (width < 500) {
+        height = 90;
+        mobile = true;
+        document.getElementById("visual-container").style.height = "500px";
+    } else {
+        height = 120;
+        mobile = false;
+        document.getElementById("visual-container").style.height = "650px";
     }
 
     drawAxis();
@@ -55,12 +55,12 @@ function drawAxis() {
 
     var xAxis = d3.svg.axis()
         .scale(xScale)
-        .tickValues(function(){
-          if(width < 500){
-            return [ 2007, 2009, 2011, 2013,  2015, 2017];
-          } else{
-            return [ 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016];
-          }
+        .tickValues(function() {
+            if (width < 500) {
+                return [2007, 2009, 2011, 2013, 2015, 2017];
+            } else {
+                return [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016];
+            }
         })
         .tickSize(660)
         .tickFormat(d3.format('d'))
@@ -117,47 +117,51 @@ function drawCharts(thecharts) {
                 d3.selectAll('.svg-tooltip').remove();
                 d3.selectAll('.y-axis').remove();
                 d3.selectAll('.tooltip-container').remove();
+                d3.selectAll('.annotation-circles').remove();
                 d3.selectAll('.title-container').remove();
                 console.log('removed elements');
             };
             removeElements();
-            for (var i = 0; i < numberOfCharts; i++) {
+
+
                 //svg_arr[i].call(charts_arr[i].duration(2000).bands(n));
                 if (n == 1) {
-                  console.log("firstchoice");
+                  for (var i = 0; i < numberOfCharts; i++) {
+                    console.log("firstchoice");
                     svg_arr[i].call(charts_arr[i].duration(2000).bands(n).height(height));
+                  }
                 } else {
-
-
+                  removeElements();
+                    // area to horizon
                     var time = 1000;
-                      svg_arr[0].call(charts_arr[0].duration(time*8).bands(2).height(height));
-                      svg_arr[1].call(charts_arr[1].duration(time*8).bands(2).height(height));
-                      svg_arr[2].call(charts_arr[2].duration(time*8).bands(2).height(height));
-                      svg_arr[3].call(charts_arr[3].duration(time*8).bands(2).height(height));
-                      svg_arr[4].call(charts_arr[4].duration(time*8).bands(2).height(height));
+                    svg_arr[0].call(charts_arr[0].duration(time * 8).bands(2).height(height));
+                    svg_arr[1].call(charts_arr[1].duration(time * 8).bands(2).height(height));
+                    svg_arr[2].call(charts_arr[2].duration(time * 8).bands(2).height(height));
+                    svg_arr[3].call(charts_arr[3].duration(time * 8).bands(2).height(height));
+                    svg_arr[4].call(charts_arr[4].duration(time * 8).bands(2).height(height));
 
-                    //   removeElements();
 
-                      setTimeout(function(thisChart){
-                         svg_arr[0].call(charts_arr[0].duration(time*2).bands(4).height(height));
-                         svg_arr[1].call(charts_arr[1].duration(time*2).bands(4).height(height));
-                         svg_arr[2].call(charts_arr[2].duration(time*2).bands(4).height(height));
-                         svg_arr[3].call(charts_arr[3].duration(time*2).bands(4).height(height));
-                         svg_arr[4].call(charts_arr[4].duration(time*2).bands(4).height(height));
-                       }, 200);
 
-                        setTimeout(function(thisChart){
-                          svg_arr[0].call(charts_arr[0].duration(time * 2).bands(6).height(height));
-                          svg_arr[1].call(charts_arr[1].duration(time * 2).bands(6).height(height));
-                          svg_arr[2].call(charts_arr[2].duration(time*2).bands(6).height(height));
-                          svg_arr[3].call(charts_arr[3].duration(time*2).bands(6).height(height));
-                          svg_arr[4].call(charts_arr[4].duration(time*2).bands(6).height(height));
-                        }, time /2);
+                    setTimeout(function(thisChart) {
+                        svg_arr[0].call(charts_arr[0].duration(time * 2).bands(4).height(height));
+                        svg_arr[1].call(charts_arr[1].duration(time * 2).bands(4).height(height));
+                        svg_arr[2].call(charts_arr[2].duration(time * 2).bands(4).height(height));
+                        svg_arr[3].call(charts_arr[3].duration(time * 2).bands(4).height(height));
+                        svg_arr[4].call(charts_arr[4].duration(time * 2).bands(4).height(height));
+                    }, 200);
+
+                    setTimeout(function(thisChart) {
+                        svg_arr[0].call(charts_arr[0].duration(time * 2).bands(6).height(height));
+                        svg_arr[1].call(charts_arr[1].duration(time * 2).bands(6).height(height));
+                        svg_arr[2].call(charts_arr[2].duration(time * 2).bands(6).height(height));
+                        svg_arr[3].call(charts_arr[3].duration(time * 2).bands(6).height(height));
+                        svg_arr[4].call(charts_arr[4].duration(time * 2).bands(6).height(height));
+                    }, time / 2);
                     //svg_arr[i].call(charts_arr[i].duration(2000).bands(6).height(height));
 
                 }
 
-            }
+
         });
 
     }

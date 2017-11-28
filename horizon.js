@@ -20,7 +20,7 @@
 
          var margin = { top: 0, right: 40, bottom: 20, left: 20 };
 
-         // For each small multiple…
+         // For each small multipleâ€¦
          function horizon(g) {
              g.each(function(d, i) {
                  var g = d3.select(this),
@@ -162,6 +162,8 @@
 
                  titles.append('rect')
                      .attr('class', 'title-bg')
+                     .attr('fill', 'black')
+                     .attr('height', 18)
                      .attr('width', title_bg_width); // go here for more info: https://github.com/d3/d3/issues/252
 
                  titles.append('text')
@@ -237,9 +239,9 @@
                      .attr('fill', 'none')
                      .attr('width', function() {
                          if (mobile) {
-                             return 95;
+                             return 96;
                          } else {
-                             return 120;
+                             return 110;
                          }
                      })
                      .attr('height', function() {
@@ -277,7 +279,7 @@
                          .attr('fill', 'black')
                          .attr('x', function() {
                              if (mobile) {
-                                 return mouse_x - 47;
+                                 return mouse_x - 45;
                              } else {
                                  return mouse_x - 60;
                              }
@@ -293,7 +295,7 @@
                      d3.selectAll('svg .tooltip-text')
                          .attr('x', function() {
                              if (mobile) {
-                                 return mouse_x - 43;
+                                 return mouse_x - 40;
                              } else {
                                  return mouse_x - 53;
                              }
