@@ -46,7 +46,7 @@
                  // Compute the new x- and y-scales, and transform.
                  var x1 = d3.scale.linear().domain([xMin, xMax]).range([0, w - margin.right]),
                      y1 = d3.scale.linear().domain([0, yMax]).range([0, h * bands]),
-                     yScale = d3.scale.linear().domain([0, yMax]).range([height, 0]),
+                     yScale = d3.scale.linear().domain([0, yMax]).range([height, 6]),
                      t1 = d3_horizonTransform(bands, h, mode);
 
                  // Retrieve the old scales, if this is an update.
