@@ -4,6 +4,12 @@
 
     p {
         line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    text {
+        text-rendering: geometricPrecision;
     }
 
     .top-section {
