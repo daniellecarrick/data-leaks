@@ -99,6 +99,7 @@
         padding: 10px;
         position: absolute;
         top: 2px;
+        image-rendering: pixelated;
     }
 
     .legendNum {
