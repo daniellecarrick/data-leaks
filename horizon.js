@@ -145,7 +145,7 @@
                  var parentClass = this.parentNode.id;
 
                  var titles_arr = ['Hacking, Skimming, and Phishing', 'Insider Theft', 'Weak Corporate Internet Security', 'Data Breaches from Lost/Stolen Devices', 'Leak by Outside Vendor'];
-                 var title_bg_width_arr = [170, 71, 172, 205, 127];
+                 var title_bg_width_arr = [170, 71, 171, 204, 127];
                  var title_bg_width = title_bg_width_arr[counter];
                  var the_title = titles_arr[counter];
 
