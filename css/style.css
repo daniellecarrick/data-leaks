@@ -12,6 +12,18 @@
         text-rendering: geometricPrecision;
     }
 
+    body {
+        background-color: black;
+        font-family: OTSolidRegular;
+        max-height: 1200px;
+        color: white;
+    }
+
+    h3 {
+        font-family: BrandonBold;
+        font-size: 18px;
+    }
+
     .top-section {
         font-size: 12px;
         text-align: left;
@@ -40,18 +52,18 @@
         background-color: grey;
         border: 1px solid grey;
         color: black;
-        font-family: OTSolidBold;
+        font-family: OTSolidRegular;
         cursor: pointer;
         border-radius: 0px;
         float: right;
         height: 22px;
         padding: 3px;
-        width: 45%;
+        width: 48%;
         padding-top: 5px;
     }
 
     button.area {
-        margin-left: 15px;
+        margin-left: 4%;
     }
 
     button.horion {}
@@ -73,18 +85,6 @@
         outline: none
     }
 
-    body {
-        background-color: black;
-        font-family: OTSolidRegular;
-        max-height: 1200px;
-        color: white;
-    }
-
-    h3 {
-        font-family: BrandonBold;
-        font-size: 18px;
-    }
-
     .container-fluid h3 {
         margin-left: 5px;
     }
@@ -96,17 +96,18 @@
     img.legendPic {
         width: 100%;
         margin-top: 20px;
-        padding: 10px;
+        padding: 0px 10px 10px 10px;
         position: absolute;
         top: 2px;
-        image-rendering: pixelated;
+        height: 100px;
     }
 
     .legendNum {
         position: absolute;
-        top: 30px;
+        top: 19px;
         left: 25px;
         font-family: OTSolidRegular;
+        font-size: 10px;
     }
 
     #wrapper {
@@ -225,7 +226,7 @@
     }
 
     .annotations-container {
-        margin: 10px 43px 17px 5px;
+        margin: 10px 43px 3px 5px;
     }
 
     .annotations-container .col-5x {
@@ -261,7 +262,6 @@
         color: white;
         font-family: ProximaNova;
         text-align: left;
-        margin-top: -20px;
     }
 
     .annotation p {
@@ -325,13 +325,13 @@
     }
 
     .top-section img {
-        position: absolute;
         right: 15px;
         top: 2px;
+        image-rendering: -webkit-optimize-contrast;
     }
     /** MEDIA STYLES ***/
 
-    @media (max-width: 760px) {
+    @media (max-width: 768px) {
         /* Ipad */
         .rightBorder {
             border-right: 0px solid grey;
@@ -348,10 +348,6 @@
 
         .mobile--padding0 {
             padding-left: 0px;
-        }
-
-        .top-section img {
-            right: 0px;
         }
 
         .top-section {
@@ -372,11 +368,6 @@
 
         img {
             width: 110px;
-        }
-
-        button {
-            margin-left: 10px;
-            width: 40%;
         }
 
         .top-section {
