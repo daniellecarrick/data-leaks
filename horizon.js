@@ -105,8 +105,7 @@
                  path.enter().append('path')
                      .style('fill', color)
                      .attr('transform', t0)
-                     .attr('d', d0)
-                     .on('mousemove', mousemove);
+                     .attr('d', d0);
 
                  path.transition()
                      .duration(duration)
@@ -251,13 +250,13 @@
                              return 17;
                          }
                      })
-                     .attr('class', 'tooltip-bg')
-                     .on('mousemove', mousemove);
+                     .attr('class', 'tooltip-bg');
+                    
 
                  tooltip.append('text')
                      .attr('class', 'tooltip-text')
-                     .attr('fill', 'white')
-                     .on('mousemove', mousemove);
+                     .attr('fill', 'white');
+               
 
 
                  var date_arr = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
@@ -322,7 +321,8 @@
                  }).on('mouseout', function() {
                      d3.selectAll('.tooltip-container').attr('display', 'none');
                      // add code to hide tooltip container here
-                 });
+                 }).on('mousemove', mousemove);
+
 
                  // Stash the new scales.
                  this.__chart__ = { x: x1, y: y1, t: t1, id: id };
