@@ -44,13 +44,13 @@ function drawAxis() {
     // This is just for the full scale x-axis
     var axis_svg = d3.select('#long-axis').insert('svg')
         .attr('class', 'axis x-axis')
-        .attr('width', width)
+        .attr('width', outter_width)
         .attr('height', ((height + margin.top + (paddingTop * numberOfCharts)) * numberOfCharts) - 20)
         .attr('xmlns', 'http://www.w3.org/2000/svg');
 
     var xScale = d3.scale.linear()
         .domain([2007, 2017])
-        .range([20, width - (margin.right / 2) - margin.left]);
+        .range([20, outter_width - (margin.right / 2) - margin.left]);
 
     var xAxis = d3.svg.axis()
         .scale(xScale)
@@ -81,14 +81,14 @@ function drawCharts(thecharts) {
 
     for (var n = 0; n < thecharts; n++) {
         var chart = d3.horizon()
-            .width(width)
+            .width(outter_width)
             .height(height)
             .bands(6)
             .mode("offset")
             .interpolate("cardinal");
 
         var svg = d3.select("#chart-container").append("svg")
-            .attr("width", width)
+            .attr("width", outter_width)
             .attr("height", height + 10)
             .style('padding-top', paddingTop)
             .style("margin-top", margin.top);
