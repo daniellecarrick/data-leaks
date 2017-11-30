@@ -346,6 +346,10 @@
             display: none;
         }
 
+          .tooltip-text {
+            font-size: 10px;
+        }
+
         .mobile--padding0 {
             padding-left: 0px;
         }

@@ -251,11 +251,14 @@
                              return 17;
                          }
                      })
-                     .attr('class', 'tooltip-bg');
+                     .attr('class', 'tooltip-bg')
+                     .on('mousemove', mousemove);
 
                  tooltip.append('text')
                      .attr('class', 'tooltip-text')
-                     .attr('fill', 'white');
+                     .attr('fill', 'white')
+                     .on('mousemove', mousemove);
+
 
                  var date_arr = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
 
