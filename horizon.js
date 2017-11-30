@@ -18,9 +18,9 @@
              .range(['#000000', '#DAE8F3', '#DAE8F3', '#1F77B4']);
 
 
-         var margin = { top: 0, right: 40, bottom: 20, left: 20 };
+         var margin = { top: 0, right: 40, bottom: 20, left: 40 };
 
-         // For each small multipleâ€¦
+         // For each small multiple…
          function horizon(g) {
              g.each(function(d, i) {
                  var g = d3.select(this),
@@ -46,7 +46,7 @@
                  // Compute the new x- and y-scales, and transform.
                  var x1 = d3.scale.linear().domain([xMin, xMax]).range([0, w - margin.right]),
                      y1 = d3.scale.linear().domain([0, yMax]).range([0, h * bands]),
-                     yScale = d3.scale.linear().domain([0, yMax]).range([height, 0]),
+                     yScale = d3.scale.linear().domain([0, yMax]).range([height, 6]),
                      t1 = d3_horizonTransform(bands, h, mode);
 
                  // Retrieve the old scales, if this is an update.
@@ -72,7 +72,7 @@
                      .append('rect')
                      .attr('width', w)
                      .attr('height', h)
-                     .attr('transform', 'translate(0,' + margin.top + ')');
+                     .attr('transform', 'translate(' + margin.left + ' ,' + margin.top + ')');
 
                  defs.select('rect').transition()
                      .duration(duration)
@@ -145,26 +145,28 @@
                  var parentClass = this.parentNode.id;
 
                  var titles_arr = ['Hacking, Skimming, and Phishing', 'Insider Theft', 'Weak Corporate Internet Security', 'Data Breaches from Lost/Stolen Devices', 'Leak by Outside Vendor'];
-                 var title_bg_width_arr = [172, 72, 173, 207, 127];
+                 var title_bg_width_arr = [170, 71, 171, 204, 127];
                  var title_bg_width = title_bg_width_arr[counter];
                  var the_title = titles_arr[counter];
 
                  var titles = g.append('g')
                      .attr('transform', function() {
                          if (mobile) {
-                             return 'translate(6, 65)';
+                             return 'translate('+ (margin.left +6) +' , 65)';
                          } else {
-                             return 'translate(6, 95)';
+                             return 'translate('+ (margin.left +6) +', 95)';
                          }
 
                      })
-                     .attr('class', 'title-container');
+                     .attr('class', 'title-container')
+                      .on('mousemove', mousemove);
 
                  titles.append('rect')
                      .attr('class', 'title-bg')
                      .attr('fill', 'black')
                      .attr('height', 18)
-                     .attr('width', title_bg_width); // go here for more info: https://github.com/d3/d3/issues/252
+                     .attr('width', title_bg_width);
+                     // go here for more info: https://github.com/d3/d3/issues/252
 
                  titles.append('text')
                      .attr('class', 'titles')

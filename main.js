@@ -8,9 +8,9 @@ var outter_width = document.getElementById('wrapper').clientWidth;
 var numberOfCharts = 5;
 var paddingTop = 5;
 
-var margin = { top: -10, right: 40, bottom: 20, left: 20 };
+var margin = { top: -10, right: 40, bottom: 20, left: 40 };
 
-var width = outter_width - margin.right;
+var width = outter_width;
 var mobile = false;
 
 if (width < 500) {
@@ -23,7 +23,7 @@ if (width < 500) {
 
 function drawAll() {
     outter_width = document.getElementById('wrapper').clientWidth;
-    width = outter_width - margin.right;
+    width = outter_width - margin.right - margin.left;
     if (width < 500) {
         height = 90;
         mobile = true;
@@ -41,7 +41,6 @@ function drawAll() {
 function drawAxis() {
     d3.select("#visual-container #long-axis").remove();
     d3.select("#visual-container").insert("div").attr("id", "long-axis");
-
     // This is just for the full scale x-axis
     var axis_svg = d3.select('#long-axis').insert('svg')
         .attr('class', 'axis x-axis')
@@ -51,7 +50,7 @@ function drawAxis() {
 
     var xScale = d3.scale.linear()
         .domain([2007, 2017])
-        .range([20, width - (margin.right / 2)]);
+        .range([20, width - (margin.right / 2) - margin.left]);
 
     var xAxis = d3.svg.axis()
         .scale(xScale)
