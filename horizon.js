@@ -46,7 +46,7 @@
                  // Compute the new x- and y-scales, and transform.
                  var x1 = d3.scale.linear().domain([xMin, xMax]).range([0, w - margin.right]),
                      y1 = d3.scale.linear().domain([0, yMax]).range([0, h * bands]),
-                     yScale = d3.scale.linear().domain([0, yMax]).range([height, 0]),
+                     yScale = d3.scale.linear().domain([0, yMax]).range([height, 6]),
                      t1 = d3_horizonTransform(bands, h, mode);
 
                  // Retrieve the old scales, if this is an update.
@@ -105,8 +105,7 @@
                  path.enter().append('path')
                      .style('fill', color)
                      .attr('transform', t0)
-                     .attr('d', d0)
-                     .on('mousemove', mousemove);
+                     .attr('d', d0);
 
                  path.transition()
                      .duration(duration)
@@ -145,16 +144,16 @@
                  var parentClass = this.parentNode.id;
 
                  var titles_arr = ['Hacking, Skimming, and Phishing', 'Insider Theft', 'Weak Corporate Internet Security', 'Data Breaches from Lost/Stolen Devices', 'Leak by Outside Vendor'];
-                 var title_bg_width_arr = [187, 77, 184, 222, 136];
+                 var title_bg_width_arr = [170, 71, 171, 204, 127];
                  var title_bg_width = title_bg_width_arr[counter];
                  var the_title = titles_arr[counter];
 
                  var titles = g.append('g')
                      .attr('transform', function() {
-                         if (h == 120) {
-                             return 'translate(6, 95)';
-                         } else {
+                         if (mobile) {
                              return 'translate(6, 65)';
+                         } else {
+                             return 'translate(6, 95)';
                          }
 
                      })
@@ -162,6 +161,8 @@
 
                  titles.append('rect')
                      .attr('class', 'title-bg')
+                     .attr('fill', 'black')
+                     .attr('height', 18)
                      .attr('width', title_bg_width); // go here for more info: https://github.com/d3/d3/issues/252
 
                  titles.append('text')
@@ -235,13 +236,28 @@
 
                  tooltip.append('rect')
                      .attr('fill', 'none')
-                     .attr('width', 115)
-                     .attr('height', 17)
+                     .attr('width', function() {
+                         if (mobile) {
+                             return 96;
+                         } else {
+                             return 110;
+                         }
+                     })
+                     .attr('height', function() {
+                         if (mobile) {
+                             return 15;
+                         } else {
+                             return 17;
+                         }
+                     })
                      .attr('class', 'tooltip-bg');
+                    
 
                  tooltip.append('text')
                      .attr('class', 'tooltip-text')
                      .attr('fill', 'white');
+               
+
 
                  var date_arr = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
 
@@ -263,10 +279,36 @@
 
                      d3.selectAll('.tooltip-bg')
                          .attr('fill', 'black')
-                         .attr('x', mouse_x - 60)
-                         .attr('y', 48);
+                         .attr('x', function() {
+                             if (mobile) {
+                                 return mouse_x - 45;
+                             } else {
+                                 return mouse_x - 60;
+                             }
+                         })
+                         .attr('y', function() {
+                             if (mobile) {
+                                 return 39;
+                             } else {
+                                 return 48;
+                             }
+                         });
 
-                     d3.selectAll('svg .tooltip-text').attr('x', mouse_x - 53).attr('y', 61)
+                     d3.selectAll('svg .tooltip-text')
+                         .attr('x', function() {
+                             if (mobile) {
+                                 return mouse_x - 40;
+                             } else {
+                                 return mouse_x - 53;
+                             }
+                         })
+                         .attr('y', function() {
+                             if (mobile) {
+                                 return 50;
+                             } else {
+                                 return 61;
+                             }
+                         })
                          .text(function(d, i) {
                              var z = bisect(date_arr, x0, 1);
                              var y_val = d[z - 1][1];
@@ -279,7 +321,8 @@
                  }).on('mouseout', function() {
                      d3.selectAll('.tooltip-container').attr('display', 'none');
                      // add code to hide tooltip container here
-                 });
+                 }).on('mousemove', mousemove);
+
 
                  // Stash the new scales.
                  this.__chart__ = { x: x1, y: y1, t: t1, id: id };

@@ -2,13 +2,33 @@
         clear: both;
     }
 
+    p {
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    text {
+        text-rendering: geometricPrecision;
+    }
+
+    body {
+        background-color: black;
+        font-family: OTSolidRegular;
+        max-height: 1200px;
+        color: white;
+    }
+
+    h3 {
+        font-family: BrandonBold;
+        font-size: 18px;
+    }
+
     .top-section {
         font-size: 12px;
         text-align: left;
-        margin-right: 42px;
+        margin: 10px 42px 0px 5px;
         line-height: 1;
-        margin-left: 0;
-        margin-top: 10px;
         border-bottom: 1px solid grey;
         border-top: 1px solid grey;
     }
@@ -25,7 +45,7 @@
     }
 
     #horizon-bands {
-       /* float: right;*/
+        /* float: right;*/
     }
 
     button {
@@ -38,10 +58,15 @@
         float: right;
         height: 22px;
         padding: 3px;
-        width: calc(50% - 25px);
-        margin: 0px 0px 0px 10px;
+        width: 48%;
         padding-top: 5px;
     }
+
+    button.area {
+        margin-left: 4%;
+    }
+
+    button.horion {}
 
     button:hover {
         background-color: white;
@@ -60,16 +85,8 @@
         outline: none
     }
 
-    body {
-        background-color: black;
-        font-family: OTSolidRegular;
-        max-height: 1200px;
-        color: white;
-    }
-
-    h3 {
-        font-family: OTSolidRegular;
-        font-size: 16px;
+    .container-fluid h3 {
+        margin-left: 5px;
     }
 
     .rightBorder {
@@ -79,13 +96,18 @@
     img.legendPic {
         width: 100%;
         margin-top: 20px;
-        padding: 10px;
+        padding: 0px 10px 10px 10px;
+        position: absolute;
+        top: 2px;
+        height: 100px;
     }
 
     .legendNum {
         position: absolute;
-        top: 35px;
+        top: 19px;
+        left: 25px;
         font-family: OTSolidRegular;
+        font-size: 10px;
     }
 
     #wrapper {
@@ -143,7 +165,7 @@
     }
 
     #long-axis .tick text {
-        font-size: 11px;
+        font-size: 12px;
     }
 
     .domain {
@@ -160,8 +182,7 @@
         fill: white;
         color: white;
         font-size: 11px;
-        font-weight: bold;
-        font-family: Arial;
+        font-family: ProximaNova;
     }
 
     .tooltip {
@@ -170,14 +191,14 @@
     }
 
     .tooltip-text {
-        font-size: 12px;
+        font-size: 11px;
         shape-rendering: crispEdges;
         font-family: OTSolidBold;
         pointer-events: none;
     }
 
     .legend {
-        font-family: Arial;
+        font-family: ProximaNova;
         text-align: left;
         color: white;
     }
@@ -191,11 +212,6 @@
         margin-top: 87px;
     }
 
-    #headline-text {
-        font-family: Arial;
-        font-weight: bold;
-    }
-
     p.legend-title {
         font-family: OTSolidRegular;
     }
@@ -205,9 +221,12 @@
         margin-top: 20px;
     }
 
-    .annotations-container,
     .legend-container {
         margin: 10px 58px 10px 20px;
+    }
+
+    .annotations-container {
+        margin: 10px 43px 3px 5px;
     }
 
     .annotations-container .col-5x {
@@ -221,10 +240,7 @@
 
     .annotation {
         text-align: left;
-        line-height: 1;
     }
-
-
 
     .annotation span {
         display: block;
@@ -233,7 +249,7 @@
         width: 18px;
         height: 18px;
         background-color: white;
-        padding-top: 4px;
+        padding-top: 3px;
         font-size: 10px;
         color: black;
     }
@@ -244,11 +260,8 @@
         font-size: 12px;
         text-decoration: none;
         color: white;
-        font-family: Arial;
+        font-family: ProximaNova;
         text-align: left;
-        /* margin: 0; */
-        /* margin-right: 20px; */
-        margin-top: -20px;
     }
 
     .annotation p {
@@ -261,85 +274,111 @@
 
     @font-face {
         font-family: OTSolidLight;
-        src: url(/font/oxidesolidot-light-webfont.ttf);
+        src: url(https://static.wired.com/projects/data-leaks/font/oxidesolidot-light-webfont.ttf);
     }
 
     @font-face {
         font-family: OTSolidRegular;
-        src: url(/font/oxidesolidot-webfont.ttf);
+        src: url(https://static.wired.com/projects/data-leaks/font/oxidesolidot-webfont.ttf);
     }
 
     @font-face {
         font-family: OTSolidBold;
-        src: url(/font/oxidesolidot-bold-webfont.ttf);
-    }
-    /*  @font-face {
-        font-family: OTSolidLight;
-        src: url(/Documents/Visualizations/data-leaks/font/oxidesolidot-light-webfont.ttf);
+        src: url(https://static.wired.com/projects/data-leaks/font/oxidesolidot-bold-webfont.ttf);
     }
 
     @font-face {
-        font-family: OTSolidRegular;
-        src: url(/Documents/Visualizations/data-leaks/font/oxidesolidot-webfont.ttf);
+        font-family: BrandonBold;
+        src: url(https://static.wired.com/projects/data-leaks/font/brandontext-bold-webfont.ttf);
     }
 
     @font-face {
-        font-family: OTSolidBold;
-        src: url(/Documents/Visualizations/data-leaks/font/oxidesolidot-bold-webfont.ttf);
-    }*/
-
+        font-family: ProximaNova;
+        src: url(https://static.wired.com/projects/data-leaks/font/ProximaNova-Regular.otf);
+    }
     /* Classes for 5 column grid */
 
     .col-5x {
         width: 20%;
-        float: left;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .col-sm-legend {
         width: 20%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .col-5x,
+    .col-sm-legend,
+    .col-5x-2 {
         float: left;
-        padding: 8px 8px 8px 0px;
     }
 
     .col-5x-2 {
         width: 40%;
-        float: left;
     }
 
-    img {
-        position: absolute;
+    .col-5x-3 {
+        width: 60%;
+    }
+
+    .top-section img {
         right: 15px;
         top: 2px;
+        image-rendering: -webkit-optimize-contrast;
     }
+    /** MEDIA STYLES ***/
 
-    @media (max-width: 770px) {
+    @media (max-width: 768px) {
+        /* Ipad */
         .rightBorder {
             border-right: 0px solid grey;
             margin-bottom: -10px;
         }
+        .col-5x-2,
+        .col-5x-3 {
+            width: 100%;
+        }
 
-        .col-sm-legend2 {
+        .mobile--hide {
             display: none;
+        }
+
+          .tooltip-text {
+            font-size: 10px;
         }
 
         .mobile--padding0 {
             padding-left: 0px;
         }
+
+        .top-section {
+            padding-bottom: 10px;
+        }
     }
 
     @media (max-width: 500px) {
+
+        #long-axis .tick text,
+        .axis {
+            font-size: 9px;
+        }
+
+        .tooltip-text {
+            font-size: 10px;
+        }
 
         img {
             width: 110px;
         }
 
-        button {
-            margin: 0;
-            width: 50%;
-        }
         .top-section {
             margin-right: 0px;
             margin-left: 0px;
+            font-size: 10px;
+            padding-bottom: 0px;
         }
 
         #visual-container,
@@ -376,5 +415,12 @@
 
         h3 {
             font-size: 14px;
+        }
+    }
+
+    @-moz-document url-prefix() {
+        #chart-container svg {
+            padding-top: 5px;
+            margin-top: -10px;
         }
     }
